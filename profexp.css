@@ -65,7 +65,7 @@
     width: 20.2em; /*338px*/
     height: 20.2em; /*338px*/
     position: absolute;
-    top: 6%;
+    top: 4%;
     left: 22%;
     -moz-animation: spinPulse 3s infinite ease-in-out;
     -webkit-animation: spinPulse 3s infinite ease-in-out;
@@ -80,7 +80,7 @@
     width: 20em; /*330px*/
     height: 20em; /*330px*/
     position: absolute;
-    top: 7%;
+    top: 5%;
     left: 22%;
     -moz-animation: spinoffPulse 1s infinite linear;
     -webkit-animation: spinoffPulse 1s infinite linear;
