@@ -56,7 +56,7 @@ li {
     justify-content: space-between;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover > .dropdown-menu {
     display: block;
     border: none;
     border-radius: 0;
@@ -65,6 +65,62 @@ li {
 
 .dropdown-menu {
     margin-top: 0;
+}
+
+.submenu {
+    display: none;
+}
+
+.dropdown-item.dropdown-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    width: 100%;
+}
+
+.ST-interest-rate:hover > .submenu {
+    display: block;
+    position: absolute;
+    border: none;
+    border-radius: 0;
+    right: 100%;  
+    top: 70px;   
+    margin-left: -160px;  
+    width: 120px;  
+}
+
+.F-interest-rate:hover > .submenu {
+    display: block;
+    position: absolute;
+    border: none;
+    border-radius: 0;
+    right: 100%;  
+    top: 100px;   
+    margin-left: -160px;  
+    width: 120px;  
+}
+
+.local-volatility:hover > .submenu {
+    display: block;
+    position: absolute;
+    border: none;
+    border-radius: 0;
+    right: 100%;  
+    top: 130px;   
+    margin-left: -160px;  
+    width: 120px;  
+}
+
+.stochastic-volatility:hover > .submenu {
+    display: block;
+    position: absolute;
+    border: none;
+    border-radius: 0;
+    right: 100%;  
+    top: 160px;   
+    margin-left: -160px;  
+    width: 120px;  
 }
 
 /*profile picture style*/

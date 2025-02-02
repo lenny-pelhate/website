@@ -21,9 +21,9 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-light fixed-top">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
             <div class="collapse navbar-collapse">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a href="#" class="nav-link">Home</a>
                     </li>
@@ -37,15 +37,47 @@
                         <a href="#Contact" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="financialDropdown" role="button" 
+                        <a class="nav-link dropdown-toggle" href="#" role="button" 
                            data-bs-toggle="dropdown" aria-expanded="false">
                             Financial Studies
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="financialDropdown">
-                            <li><a class="dropdown-item" href="Black-Scholes_MC.html">Black-Scholes Monte Carlo</a></li>
-                            <li><a class="dropdown-item" href="BSplot.html">Black-Scholes Call Surface</a></li>
-                            <li><a class="dropdown-item" href="#local-volatility">Local Volatility Models</a></li>
-                            <li><a class="dropdown-item" href="#stochastic-volatility">Stochastic Volatility Models</a></li>
+                            <li><a class="dropdown-item BS" href="Black-Scholes_MC.html">Black-Scholes Monte Carlo</a></li>
+                            <li><a class="dropdown-item BS-call-surface" href="BSplot.html">Black-Scholes Call Surface</a></li>
+                            
+                            <li class="dropdown-submenu ST-interest-rate">
+                                <a class="dropdown-item dropdown-toggle" href="#">Short-Term Interest Rate Models</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="1_Vasicek_IR_model_1977.html">Vasicek</a></li>
+                                    <li><a class="dropdown-item" href="#">Hull-White</a></li>
+                                    <li><a class="dropdown-item" href="#">CIR</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu F-interest-rate">
+                                <a class="dropdown-item dropdown-toggle" href="#">Forward Interest Rate Models</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">HJM</a></li>
+                                    <li><a class="dropdown-item" href="#">LMM</a></li>
+                                    <li><a class="dropdown-item" href="#">SMM</a></li>
+                                </ul>
+                            </li>
+                            
+                            <li class="dropdown-submenu local-volatility">
+                                <a class="dropdown-item dropdown-toggle" href="#">Local Volatility Models</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Dupire</a></li>
+                                    <li><a class="dropdown-item" href="#">CEV</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown-submenu stochastic-volatility">
+                                <a class="dropdown-item dropdown-toggle" href="#">Stochastic Volatility Models</a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Heston</a></li>
+                                    <li><a class="dropdown-item" href="#">SABR</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -94,7 +126,7 @@
                 </div>
                 <div class="legend">
                     <h4>Exotics Trading & Structuring Intern</h4>
-                    <p>● developed new trading and arbitrage strategies<br>● Assisted traders with daily tasks and decision-making<br>● Performed statistical analyses and developed new pricing models</p>
+                    <p>● Developed new trading and arbitrage strategies<br>● Assisted traders with daily tasks and decision-making<br>● Performed statistical analyses and developed new pricing models</p>
                 </div>
             </div>
             <!--Experience 2: URW-->
