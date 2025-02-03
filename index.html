@@ -7,11 +7,14 @@
     <title>Lenny Pelhate - CV</title>
 
     <link rel="shortcut icon" href="./media/cs_icon.png">
+    <link rel="stylesheet" href="./cursor.css">
     <link rel="stylesheet" href="./header.css">
     <link rel="stylesheet" href="./education.css">
     <link rel="stylesheet" href="./profexp.css">
     <link rel="stylesheet" href="./bubbles.css">
+    <link rel="stylesheet" href="./fifa.css">
     <link rel="stylesheet" href="./footer.css">
+
     <link rel="stylesheet" href="./blackscholes.css">
 
     <link rel="stylesheet" href="./assets/css/bootstrap.css">
@@ -20,6 +23,7 @@
 </head>
 
 <body>
+    <div id="cursor">$</div>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
             <div class="collapse navbar-collapse">
@@ -37,10 +41,7 @@
                         <a href="#Contact" class="nav-link">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" 
-                           data-bs-toggle="dropdown" aria-expanded="false">
-                            Financial Studies
-                        </a>
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Financial Studies</a>
                         <ul class="dropdown-menu" aria-labelledby="financialDropdown">
                             <li><a class="dropdown-item BS" href="Black-Scholes_MC.html">Black-Scholes Monte Carlo</a></li>
                             <li><a class="dropdown-item BS-call-surface" href="BSplot.html">Black-Scholes Call Surface</a></li>
@@ -306,6 +307,65 @@
             </div>
         </div>
         <!--end bubbles-->
+    </section>
+
+    <!------------------- FIFA FUT CARD ----------------------->
+    <section>
+        <div class="card-container">
+            <div class="card">
+                <div class="card-front">
+                    <div class="score">85</div>
+                    <div class="nationality">FR</div>
+                    <div class="flag">
+                        <img src="./media/french_flag.png" height="30px">
+                    </div>
+                    <div class="logo-cacib">
+                        <img src="./media/logo_cacib.png" height="50px">
+                    </div>
+                    <div class="pic-fifa">
+                        <img src="./media/crop_lenny.png" height="210px">
+                    </div>
+                    <div class="player-name">PELHATE</div>
+                    <div class="horizontal-line"></div> <!-- Horizontal line at the middle -->
+                    <div class="stats-left">
+                        <div class="stat">
+                            <div class="stat-value">94</div>
+                            <div class="stat-label">Math</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">86</div>
+                            <div class="stat-label">Stat</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">83</div>
+                            <div class="stat-label">CS</div>
+                        </div>
+                    </div>
+                    <div class="vertical-line"></div>
+                    <div class="stats-right">
+                        <div class="stat">
+                            <div class="stat-value">91</div>
+                            <div class="stat-label">Finance</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">79</div>
+                            <div class="stat-label">ML</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">74</div>
+                            <div class="stat-label">DL</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-back">
+                    <div class="card-back-title">Player Skills</div>
+                    <ul class="skills-list">
+                        <li>Languages</li>
+                        <li>IT skills</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer id="Contact">

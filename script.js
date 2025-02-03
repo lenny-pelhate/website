@@ -26,3 +26,29 @@ var typed = new Typed('.typed', {
 
 //AOS
 AOS.init();
+
+// -------------------- Cursor -----------------------------------
+const cursor = document.getElementById('cursor');
+        const trailContainer = document.body;
+        const trailHistory = [];
+        const maxTrailLength = 5;
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX - 25}px`;
+            cursor.style.top = `${e.clientY - 12}px`;
+
+            const trail = document.createElement('div');
+            trail.classList.add('money-trail');
+            trail.style.left = `${e.clientX - 20}px`;
+            trail.style.top = `${e.clientY - 10}px`;
+            trail.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+            trailContainer.appendChild(trail);
+
+            trailHistory.push(trail);
+
+            if (trailHistory.length > maxTrailLength) {
+                const oldestTrail = trailHistory.shift();
+                oldestTrail.style.opacity = 0;
+                setTimeout(() => oldestTrail.remove(), 200);
+            }
+        });
