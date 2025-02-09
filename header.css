@@ -7,7 +7,7 @@ body {
     color: #283655 !important;
     background-color: #f7faff !important;
     font-family: "Noto+Serif";
-    cursor: none;
+    cursor: default; /*change to none if you want to make it disappear*/
 }
 
 /*title style*/
