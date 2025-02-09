@@ -124,6 +124,17 @@ li {
     width: 120px;  
 }
 
+.numerical-methods:hover > .submenu {
+    display: block;
+    position: absolute;
+    border: none;
+    border-radius: 0;
+    right: 100%;  
+    top: 190px;   
+    margin-left: -160px;  
+    width: 120px;  
+}
+
 /*profile picture style*/
 img {
     border-radius: 2px;
