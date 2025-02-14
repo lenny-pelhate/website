@@ -80,46 +80,24 @@ li {
     width: 100%;
 }
 
-.ST-interest-rate:hover > .submenu {
+.Interest-rate:hover > .submenu {
     display: block;
     position: absolute;
     border: none;
     border-radius: 0;
     right: 100%;  
-    top: 70px;   
+    top: 65px;   
     margin-left: -160px;  
     width: 120px;  
 }
 
-.F-interest-rate:hover > .submenu {
+.Volatility:hover > .submenu {
     display: block;
     position: absolute;
     border: none;
     border-radius: 0;
     right: 100%;  
-    top: 100px;   
-    margin-left: -160px;  
-    width: 120px;  
-}
-
-.local-volatility:hover > .submenu {
-    display: block;
-    position: absolute;
-    border: none;
-    border-radius: 0;
-    right: 100%;  
-    top: 130px;   
-    margin-left: -160px;  
-    width: 120px;  
-}
-
-.stochastic-volatility:hover > .submenu {
-    display: block;
-    position: absolute;
-    border: none;
-    border-radius: 0;
-    right: 100%;  
-    top: 160px;   
+    top: 95px;   
     margin-left: -160px;  
     width: 120px;  
 }
