@@ -183,8 +183,9 @@ header .button:hover a {
     }
 
     h1 {
-        font-size: 5vw; /* Adjusted for high-resolution readability */
-        padding: 2em 0 0.3em 0;
+        font-size: 8vw; /* Adjusted for high-resolution readability */
+        padding: 6em 0 0.3em 0;
+        text-shadow: none !important; /* Removes any existing shadow */
     }
 
     h2 {
@@ -192,6 +193,7 @@ header .button:hover a {
         padding: 0.4em 0 0.7em 0;
         max-width: 80%; /* Limits width to 60% of the parent container */
         margin: 0 auto; /* Centers the heading */
+        text-shadow: none !important; /* Removes any existing shadow */
     }    
 
     h3 {
@@ -229,7 +231,7 @@ header .button:hover a {
         display: block !important;
         margin: 0 auto; /* Ensures centering */
         max-width: 100%; /* Ensures responsiveness */
-        border-radius: 5% !important; /* Makes it fully circular */
+        border-radius: 3%; /* Makes it fully circular */
     }
 
     header {
@@ -240,15 +242,18 @@ header .button:hover a {
     }
 
     header .button {
-        margin: 20px auto 0 auto;
-        display: block;
-        width: fit-content;
+        margin: 20px auto 0 auto; /* Centers horizontally */
+        display: flex; /* Use flexbox for proper centering */
+        justify-content: center; /* Centers the content */
+        align-items: center; /* Aligns vertically */
+        width: 100%; /* Ensures full width */
+        text-align: center; /* Ensures text alignment */
     }
-
+    
     header .button a {
         padding: 15px 40px;
         width: 100%;
-        display: block;
+        display: inline-block; /* Makes sure the button takes only its necessary width */
         text-align: center;
         font-size: 3.8vw;
     }
