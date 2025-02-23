@@ -190,7 +190,7 @@ header .button:hover a {
 
     h2 {
         font-size: 4vw;
-        padding: 0.5em 0 0.7em 0;
+        padding: 0.5em 0 0.7em 0 !important;
         max-width: 80%; /* Limits width to 60% of the parent container */
         margin: 0 auto; /* Centers the heading */
         text-shadow: none !important; /* Removes any existing shadow */
@@ -256,7 +256,7 @@ header .button:hover a {
     
     header .button a {
         width: 100%;
-        display: inline-block; /* Makes sure the button takes only its necessary width */
+        /*display: inline-block; /* Makes sure the button takes only its necessary width */
         text-align: center;
         font-size: 3.8vw;
     }
