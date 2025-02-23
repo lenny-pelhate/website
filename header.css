@@ -200,16 +200,6 @@ header .button:hover a {
         font-size: 3.5vw;
     }
 
-    .navbar {
-        display: flex !important;
-        opacity: 1 !important;
-        height: auto !important;
-    }
-
-    .navbar-nav {
-        width: 100%;
-    }
-
     .presentation {
         height: auto;
         margin-top: 10px;
@@ -236,6 +226,13 @@ header .button:hover a {
 
     .pic:hover img {
         filter: none !important;
+    }
+
+    header .button:hover a {
+        background: #b3aca7;
+        color: #e2dedb;
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
     }
 
     header {
