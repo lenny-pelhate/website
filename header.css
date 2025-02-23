@@ -250,7 +250,7 @@ header .button:hover a {
         display: flex; /* Use flexbox for proper centering */
         justify-content: center; /* Centers the content */
         align-items: center; /* Aligns vertically */
-        width: fit-content; /* Prevents unnecessary width */
+        width: 40%;
         text-align: center; /* Ensures text alignment */
     }
     
