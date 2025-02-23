@@ -49,8 +49,8 @@
     position: relative;
 }
 
-/* *************************** Responsive Design for All Phones *************************** */
-@media screen and (max-width: 768px) {
+/* *************************** Responsive Design for 2556×1179 Pixels *************************** */
+@media screen and (max-width: 1179px) and (max-height: 2556px) {
     /* Hide Education Section */
     #Education {
         display: none;
@@ -64,18 +64,3 @@
     }
 }
 
-/* *************************** iPhone-Specific Styles *************************** */
-@media screen and (max-width: 480px) {
-    /* Hide Education Section for iPhones */
-    #Education {
-        display: none;
-    }
-}
-
-/* *************************** Ultra-Wide Phones (e.g., iPhone 12, Foldables) *************************** */
-@media screen and (max-width: 430px) {
-    /* Hide Education Section */
-    #Education {
-        display: none;
-    }
-}

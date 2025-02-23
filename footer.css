@@ -48,3 +48,64 @@ footer {
     transition: 0.5s ease-in-out;
     color: #b3aca7;
 }
+
+/* *************************** Responsive Footer Design for 2556×1179 Pixels *************************** */
+@media screen and (max-width: 1179px) and (max-height: 2556px) {
+    footer {
+        background: linear-gradient(to top, transparent 60%, #f7faff 90%), 
+                    url(./media/footer.jpg) 50% 0% no-repeat fixed;
+        background-size: cover;
+        text-align: center;
+    }
+
+    .footer-icons {
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        max-width: 30%;
+    }
+
+    .network {
+        font-size: 4em;
+        border: 1px solid #b3aca7;
+        padding: 30px 45px;
+        color: #283655;
+        z-index: -1 !important;
+    }
+
+    .network:hover {
+        background: #b3aca7;
+        color: #f7faff;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .arrow {
+        margin: -20 auto;
+        padding-top: 15px;
+        animation: arrow linear 0.7s;
+        animation-iteration-count: infinite;
+    }
+
+    @keyframes arrow {
+        0% {
+            transform: translateY(0px);
+        }
+        38% {
+            transform: translateY(8px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+
+    .arrow a {
+        font-size: 3em;
+        border: none;
+        color: #283655;
+    }
+
+    .arrow:hover i {
+        transition: 0.5s ease-in-out;
+        color: #b3aca7;
+    }
+}
