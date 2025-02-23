@@ -248,7 +248,7 @@ header .button:hover a {
         display: flex; /* Use flexbox for proper centering */
         justify-content: center; /* Centers the content */
         align-items: center; /* Aligns vertically */
-        width: 60%;
+        width: 44%;
         text-align: center; /* Ensures text alignment */
     }
     
@@ -257,5 +257,9 @@ header .button:hover a {
         display: inline-block; /* Makes sure the button takes only its necessary width */
         text-align: center;
         font-size: 3.8vw;
+        white-space: nowrap; /* Prevents line break */
+        padding: 0.5em 1em; /* Adjust padding for better fit */
+        max-width: 100%; /* Ensures it doesn't exceed the button width */
+        overflow: hidden; /* Prevents any unwanted overflow */
     }
 }
