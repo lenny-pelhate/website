@@ -184,8 +184,7 @@ header .button:hover a {
 
     h1 {
         font-size: 5vw; /* Adjusted for high-resolution readability */
-        margin-top: 6em;
-        padding: 0 0 0.3em 0;
+        padding: 6em 0 0.3em 0 !important;
     }
 
     h2 {
@@ -213,7 +212,7 @@ header .button:hover a {
     }
 
     .pic {
-        display: flex;
+        display: flex !important;
         justify-content: center;
         align-items: center; /* Ensures vertical alignment */
         width: 100%;
