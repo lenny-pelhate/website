@@ -190,7 +190,9 @@ header .button:hover a {
     h2 {
         font-size: 4vw;
         padding: 0.4em 0 0.7em 0;
-    }
+        max-width: 60%; /* Limits width to 60% of the parent container */
+        margin: 0 auto; /* Centers the heading */
+    }    
 
     h3 {
         font-size: 3.5vw;
