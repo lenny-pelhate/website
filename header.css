@@ -173,7 +173,7 @@ header .button:hover a {
     text-decoration: none;
 }
 
-/* *************************** Responsive Design *************************** */
+/* *************************** Responsive Design for Mobile & iPhones *************************** */
 @media screen and (max-width: 768px) {
     /* Prevent horizontal scrolling */
     html, body {
@@ -182,12 +182,12 @@ header .button:hover a {
     }
 
     h1 {
-        font-size: 8vw; /* Adjust for smaller screens */
-        padding: 0.5em 0;
+        font-size: 7vw;
+        padding: 0.4em 0;
     }
 
     h2 {
-        font-size: 6vw;
+        font-size: 5.5vw;
         padding: 0.5em 0 0.8em 0;
     }
 
@@ -211,7 +211,7 @@ header .button:hover a {
     }
 
     header {
-        height: 85vh; /* Adjust height for mobile screens */
+        height: 85vh;
         background-attachment: scroll; /* Prevent fixed background on mobile */
         background-position: center;
         background-size: cover;
@@ -228,4 +228,45 @@ header .button:hover a {
         text-align: center;
         font-size: 4vw;
     }
+
+    /* HIDE Professional Experience & Education sections on mobile */
+    .professional-experience, .education {
+        display: none;
+    }
 }
+
+/* Specific Styles for iPhones (≤ 480px screens) */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 6vw;
+        padding: 0.3em 0;
+    }
+
+    h2 {
+        font-size: 5vw;
+    }
+
+    h3 {
+        font-size: 4.5vw;
+    }
+
+    .infos {
+        padding: 8px;
+    }
+
+    header {
+        height: 80vh;
+    }
+
+    header .button a {
+        font-size: 4.5vw;
+        padding: 10px 30px;
+    }
+
+    /* Hide Professional Experience & Education for iPhones */
+    .professional-experience, .education {
+        display: none;
+    }
+}
+
+
