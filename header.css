@@ -183,8 +183,8 @@ header .button:hover a {
     }
 
     h1 {
-        font-size: 8vw; /* Adjusted for high-resolution readability */
-        padding: 6em 0 0.3em 0;
+        font-size: 8vw !important; /* Adjusted for high-resolution readability */
+        padding: 6em 0 0.3em 0 !important;
         text-shadow: none !important; /* Removes any existing shadow */
     }
 
@@ -221,17 +221,17 @@ header .button:hover a {
 
     .pic {
         display: flex !important;
-        justify-content: center;
-        align-items: center; /* Ensures vertical alignment */
+        justify-content: center !important;
+        align-items: center !important; /* Ensures vertical alignment */
         width: 100%;
         text-align: center; /* Ensures inline elements like img are centered */
     }
     
     .pic img {
         display: block !important;
-        margin: 0 auto; /* Ensures centering */
+        margin: 0 auto !important; /* Ensures centering */
         max-width: 100%; /* Ensures responsiveness */
-        border-radius: 3%; /* Makes it fully circular */
+        border-radius: 3% !important; /* Makes it fully circular */
     }
 
     header {
