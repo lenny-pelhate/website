@@ -229,10 +229,9 @@ header .button:hover a {
     }
 
     header .button:hover a {
-        background: #b3aca7;
-        color: #e2dedb;
-        transition: all 0.3s ease-in-out;
-        text-decoration: none;
+        background: inherit !important; /* Keeps original background */
+        color: inherit !important; /* Keeps original text color */
+        transition: none !important;
     }
 
     header {
