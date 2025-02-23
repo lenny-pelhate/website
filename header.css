@@ -173,26 +173,27 @@ header .button:hover a {
     text-decoration: none;
 }
 
-/* *************************** Responsive Design for Mobile & iPhones *************************** */
+/* *************************** Responsive Design for All Phones *************************** */
 @media screen and (max-width: 768px) {
     /* Prevent horizontal scrolling */
     html, body {
         overflow-x: hidden;
         width: 100%;
+        max-width: 100%;
     }
 
     h1 {
-        font-size: 7vw;
-        padding: 0.4em 0;
+        font-size: 7vw; /* Adjusted for better readability */
+        padding: 0.3em 0;
     }
 
     h2 {
         font-size: 5.5vw;
-        padding: 0.5em 0 0.8em 0;
+        padding: 0.4em 0 0.7em 0;
     }
 
     h3 {
-        font-size: 5vw;
+        font-size: 4.5vw;
     }
 
     .navbar-nav {
@@ -218,28 +219,23 @@ header .button:hover a {
     }
 
     header .button {
-        margin-top: 20px;
+        margin-top: 15px;
     }
 
     header .button a {
-        padding: 12px 40px;
-        width: 90%;
+        padding: 10px 35px;
+        width: 85%;
         display: block;
         text-align: center;
-        font-size: 4vw;
-    }
-
-    /* HIDE Professional Experience & Education sections on mobile */
-    .professional-experience, .education {
-        display: none;
+        font-size: 4.2vw;
     }
 }
 
-/* Specific Styles for iPhones (≤ 480px screens) */
+/* *************************** iPhone-Specific Styles (e.g., iPhone 12, 13, 14) *************************** */
 @media screen and (max-width: 480px) {
     h1 {
-        font-size: 6vw;
-        padding: 0.3em 0;
+        font-size: 6.5vw;
+        padding: 0.2em 0;
     }
 
     h2 {
@@ -247,7 +243,7 @@ header .button:hover a {
     }
 
     h3 {
-        font-size: 4.5vw;
+        font-size: 4vw;
     }
 
     .infos {
@@ -259,14 +255,35 @@ header .button:hover a {
     }
 
     header .button a {
-        font-size: 4.5vw;
-        padding: 10px 30px;
-    }
-
-    /* Hide Professional Experience & Education for iPhones */
-    .professional-experience, .education {
-        display: none;
+        font-size: 4vw;
+        padding: 10px 28px;
     }
 }
 
+/* *************************** Ultra-Wide Phones (e.g., iPhone 12 Pro Max, Foldable Phones) *************************** */
+@media screen and (max-width: 430px) {
+    h1 {
+        font-size: 6vw;
+    }
 
+    h2 {
+        font-size: 4.5vw;
+    }
+
+    h3 {
+        font-size: 4vw;
+    }
+
+    .infos {
+        padding: 6px;
+    }
+
+    header {
+        height: 75vh;
+    }
+
+    header .button a {
+        font-size: 3.8vw;
+        padding: 8px 25px;
+    }
+}

@@ -49,5 +49,33 @@
     position: relative;
 }
 
+/* *************************** Responsive Design for All Phones *************************** */
+@media screen and (max-width: 768px) {
+    /* Hide Education Section */
+    #Education {
+        display: none;
+    }
 
+    /* Prevent horizontal scrolling */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+    }
+}
 
+/* *************************** iPhone-Specific Styles *************************** */
+@media screen and (max-width: 480px) {
+    /* Hide Education Section for iPhones */
+    #Education {
+        display: none;
+    }
+}
+
+/* *************************** Ultra-Wide Phones (e.g., iPhone 12, Foldables) *************************** */
+@media screen and (max-width: 430px) {
+    /* Hide Education Section */
+    #Education {
+        display: none;
+    }
+}
