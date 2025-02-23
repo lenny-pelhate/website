@@ -198,6 +198,12 @@ header .button:hover a {
         font-size: 3.5vw;
     }
 
+    .navbar {
+        display: flex !important;
+        opacity: 1 !important;
+        height: auto !important;
+    }
+
     .navbar-nav {
         width: 100%;
     }
