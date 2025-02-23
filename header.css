@@ -219,7 +219,7 @@ header .button:hover a {
     
     .pic img {
         display: block;
-        margin: 0 auto; /* Ensures centering */
+        margin: 1em auto; /* Ensures centering */
         max-width: 100%; /* Ensures responsiveness */
         border-radius: 2%; /* Makes it fully circular */
     }
@@ -244,11 +244,11 @@ header .button:hover a {
     }
 
     header .button {
-        margin: 2em auto 0 auto !important; /* Centers horizontally */
+        margin: 4em auto 0 auto !important; /* Centers horizontally */
         display: flex; /* Use flexbox for proper centering */
         justify-content: center; /* Centers the content */
         align-items: center; /* Aligns vertically */
-        width: 44%;
+        width: 40%;
         text-align: center; /* Ensures text alignment */
     }
     
