@@ -184,13 +184,13 @@ header .button:hover a {
 
     h1 {
         font-size: 5vw; /* Adjusted for high-resolution readability */
-        padding: 2em 0 0.3em 0 !important;
+        padding: 2em 0 0.3em 0;
     }
 
     h2 {
         font-size: 4vw;
         padding: 0.4em 0 0.7em 0;
-        max-width: 80% !important; /* Limits width to 60% of the parent container */
+        max-width: 80%; /* Limits width to 60% of the parent container */
         margin: 0 auto; /* Centers the heading */
     }    
 
@@ -240,14 +240,14 @@ header .button:hover a {
     }
 
     header .button {
-        margin: 20px auto 0 auto !important;
-        display: block !important;
+        margin: 20px auto 0 auto;
+        display: block;
         width: fit-content;
     }
 
     header .button a {
         padding: 15px 40px;
-        width: 80%;
+        width: 100%;
         display: block;
         text-align: center;
         font-size: 3.8vw;
