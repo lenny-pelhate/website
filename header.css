@@ -175,14 +175,24 @@ header .button:hover a {
 
 /* *************************** Responsive Design *************************** */
 @media screen and (max-width: 768px) {
+    /* Prevent horizontal scrolling */
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
     h1 {
-        font-size: 2.5em; /* Adjust for smaller screens */
+        font-size: 8vw; /* Adjust for smaller screens */
         padding: 0.5em 0;
     }
 
     h2 {
-        font-size: 2em;
+        font-size: 6vw;
         padding: 0.5em 0 0.8em 0;
+    }
+
+    h3 {
+        font-size: 5vw;
     }
 
     .navbar-nav {
@@ -196,12 +206,15 @@ header .button:hover a {
 
     .infos {
         padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     header {
-        height: 90vh; /* Adjust height for mobile screens */
+        height: 85vh; /* Adjust height for mobile screens */
         background-attachment: scroll; /* Prevent fixed background on mobile */
         background-position: center;
+        background-size: cover;
     }
 
     header .button {
@@ -209,9 +222,10 @@ header .button:hover a {
     }
 
     header .button a {
-        padding: 15px 50px;
-        width: 80%;
+        padding: 12px 40px;
+        width: 90%;
         display: block;
         text-align: center;
+        font-size: 4vw;
     }
 }
