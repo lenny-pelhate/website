@@ -167,6 +167,6 @@ background-blend-mode: overlay;
 
 @media screen and (max-width: 1179px) and (max-height: 2556px) {
     .card-container {
-        display: none; /* Hide the card */
+        display: none !important; /* Hide the card */
     }
 }

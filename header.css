@@ -206,9 +206,7 @@ header .button:hover a {
     }
 
     .infos {
-        padding: 12px;
-        width: 100%;
-        box-sizing: border-box;
+        display: none !important; /*hide the info box on phones*/
     }
 
     header {
