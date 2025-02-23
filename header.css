@@ -184,13 +184,13 @@ header .button:hover a {
 
     h1 {
         font-size: 5vw; /* Adjusted for high-resolution readability */
-        padding: 6em 0 0.3em 0 !important;
+        padding: 2em 0 0.3em 0 !important;
     }
 
     h2 {
         font-size: 4vw;
         padding: 0.4em 0 0.7em 0;
-        max-width: 60%; /* Limits width to 60% of the parent container */
+        max-width: 80%; /* Limits width to 60% of the parent container */
         margin: 0 auto; /* Centers the heading */
     }    
 
@@ -220,9 +220,10 @@ header .button:hover a {
     }
     
     .pic img {
-        display: block;
+        display: block !important;
         margin: 0 auto; /* Ensures centering */
         max-width: 100%; /* Ensures responsiveness */
+        border-radius: 5%; /* Makes it fully circular */
     }
 
     header {
@@ -233,7 +234,9 @@ header .button:hover a {
     }
 
     header .button {
-        margin-top: 20px;
+        margin: 20px auto 0 auto !important;
+        display: block;
+        width: fit-content;
     }
 
     header .button a {
