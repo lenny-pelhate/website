@@ -184,7 +184,7 @@ header .button:hover a {
 
     h1 {
         font-size: 5vw; /* Adjusted for high-resolution readability */
-        padding: 0.3em 0;
+        padding: 2em 0 0.3em 0; /* Increased top padding */
     }
 
     h2 {
@@ -206,19 +206,9 @@ header .button:hover a {
     }
 
     .infos {
-        display: none;
-    }
-    
-    /* Center the profile picture */
-    .pic {
-        display: flex;
-        justify-content: center;
+        padding: 12px;
         width: 100%;
-    }
-
-    .pic img {
-        display: block;
-        margin: 0 auto;
+        box-sizing: border-box;
     }
 
     header {

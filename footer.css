@@ -50,7 +50,10 @@ footer {
 }
 
 @media screen and (max-width: 1179px) and (max-height: 2556px) {
-    footer {
+    footer,
+    .footer-icons,
+    .network,
+    .arrow {
         display: none; /* Hide the footer */
     }
 }
