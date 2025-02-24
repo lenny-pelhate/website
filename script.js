@@ -34,11 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (navbarToggler && navbarContent) {
         navbarToggler.addEventListener("click", function () {
             if (window.innerWidth < 1179) { // Only toggle for small screens
-                if (navbarContent.style.display === "block") {
-                    navbarContent.style.display = "none";
-                } else {
-                    navbarContent.style.display = "block";
-                }
+                navbarContent.classList.toggle("show");
             }
         });
     }    
