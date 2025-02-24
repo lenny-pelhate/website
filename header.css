@@ -197,49 +197,61 @@ header .button:hover a {
     }    
 
     /*--------------------- Hamburger dropdown CSS -------------------------*/
-    .navbar-nav {
-        display: none; /* Hide desktop menu */
-    }
-
-    /* .navbar {
+    .navbar {
         height: auto;
         padding: 0.5rem 1rem;
         background-color: #FAFAFA;
-    } */
-
-    .navbar-toggler {
-        display: block; /* Show the hamburger menu */
     }
 
-    /* #navbarContent {
-        display: none;
+    /* Dropdown menu styling */
+    .dropdown-menu {
+        margin: 0;
+        padding: 0.5rem 0;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .dropdown-item {
+        padding: 0.5rem 1.5rem;
+    }
+
+    /* Styling for nested dropdown (submenu) */
+    .dropdown-submenu {
+        position: relative;
+    }
+
+    .dropdown-submenu > .dropdown-toggle::after {
+        transform: rotate(-90deg);
         position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #fff;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }*/
-
-    .navbar-collapse.show {
-        display: flex !important;
-        flex-direction: column;
-        background-color: #f8f9fa;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        padding: 10px 0;
+        right: 1rem;
+        top: 50%;
+        margin-top: -0.3rem;
     }
 
-    .mobile-submenu {
+    .dropdown-submenu > .submenu {
+        top: 0;
+        left: 100%;
+        margin-top: -0.5rem;
+        margin-left: 0.1rem;
         display: none;
-        background-color: #f8f9fa;
-        padding-left: 20px;
     }
-
-    .mobile-submenu.show {
+    
+    .submenu.show {
         display: block;
+    }
+    
+    /* Adjust submenu position for mobile */
+    .dropdown-submenu > .submenu {
+        left: 0;
+        margin-left: 2rem;
+        position: static;
+        box-shadow: none;
+        border: none;
+    }
+    
+    /* Indent submenu items on mobile */
+    .dropdown-submenu > .submenu .dropdown-item {
+        padding-left: 2.5rem;
     }
 
     /*------------------------------------------------------------------------*/
