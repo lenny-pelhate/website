@@ -33,10 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (navbarToggler && navbarContent) {
         navbarToggler.addEventListener("click", function () {
-            // Toggle the menu visibility
-            navbarContent.classList.toggle("show");
+            if (window.innerWidth < 1179) { // Only toggle for small screens
+                navbarContent.classList.toggle("show");
+            }
         });
-    }
+    }    
 
     // Function to handle dropdown toggles
     function handleDropdownClick(e) {

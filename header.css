@@ -197,32 +197,49 @@ header .button:hover a {
     }    
 
     /*--------------------- Hamburger dropdown CSS -------------------------*/
-    .navbar {
+    /* .navbar {
         height: auto;
         padding: 0.5rem 1rem;
         background-color: #FAFAFA;
+    } */
+
+    .navbar-toggler {
+        display: block; /* Show the hamburger menu */
     }
-    
+
+    #navbarContent {
+        display: none; /* Hide the menu by default */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #navbarContent.show {
+        display: block; /* Show menu when toggled */
+    }
+
     .dropdown-menu {
-        width: 100%;
-        position: static;
-        padding-left: 0;
-    }
-
-    .dropdown-submenu .dropdown-menu {
+        display: none; /* Hide submenus by default */
         position: static;
         width: 100%;
-        display: none;
-        margin-left: 1rem;
+        background-color: #f8f9fa;
+        padding: 10px 0;
     }
 
-    .dropdown-submenu.show .dropdown-menu {
-        display: block;
+    .dropdown-menu.show {
+        display: block; /* Show when toggled */
     }
 
-    /* Ensure dropdown toggle arrow is removed */
-    .dropdown-item.dropdown-toggle::after {
-        display: none;
+    .dropdown-submenu {
+        position: relative;
+    }
+
+    .dropdown-toggle::after {
+        content: "▼"; /* Add dropdown indicator */
+        float: right;
     }
 
     /*------------------------------------------------------------------------*/
