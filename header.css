@@ -228,8 +228,16 @@ header .button:hover a {
     /* Prevent Bootstrap auto-closing submenus */
     .dropdown-menu .dropdown-menu {
         display: none;
-        position: static;
+        position: relative;
         width: 100%;
+    }
+
+    .dropdown-menu .dropdown-submenu .dropdown-menu {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        margin-top: 0;
+        display: none;
     }
 
     .dropdown-menu.show {
