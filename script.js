@@ -39,58 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }    
 
-    // Function to handle dropdown toggles
-    function handleDropdownClick(e) {
-        if (window.innerWidth < 1179) { // Only for small screens
-            e.preventDefault();
-            e.stopPropagation(); // Prevent event bubbling
-            const nextMenu = this.nextElementSibling;
-            if (nextMenu && nextMenu.classList.contains("dropdown-menu")) {
-                // If we're clicking a different dropdown toggle, close all open ones first
-                if (!nextMenu.classList.contains("show")) {
-                    // Only close siblings at the same level, not all dropdowns
-                    const parent = this.parentElement.parentElement;
-                    parent.querySelectorAll(".dropdown-menu.show").forEach(menu => {
-                        if (menu !== nextMenu) {
-                            menu.classList.remove("show");
-                        }
-                    });
-                }
-                
-                // Toggle the clicked dropdown
-                nextMenu.classList.toggle("show");
-                
-                // Toggle active class on the toggle element
-                this.classList.toggle("active");
-            }
-        }
-    }
-
-    // Add event listeners to ALL dropdown toggles (both top-level and submenu)
-    document.addEventListener("DOMContentLoaded", function() {
-    // Apply to all dropdown toggles
-    document.querySelectorAll(".dropdown-toggle").forEach(element => {
-        element.addEventListener("click", handleDropdownToggle);
-    });
-    
-    // Close dropdowns when clicking outside
-    document.addEventListener("click", function(e) {
-        if (window.innerWidth < 1179) {
-            const isDropdownButton = e.target.classList.contains("dropdown-toggle") || 
-                                    e.target.closest(".dropdown-toggle");
-            
-            if (!isDropdownButton) {
-                document.querySelectorAll(".dropdown-menu.show").forEach(dropdown => {
-                    dropdown.classList.remove("show");
-                });
-                
-                document.querySelectorAll(".dropdown-toggle.active").forEach(toggle => {
-                    toggle.classList.remove("active");
-                });
-            }
-        }
-    });
-});
 
 // -------------------- Cursor -----------------------------------
 // const cursor = document.getElementById('cursor');
