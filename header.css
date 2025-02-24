@@ -46,7 +46,7 @@ li {
 
 .navbar {
     background-color:#FAFAFA;
-    /* opacity: 0.9; */
+    opacity: 1;
     height: 42px;
     transition: 0.7s;
 }
