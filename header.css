@@ -197,11 +197,11 @@ header .button:hover a {
     }    
 
     /*--------------------- Hamburger dropdown CSS -------------------------*/
-    /* .navbar {
+    .navbar {
         height: auto;
         padding: 0.5rem 1rem;
         background-color: #FAFAFA;
-    } */
+    }
 
     .navbar-toggler {
         display: block; /* Show the hamburger menu */
