@@ -5,7 +5,7 @@ let lastScrollTop = 0;
 navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', function() {
-    const scrollTop = window.pageTOffset || this.document.documentElement.scrollTop;
+    const scrollTop = window.scrollY || this.document.documentElement.scrollTop;
 
     if (scrollTop > lastScrollTop) {
         navbar.style.top="-50px";
