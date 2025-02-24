@@ -262,14 +262,16 @@ header .button:hover a {
         margin-left: 0;
         width: 100%;
         top: auto;
+        background-color: none;
         padding-left: 3vh;
     }
+
     /* Show submenus when parent is clicked/tapped */
     .dropdown-submenu.show > .submenu {
         display: block;
     }
     
-    Adjust dropdown toggles for mobile
+    /* Adjust dropdown toggles for mobile */
     .dropdown-item.dropdown-toggle {
         padding-left: 20px;
     }
