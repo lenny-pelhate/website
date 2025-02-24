@@ -199,7 +199,7 @@ header .button:hover a {
     /*--------------------- Hamburger dropdown CSS -------------------------*/
     .navbar {
         height: 60px; /*was auto*/
-        background-color: linear-gradient(to top, #FAFAFA 0%, #FAFAFA 50%, rgba(255, 255, 255, 0) 100%) !important;
+        background-color: rgb(155, 0, 0) !important;
     }
     
     /* When navbar is expanded */
@@ -224,9 +224,9 @@ header .button:hover a {
         flex-direction: column;
         align-items: flex-start;
         width: 100% !important;
-        /* background-color: #FAFAFA !important;
+        background-color: #FAFAFA !important;
         opacity: 1 !important;
-        backdrop-filter: none !important; */
+        backdrop-filter: none !important;
     }
 
     /* Hide the first 4 navigation items */
@@ -245,9 +245,9 @@ header .button:hover a {
         /* float: none; */
         width: 100%;
         margin-top: 0;
-        /* background-color: #FAFAFA !important;
+        background-color: #FAFAFA !important;
         backdrop-filter: none !important;
-        opacity: 1 !important; */
+        opacity: 1 !important;
         border: none;
         box-shadow: none;
     }
