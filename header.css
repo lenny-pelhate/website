@@ -224,7 +224,9 @@ header .button:hover a {
         flex-direction: column;
         align-items: flex-start;
         width: 100% !important;
-        background-color: transparent !important; /* Set a solid background color */
+        background-color: #FAFAFA !important; /* Set a solid background color */
+        opacity: 1 !important;
+        backdrop-filter: none !important; /* Disable any blur effects */
     }
 
     /* Hide the first 4 navigation items */
