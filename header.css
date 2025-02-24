@@ -200,7 +200,7 @@ header .button:hover a {
     .navbar {
         height: auto;
         padding: 0.5rem 1rem;
-        background: linear-gradient(to top, #FAFAFA, #FFFFFF);
+        background: linear-gradient(to top, #FAFAFA, #FFFFFF) !important;
     }
     
     .collapse:not(.show) {
@@ -253,16 +253,6 @@ header .button:hover a {
         border: none;
         box-shadow: none;
         padding-left: 3vw;
-    }
-
-    /* Dropdown items */
-    .dropdown-item {
-        font-size: 1rem;
-        color: #283655;
-    }
-
-    .dropdown-item:hover {
-        background-color: rgba(220, 220, 220, 0.5); /* Light hover effect */
     }
     
     /* Handle submenu positioning for mobile */
