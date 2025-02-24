@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpolation Techniques in Finance</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h1, h2 { color: #2c3e50; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Interpolation Techniques in Finance</h1>
+    <p>Interpolation is a method used in finance to estimate unknown values between two known values. It is widely used in yield curve estimation, option pricing, and risk management.</p>
+    
+    <h2>1. Linear Interpolation</h2>
+    <p>Linear interpolation is the simplest method, where the unknown value is estimated by assuming a linear relationship between two known values.</p>
+    <p><strong>Formula:</strong></p>
+    <pre>
+        y = y1 + (x - x1) * (y2 - y1) / (x2 - x1)
+    </pre>
+    <p><strong>Example in Finance:</strong> Suppose we have interest rates for 1-year and 3-year bonds but need to estimate the 2-year rate.</p>
+    <pre>
+        Given: (1-year, 2%) and (3-year, 4%)
+        Find: 2-year rate
+        Solution: 2% + (2 - 1) * (4% - 2%) / (3 - 1) = 3%
+    </pre>
+    
+    <h2>2. Polynomial Interpolation</h2>
+    <p>Polynomial interpolation uses higher-degree polynomials to fit a curve through multiple points.</p>
+    <p><strong>Example in Finance:</strong> Estimating a bond yield curve using a quadratic or cubic polynomial.</p>
+    
+    <h2>3. Spline Interpolation</h2>
+    <p>Spline interpolation divides the data into smaller intervals and fits piecewise polynomials to each.</p>
+    <p><strong>Example in Finance:</strong> The cubic spline is commonly used in yield curve modeling to ensure smooth transitions.</p>
+    
+    <h2>4. Lagrange Interpolation</h2>
+    <p>Lagrange interpolation constructs a polynomial passing through all given points.</p>
+    <p><strong>Example in Finance:</strong> Estimating missing bond prices using known market data.</p>
+    
+    <h2>5. Newton's Interpolation</h2>
+    <p>Newton’s divided difference method builds a polynomial based on recursive divided differences.</p>
+    <p><strong>Example in Finance:</strong> Used in option pricing models when estimating volatility.</p>
+    
+    <h2>Conclusion</h2>
+    <p>Interpolation techniques are crucial in finance, helping in estimating missing values for yield curves, option prices, and risk assessments. Choosing the right method depends on the required accuracy and computational efficiency.</p>
+</body>
+</html>
