@@ -258,7 +258,7 @@ header .button:hover a {
         position: static;
         margin-left: 0;
         width: 100%;
-        padding: 0 1vw !important;
+        padding: 0 2vw !important;
     }
 
     /* Show submenus when parent is clicked/tapped */
