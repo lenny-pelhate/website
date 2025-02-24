@@ -29,7 +29,7 @@ AOS.init();
 
 // -------------------- DROPDOWN MENU FOR SMALL SCREENS --------------------
 function handleDropdownClick(e) {
-    if (window.innerWidth < 768) { // Only for small screens
+    if (window.innerWidth < 1179) { // Only for small screens
         e.preventDefault();
         let nextMenu = this.nextElementSibling;
         if (nextMenu.style.display === "block") {
