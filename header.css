@@ -212,7 +212,7 @@ header .button:hover a {
         opacity: 1 !important;
         backdrop-filter: none !important;
         z-index: 1000; /* Ensures that the expanded mobile navigation menu stays on top of other content */
-        padding: 0 2vw; /* Adds horizontal spacing inside the menu */
+        padding: 0 1vw; /* Adds horizontal spacing inside the menu */
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -258,7 +258,7 @@ header .button:hover a {
         position: static;
         margin-left: 0;
         width: 100%;
-        padding: 0 3vw !important;
+        padding: 0 5vw !important;
     }
 
     /* Show submenus when parent is clicked/tapped */
