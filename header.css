@@ -231,6 +231,11 @@ header .button:hover a {
         align-items: flex-start;
         width: 100% !important;
     }
+
+    /* Hide the first 4 navigation items */
+    .navbar-nav .nav-item:nth-child(-n+4) {
+    display: none !important;
+    }
     
     .nav-item {
         width: 100%;
