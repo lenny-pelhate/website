@@ -232,7 +232,7 @@ header .button:hover a {
     
     .nav-item {
         width: 100%;
-        padding: 2vw 0;
+        padding: 0 1vw;
     }
 
     /* Handle dropdowns on mobile */
@@ -244,7 +244,6 @@ header .button:hover a {
         background-color: transparent !important;
         border: none;
         box-shadow: none;
-        /* padding-left: 3vw; */
     }
     
     /* Handle submenu positioning for mobile */
@@ -255,7 +254,7 @@ header .button:hover a {
         margin-left: 0;
         width: 100%;
         top: auto;
-        padding-left: 1vh; /*sub sub menu*/
+        /*padding-left: 1vh;*/ /*sub sub menu*/
     }
 
     /* Show submenus when parent is clicked/tapped */
@@ -267,9 +266,9 @@ header .button:hover a {
     }
     
     /* Adjust dropdown toggles for mobile */
-    .dropdown-item.dropdown-toggle {
+    /* .dropdown-item.dropdown-toggle {
         padding-left: 3vw;
-    }
+    } */
 
     /*------------------------------------------------------------------------*/
     .presentation {
