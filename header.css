@@ -198,7 +198,7 @@ header .button:hover a {
 
     /*--------------------- Hamburger dropdown CSS -------------------------*/
     .navbar {
-        height: auto;
+        height: 60px; /*was auto*/
         background: linear-gradient(to top, #FAFAFA 0%, #FAFAFA 50%, rgba(255, 255, 255, 0) 100%) !important;
     }
     
@@ -209,7 +209,9 @@ header .button:hover a {
         top: 100%;
         left: 0;
         width: 60vw; /* before was 42vw */
-        background-color: rgba(250, 250, 250, 1) !important;
+        background-color: #FAFAFA !important;
+        opacity: 1 !important;
+        backdrop-filter: none !important; /* Disable any blur effects */
         z-index: 1000; /* Ensures that the expanded mobile navigation menu stays on top of other content */
         padding: 0 2vw; /* Adds horizontal spacing inside the menu */
         text-align: left;
@@ -241,7 +243,9 @@ header .button:hover a {
         /* float: none; */
         width: 100%;
         margin-top: 0;
-        background-color: rgba(250, 250, 250, 1) !important;
+        background-color: #FAFAFA !important;
+        backdrop-filter: none !important; /* Disable any blur effects */
+        opacity: 1 !important;
         border: none;
         box-shadow: none;
     }
@@ -253,8 +257,6 @@ header .button:hover a {
         position: static;
         margin-left: 0;
         width: 100%;
-        /* top: auto; */
-        /*padding-left: 1vh;*/ /*sub sub menu*/
     }
 
     /* Show submenus when parent is clicked/tapped */
@@ -264,11 +266,6 @@ header .button:hover a {
         box-shadow: none !important;
         border: none !important;
     }
-    
-    /* Adjust dropdown toggles for mobile */
-    /* .dropdown-item.dropdown-toggle {
-        padding-left: 3vw;
-    } */
 
     /*------------------------------------------------------------------------*/
     .presentation {
