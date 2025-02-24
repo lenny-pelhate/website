@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
     AOS.init();
 
     // -------------------- DROPDOWN MENU FOR SMALL SCREENS --------------------
-    document.addEventListener('DOMContentLoaded', function() {
     // Hamburger menu toggle
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarContent = document.querySelector('#navbarContent');
@@ -102,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-});
 
 // -------------------- Cursor -----------------------------------
 // const cursor = document.getElementById('cursor');
