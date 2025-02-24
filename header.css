@@ -197,10 +197,9 @@ header .button:hover a {
     }    
 
     /*--------------------- Hamburger dropdown CSS -------------------------*/
-    /* .navbar {
-        height: 60px;
-        background-color: rgb(155, 0, 0) !important;
-    } */
+    .navbar {
+        height: auto;
+    }
     
     /* When navbar is expanded */
     .navbar-collapse.show {
