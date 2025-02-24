@@ -208,7 +208,7 @@ header .button:hover a {
         position: absolute;
         top: 100%;
         left: 0;
-        width: 42vw;
+        width: 60vw; /* before was 42vw */
         background-color: #FAFAFA !important;
         z-index: 1000; /* Ensures that the expanded mobile navigation menu stays on top of other content */
         padding: 2vw; /* Adds spacing inside the menu */
