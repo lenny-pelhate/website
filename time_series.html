@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Series Analysis and Algorithms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Time Series Analysis and Algorithms</h1>
+        <p>Time series analysis involves analyzing data points collected or recorded at specific time intervals. It is used in various fields, including finance, economics, weather forecasting, and healthcare.</p>
+        
+        <h2>Key Components of Time Series</h2>
+        <ul>
+            <li><strong>Trend:</strong> The long-term movement in the data.</li>
+            <li><strong>Seasonality:</strong> Repeating patterns over a fixed period.</li>
+            <li><strong>Cyclic Patterns:</strong> Fluctuations that occur over an irregular period.</li>
+            <li><strong>Random Variations:</strong> Unpredictable fluctuations in the data.</li>
+        </ul>
+        
+        <h2>Time Series Analysis Techniques</h2>
+        <h3>Stationarity Tests</h3>
+        <p>Stationarity is an important concept in time series analysis. A stationary series has statistical properties that do not change over time, making it easier to model and forecast. Common stationarity tests include:</p>
+        <ul>
+            <li><strong>Augmented Dickey-Fuller (ADF) Test:</strong> Checks for the presence of a unit root to determine stationarity.</li>
+            <li><strong>Kwiatkowski-Phillips-Schmidt-Shin (KPSS) Test:</strong> Tests the null hypothesis that a series is stationary around a mean.</li>
+            <li><strong>Phillips-Perron (PP) Test:</strong> Similar to the ADF test but more robust to autocorrelation and heteroskedasticity.</li>
+        </ul>
+        
+        <h3>Decomposition</h3>
+        <p>Time series data can be decomposed into its main components:</p>
+        <ul>
+            <li><strong>Additive Decomposition:</strong> Used when seasonal variations are constant over time.</li>
+            <li><strong>Multiplicative Decomposition:</strong> Used when seasonal variations change proportionally to trend.</li>
+        </ul>
+        
+        <h3>Autocorrelation and Partial Autocorrelation</h3>
+        <p>Autocorrelation helps understand relationships between lagged values. Partial autocorrelation shows direct relationships between observations, removing indirect effects. These can be analyzed using:</p>
+        <ul>
+            <li><strong>Autocorrelation Function (ACF):</strong> Measures the correlation between observations at different time lags.</li>
+            <li><strong>Partial Autocorrelation Function (PACF):</strong> Measures the correlation between observations at different lags while removing the influence of intermediate lags.</li>
+        </ul>
+        
+        <h3>GARCH (Generalized Autoregressive Conditional Heteroskedasticity)</h3>
+        <p>GARCH models are used to model and predict the volatility of time series data, especially in financial markets. They help capture heteroskedasticity (changing variance over time) by considering past variances and residuals.</p>
+        
+        <h2>Common Algorithms for Time Series Analysis</h2>
+        <ul>
+            <li><strong>ARIMA (AutoRegressive Integrated Moving Average):</strong> Used for modeling time series data by combining autoregression, differencing, and moving averages.</li>
+            <li><strong>Exponential Smoothing:</strong> A technique that smooths data by giving more weight to recent observations.</li>
+            <li><strong>Long Short-Term Memory (LSTM):</strong> A deep learning model specifically designed for sequential data like time series.</li>
+            <li><strong>Facebook Prophet:</strong> An open-source forecasting tool developed by Facebook that handles missing data and seasonal effects.</li>
+        </ul>
+        
+        <h2>Applications of Time Series Analysis</h2>
+        <ul>
+            <li>Stock market prediction</li>
+            <li>Weather forecasting</li>
+            <li>Sales and demand forecasting</li>
+            <li>Energy consumption prediction</li>
+        </ul>
+    </div>
+</body>
+</html>
