@@ -209,9 +209,9 @@ header .button:hover a {
         top: 100%;
         left: 0;
         width: 60vw; /* before was 42vw */
-        background-color: #FAFAFA !important;
+        background-color: rgba(250, 250, 250, 1) !important;
         z-index: 1000; /* Ensures that the expanded mobile navigation menu stays on top of other content */
-        padding: 2vw; /* Adds spacing inside the menu */
+        padding: 0 2vw; /* Adds horizontal spacing inside the menu */
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -222,7 +222,7 @@ header .button:hover a {
         flex-direction: column;
         align-items: flex-start;
         width: 100% !important;
-        background-color: #810707 !important; /* Set a solid background color */
+        background-color: transparent !important; /* Set a solid background color */
     }
 
     /* Hide the first 4 navigation items */
@@ -241,7 +241,7 @@ header .button:hover a {
         /* float: none; */
         width: 100%;
         margin-top: 0;
-        background-color: #FAFAFA !important;
+        background-color: transparent !important;
         border: none;
         box-shadow: none;
         /* padding-left: 3vw; */
@@ -255,7 +255,7 @@ header .button:hover a {
         margin-left: 0;
         width: 100%;
         top: auto;
-        padding-left: 3vh;
+        padding-left: 1vh; /*sub sub menu*/
     }
 
     /* Show submenus when parent is clicked/tapped */
