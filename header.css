@@ -251,7 +251,7 @@ header .button:hover a {
         opacity: 1 !important; /* Ensure full opacity */
         border: none;
         box-shadow: none;
-        /* padding-left: 20px; */
+        padding-left: 3vw;
     }
     
     /* Handle submenu positioning for mobile */
@@ -262,7 +262,9 @@ header .button:hover a {
         margin-left: 0;
         width: 100%;
         top: auto;
-        background-color: none;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
         padding-left: 3vh;
     }
 
