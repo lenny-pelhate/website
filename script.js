@@ -1,50 +1,62 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-// -------------------- NAVBAR HIDE ON SCROLL --------------------
-let lastScrollTop = 0;
-navbar = document.getElementById('navbar');
+    // -------------------- NAVBAR HIDE ON SCROLL --------------------
+    let lastScrollTop = 0;
+    navbar = document.getElementById('navbar');
 
-window.addEventListener('scroll', function() {
-    const scrollTop = window.scrollY || this.document.documentElement.scrollTop;
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.scrollY || this.document.documentElement.scrollTop;
 
-    if (scrollTop > lastScrollTop) {
-        navbar.style.top="-50px";
-    } else {
-        navbar.style.top="0";
-    }
-    lastScrollTop = scrollTop;
-})
-
-// -------------------- TYPED.js ANIMATION --------------------
-var typed = new Typed('.typed', {
-    // Waits 1000ms after typing "First"
-    strings: ["^1200 Hi! I am a French student currently doing a double master's degree at ESSEC Business School and CentraleSupélec. ^1500 Passionate about finance, I am keen on learning more about this field and enthusiastic about the idea of developing new skills in order to pursue a future career in market finance. ^2000 I consider myself dynamic, perseverant and hard-working. ^700 I like to think ahead and beyond regular solutions for ordinary problems. ^1000 I enjoy new challenges and the idea of having to solve complex issues under high pressure, as they push me to excel and better myself. ^1000 Last but not least, I cherish the values of teamwork and organization to accomplish tasks in time."],//à chaque virgule il repart en arrière
-    typeSpeed: 10,
-    backSpeed: 0,
-    loop: false
-  });
-
-// -------------------- AOS (Animate On Scroll) --------------------
-AOS.init();
-
-// -------------------- DROPDOWN MENU FOR SMALL SCREENS --------------------
-function handleDropdownClick(e) {
-    if (window.innerWidth < 1179) { // Only for small screens
-        e.preventDefault();
-        let nextMenu = this.nextElementSibling;
-        if (nextMenu.style.display === "block") {
-            nextMenu.style.display = "none";
+        if (scrollTop > lastScrollTop) {
+            navbar.style.top="-50px";
         } else {
-            document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(menu => menu.style.display = "none");
-            nextMenu.style.display = "block";
+            navbar.style.top="0";
+        }
+        lastScrollTop = scrollTop;
+    })
+
+    // -------------------- TYPED.js ANIMATION --------------------
+    var typed = new Typed('.typed', {
+        // Waits 1000ms after typing "First"
+        strings: ["^1200 Hi! I am a French student currently doing a double master's degree at ESSEC Business School and CentraleSupélec. ^1500 Passionate about finance, I am keen on learning more about this field and enthusiastic about the idea of developing new skills in order to pursue a future career in market finance. ^2000 I consider myself dynamic, perseverant and hard-working. ^700 I like to think ahead and beyond regular solutions for ordinary problems. ^1000 I enjoy new challenges and the idea of having to solve complex issues under high pressure, as they push me to excel and better myself. ^1000 Last but not least, I cherish the values of teamwork and organization to accomplish tasks in time."],//à chaque virgule il repart en arrière
+        typeSpeed: 10,
+        backSpeed: 0,
+        loop: false
+    });
+
+    // -------------------- AOS (Animate On Scroll) --------------------
+    AOS.init();
+
+    // -------------------- DROPDOWN MENU FOR SMALL SCREENS --------------------
+    const navbarToggler = document.querySelector(".navbar-toggler");
+    const navbarContent = document.querySelector("#navbarContent");
+
+    if (navbarToggler && navbarContent) {
+        navbarToggler.addEventListener("click", function () {
+            // Toggle the menu visibility
+            navbarContent.classList.toggle("show");
+        });
+    }
+
+    // Function to handle dropdown toggles
+    function handleDropdownClick(e) {
+        if (window.innerWidth < 1179) { // Only for small screens
+            e.preventDefault();
+            let nextMenu = this.nextElementSibling;
+            if (nextMenu && nextMenu.classList.contains("dropdown-menu")) {
+                // Close all open dropdowns first
+                document.querySelectorAll(".dropdown-submenu .dropdown-menu").forEach(menu => menu.classList.remove("show"));
+                
+                // Toggle the clicked dropdown
+                nextMenu.classList.toggle("show");
+            }
         }
     }
-}
 
-// Add event listeners to dropdown toggles
-document.querySelectorAll(".dropdown-submenu .dropdown-toggle").forEach(element => {
-    element.addEventListener("click", handleDropdownClick);
-});
+    // Add event listeners to dropdown toggles
+    document.querySelectorAll(".dropdown-submenu .dropdown-toggle").forEach(element => {
+        element.addEventListener("click", handleDropdownClick);
+    });
 
 });
 
