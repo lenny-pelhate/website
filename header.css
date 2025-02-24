@@ -232,10 +232,11 @@ header .button:hover a {
     .navbar-nav .nav-item:nth-child(-n+4) {
     display: none !important;
     }
-    
+
+    /**/
     .nav-item {
         width: 100%;
-        padding: 0 3vw;
+        padding: 0 6vw;
     }
 
     /* Handle dropdowns on mobile */
