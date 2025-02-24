@@ -199,7 +199,7 @@ header .button:hover a {
     /*--------------------- Hamburger dropdown CSS -------------------------*/
     .navbar {
         height: 60px; /*was auto*/
-        background: linear-gradient(to top, #FAFAFA 0%, #FAFAFA 50%, rgba(255, 255, 255, 0) 100%) !important;
+        background-color: linear-gradient(to top, #FAFAFA 0%, #FAFAFA 50%, rgba(255, 255, 255, 0) 100%) !important;
     }
     
     /* When navbar is expanded */
