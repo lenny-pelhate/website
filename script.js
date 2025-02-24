@@ -33,12 +33,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (navbarToggler && navbarContent) {
         navbarToggler.addEventListener("click", function () {
-            if (window.innerWidth < 1179) { // Only toggle for small screens
-                navbarContent.classList.toggle("show");
-            }
+            // Toggle the menu visibility
+            navbarContent.classList.toggle("show");
         });
-    }    
+    }
 
+});
 
 // -------------------- Cursor -----------------------------------
 // const cursor = document.getElementById('cursor');
