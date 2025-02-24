@@ -233,10 +233,9 @@ header .button:hover a {
     display: none !important;
     }
 
-    /**/
     .nav-item {
         width: 100%;
-        padding: 0 6vw;
+        padding: 0 1vw;
     }
 
     /* Handle dropdowns on mobile */
