@@ -211,15 +211,16 @@ header .button:hover a {
         display: block; /* Show the hamburger menu */
     }
 
-    #navbarContent {
-        display: none; /* Hide the menu by default */
+    /* #navbarContent {
+        display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
         background-color: #fff;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
+    }*/
+
     .navbar-collapse.show {
         display: flex !important;
         flex-direction: column;
@@ -231,14 +232,14 @@ header .button:hover a {
         padding: 10px 0;
     }
 
-    .navbar-nav .nav-item {
-        text-align: center;
-        padding: 10px;
+    .mobile-submenu {
+        display: none;
+        background-color: #f8f9fa;
+        padding-left: 20px;
     }
 
-    .navbar-nav .nav-item a {
-        text-decoration: none;
-        color: #333;
+    .mobile-submenu.show {
+        display: block;
     }
 
     /*------------------------------------------------------------------------*/
