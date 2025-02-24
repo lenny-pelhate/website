@@ -199,13 +199,13 @@ header .button:hover a {
     /*--------------------- Hamburger dropdown CSS -------------------------*/
     .navbar {
         height: auto;
-        padding: 0.5rem 1rem;
+        /* padding: 0.5rem 1rem; */
         background: linear-gradient(to top, #FAFAFA, #FFFFFF) !important;
     }
     
-    .collapse:not(.show) {
+    /* .collapse:not(.show) {
         display: none;
-    }
+    } */
     
     /* When navbar is expanded */
     .navbar-collapse.show {
@@ -216,9 +216,9 @@ header .button:hover a {
         width: 42vw;
         background-color: #FAFAFA !important;
         z-index: 1000; /* Ensures that the expanded mobile navigation menu stays on top of other content */
-        padding: 2vw; /* Adds spacing inside the menu */
+        /* padding: 2vw;*/ /* Adds spacing inside the menu */
         text-align: left;
-        display: flex;
+        /* display: flex; */
         flex-direction: column;
         align-items: flex-start;
     }
@@ -237,16 +237,16 @@ header .button:hover a {
     
     .nav-item {
         width: 100%;
-        padding: 8px 0;
+        padding: 2vw 0;
     }
 
     /* Handle dropdowns on mobile */
     .dropdown-menu {
         position: static !important;
-        float: none;
+        /* float: none; */
         width: 100%;
         margin-top: 0;
-        background-color: #f8f9fa !important;
+        background-color: #FAFAFA !important;
         border: none;
         box-shadow: none;
         /* padding-left: 3vw; */
