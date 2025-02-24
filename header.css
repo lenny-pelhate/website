@@ -200,7 +200,7 @@ header .button:hover a {
     .navbar {
         height: auto;
         padding: 0.5rem 1rem;
-        background-color: #FAFAFA;
+        background: linear-gradient(to top, #FAFAFA, #FFFFFF);
     }
     
     .collapse:not(.show) {
@@ -240,17 +240,19 @@ header .button:hover a {
         width: 100%;
         padding: 8px 0;
     }
+
     /* Handle dropdowns on mobile */
-    /* .dropdown-menu {
+    .dropdown-menu {
         position: static !important;
         float: none;
         width: 100%;
         margin-top: 0;
         background-color: #f8f9fa;
+        opacity: 1 !important; /* Ensure full opacity */
         border: none;
         box-shadow: none;
-        padding-left: 20px;
-    } */
+        /* padding-left: 20px; */
+    }
     
     /* Handle submenu positioning for mobile */
     .Interest-rate:hover > .submenu,
