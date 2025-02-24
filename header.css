@@ -203,6 +203,71 @@ header .button:hover a {
         background-color: #FAFAFA;
     }
 
+    /* Show hamburger, hide regular nav */
+    .navbar-toggler {
+        display: block;
+    }
+    
+    .collapse:not(.show) {
+        display: none;
+    }
+    
+    /* When navbar is expanded */
+    .navbar-collapse.show {
+        display: block;
+        position: absolute;
+        top: 42px;
+        left: 0;
+        right: 0;
+        background-color: #FAFAFA;
+        opacity: 0.9;
+        z-index: 1000;
+        padding: 10px;
+    }
+    /* Mobile menu styles */
+    .navbar-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100% !important;
+    }
+    
+    .nav-item {
+        width: 100%;
+        padding: 8px 0;
+    }
+    /* Handle dropdowns on mobile */
+    .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        margin-top: 0;
+        background-color: #f8f9fa;
+        border: none;
+        box-shadow: none;
+        padding-left: 20px;
+    }
+    
+    /* Handle submenu positioning for mobile */
+    .Interest-rate:hover > .submenu,
+    .Volatility:hover > .submenu,
+    .numerical-methods:hover > .submenu {
+        position: static;
+        margin-left: 0;
+        width: 100%;
+        right: auto;
+        top: auto;
+        padding-left: 20px;
+    }
+    /* Show submenus when parent is clicked/tapped */
+    .dropdown-submenu.show > .submenu {
+        display: block;
+    }
+    
+    /* Adjust dropdown toggles for mobile */
+    .dropdown-item.dropdown-toggle {
+        padding-left: 20px;
+    }
+
     /*------------------------------------------------------------------------*/
     .presentation {
         height: auto;
