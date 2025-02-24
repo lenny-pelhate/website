@@ -209,9 +209,9 @@ header .button:hover a {
         top: 100%;
         left: 0;
         width: 60vw; /* before was 42vw */
-        /* background-color: #FAFAFA !important;
+        background-color: #FAFAFA !important;
         opacity: 1 !important;
-        backdrop-filter: none !important; */
+        backdrop-filter: none !important;
         z-index: 1000; /* Ensures that the expanded mobile navigation menu stays on top of other content */
         padding: 0 2vw; /* Adds horizontal spacing inside the menu */
         text-align: left;
@@ -264,7 +264,7 @@ header .button:hover a {
     /* Show submenus when parent is clicked/tapped */
     .dropdown-submenu.show > .submenu {
         display: block;
-        background: #FAFAFA !important;
+        background: transparent !important;
         box-shadow: none !important;
         border: none !important;
     }
