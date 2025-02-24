@@ -217,13 +217,17 @@ header .button:hover a {
         padding-left: 1.5rem;
     }
 
+    .dropdown-menu.show {
+        display: block !important;
+    }
+/* 
     .submenu {
         display: block !important;
         position: static !important;
         margin-left: 1.5rem !important;
         width: auto !important;
         background-color: transparent;
-    }
+    } */
 
     .dropdown-item.dropdown-toggle::after {
         display: none;
