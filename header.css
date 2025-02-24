@@ -214,10 +214,10 @@ header .button:hover a {
         top: 100%;
         left: 0;
         width: 42vw;
-        background-color: #FAFAFA;
+        background-color: #FAFAFA !important;
+        opacity: 1 !important;
         z-index: 1000; /* Ensures that the expanded mobile navigation menu stays on top of other content */
         padding: 2vw; /* Adds spacing inside the menu */
-        /* Ensuring text and items are aligned left */
         text-align: left;
         display: flex;
         flex-direction: column;
@@ -229,6 +229,7 @@ header .button:hover a {
         align-items: flex-start;
         width: 100% !important;
         background-color: #FAFAFA; /* Set a solid background color */
+        opacity: 1 !important;
     }
 
     /* Hide the first 4 navigation items */
@@ -248,10 +249,20 @@ header .button:hover a {
         width: 100%;
         margin-top: 0;
         background-color: #f8f9fa;
-        opacity: 1 !important; /* Ensure full opacity */
+        opacity: 1 !important;
         border: none;
         box-shadow: none;
         padding-left: 3vw;
+    }
+
+    /* Dropdown items */
+    .dropdown-item {
+        font-size: 1rem;
+        color: #283655;
+    }
+
+    .dropdown-item:hover {
+        background-color: rgba(220, 220, 220, 0.5); /* Light hover effect */
     }
     
     /* Handle submenu positioning for mobile */
@@ -275,7 +286,7 @@ header .button:hover a {
     
     /* Adjust dropdown toggles for mobile */
     .dropdown-item.dropdown-toggle {
-        padding-left: 20px;
+        padding-left: 3vw;
     }
 
     /*------------------------------------------------------------------------*/
