@@ -204,9 +204,9 @@ header .button:hover a {
     }
 
     /* Show hamburger, hide regular nav */
-    .navbar-toggler {
+    /* .navbar-toggler {
         display: block;
-    }
+    } */
     
     .collapse:not(.show) {
         display: none;
@@ -216,13 +216,14 @@ header .button:hover a {
     .navbar-collapse.show {
         display: block;
         position: absolute;
-        top: 42px;
+        top: 10vh;
         left: 0;
-        right: 0;
+        width: 33vw;
         background-color: #FAFAFA;
-        opacity: 0.9;
         z-index: 1000;
-        padding: 10px;
+        padding: 2vh;
+        min-height: 50vh; /* Ensure a minimum height for usability */
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
     }
     /* Mobile menu styles */
     .navbar-nav {
