@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bayesian Networks</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #3498db;
+        }
+        .formula {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .proof {
+            background-color: #f0f7fb;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #3498db;
+        }
+        .example {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .pros-cons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .pros, .cons {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .pros {
+            background-color: #e6f7e6;
+            border-left: 5px solid #27ae60;
+        }
+        .cons {
+            background-color: #fdedec;
+            border-left: 5px solid #e74c3c;
+        }
+        .graph-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        code {
+            background-color: #f1f1f1;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .algorithm {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            border-left: 5px solid #9b59b6;
+        }
+        .note {
+            background-color: #fff8e1;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bayesian Networks</h1>
+    
+    <h2>Definition</h2>
+    <p>
+        A Bayesian Network (BN), also known as a Belief Network or Directed Acyclic Graphical model (DAG), is a probabilistic graphical model that represents a set of variables and their conditional dependencies via a directed acyclic graph. It combines principles from graph theory, probability theory, and statistics to efficiently encode the joint probability distribution of a set of random variables.
+    </p>
+    <p>
+        The structure of a Bayesian Network consists of:
+    </p>
+    <ul>
+        <li><strong>Nodes:</strong> Each node represents a random variable (discrete or continuous)</li>
+        <li><strong>Edges:</strong> Directed edges between nodes represent direct probabilistic dependencies</li>
+        <li><strong>Conditional Probability Tables (CPTs) or Distributions:</strong> Each node is associated with a probability function that takes as input a particular set of values for the node's parent variables and gives the probability of the variable represented by the node</li>
+    </ul>
+    <p>
+        A key property of Bayesian Networks is that each node is conditionally independent of its non-descendants given its parents. This property allows for a compact representation of the joint probability distribution.
+    </p>
+
+    <h2>Mathematical Formulation</h2>
+    <p>
+        Let X = {X₁, X₂, ..., Xₙ} be a set of random variables. A Bayesian Network represents the joint probability distribution P(X) by exploiting conditional independence relationships.
+    </p>
+    
+    <div class="formula">
+        <p>The joint probability distribution can be factorized as:</p>
+        <p>P(X₁, X₂, ..., Xₙ) = ∏ᵢ₌₁ⁿ P(Xᵢ | Parents(Xᵢ))</p>
+    </div>
+    
+    <p>
+        where Parents(Xᵢ) denotes the set of parent nodes of Xᵢ in the graph. If Xᵢ has no parents, then P(Xᵢ | Parents(Xᵢ)) = P(Xᵢ).
+    </p>
+
+    <h3>Example of Factorization</h3>
+    <p>
+        For a Bayesian Network with five variables A, B, C, D, and E, where:
+    </p>
+    <ul>
+        <li>A has no parents</li>
+        <li>B has A as parent</li>
+        <li>C has A as parent</li>
+        <li>D has B and C as parents</li>
+        <li>E has C as parent</li>
+    </ul>
+    
+    <div class="formula">
+        <p>The joint probability distribution would be factorized as:</p>
+        <p>P(A, B, C, D, E) = P(A) × P(B|A) × P(C|A) × P(D|B,C) × P(E|C)</p>
+    </div>
+
+    <h2>Proof of Factorization</h2>
+    <div class="proof">
+        <p>The factorization of the joint distribution in a Bayesian Network follows from the chain rule of probability and the conditional independence assumptions encoded in the graph.</p>
+        
+        <p>Starting with the chain rule of probability:</p>
+        <p>P(X₁, X₂, ..., Xₙ) = P(X₁) × P(X₂|X₁) × P(X₃|X₁,X₂) × ... × P(Xₙ|X₁,...,Xₙ₋₁)</p>
+        
+        <p>By the conditional independence property of Bayesian Networks, a variable Xᵢ is conditionally independent of its non-descendants given its parents. Therefore:</p>
+        <p>P(Xᵢ|X₁,...,Xᵢ₋₁) = P(Xᵢ|Parents(Xᵢ))</p>
+        
+        <p>Substituting this into the chain rule:</p>
+        <p>P(X₁, X₂, ..., Xₙ) = ∏ᵢ₌₁ⁿ P(Xᵢ | Parents(Xᵢ))</p>
+        
+        <p>This factorization is valid if and only if the graph is a DAG and the local Markov property holds (each node is conditionally independent of its non-descendants given its parents).</p>
+    </div>
+
+    <h2>Benefits and Drawbacks</h2>
+    <div class="pros-cons">
+        <div class="pros">
+            <h3>Benefits</h3>
+            <ul>
+                <li><strong>Compact Representation:</strong> Efficiently represents joint probability distributions by exploiting conditional independence</li>
+                <li><strong>Interpretability:</strong> The graph structure provides an intuitive visualization of dependencies among variables</li>
+                <li><strong>Knowledge Integration:</strong> Allows for combining domain expertise with data-driven learning</li>
+                <li><strong>Causal Reasoning:</strong> Can represent causal relationships, enabling causal inference</li>
+                <li><strong>Handling Uncertainty:</strong> Provides a principled framework for reasoning under uncertainty</li>
+                <li><strong>Missing Data:</strong> Can handle incomplete data during inference</li>
+                <li><strong>Modular Structure:</strong> Allows for updating local probabilities without recalculating the entire model</li>
+            </ul>
+        </div>
+        
+        <div class="cons">
+            <h3>Drawbacks</h3>
+            <ul>
+                <li><strong>Structure Learning:</strong> Finding the optimal graph structure is NP-hard</li>
+                <li><strong>Parameter Estimation:</strong> Requires large amounts of data for accurate probability estimation</li>
+                <li><strong>Computational Complexity:</strong> Exact inference is NP-hard in general cases</li>
+                <li><strong>Continuous Variables:</strong> Traditional discrete BNs have limitations with continuous variables</li>
+                <li><strong>Temporal Dynamics:</strong> Standard BNs don't naturally model time-dependent relationships</li>
+                <li><strong>Acyclicity Constraint:</strong> Cannot represent cyclic dependencies directly</li>
+                <li><strong>Sensitivity to Structure:</strong> Performance heavily depends on the correctness of the graph structure</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>Example: Medical Diagnosis Bayesian Network</h2>
+    <div class="example">
+        <p>
+            Consider a simplified medical diagnosis scenario with the following variables:
+        </p>
+        <ul>
+            <li><strong>Age (A):</strong> Young or Old</li>
+            <li><strong>Smoking (S):</strong> Smoker or Non-smoker</li>
+            <li><strong>Cancer (C):</strong> Present or Absent</li>
+            <li><strong>Bronchitis (B):</strong> Present or Absent</li>
+            <li><strong>Fatigue (F):</strong> Present or Absent</li>
+            <li><strong>Chest X-ray (X):</strong> Positive or Negative</li>
+        </ul>
+
+        <div class="graph-container">
+            <svg width="500" height="320" viewBox="0 0 500 320">
+                <!-- Nodes -->
+                <circle cx="150" cy="50" r="25" fill="#3498db" />
+                <text x="150" y="55" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Age</text>
+                
+                <circle cx="350" cy="50" r="25" fill="#3498db" />
+                <text x="350" y="55" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Smoking</text>
+                
+                <circle cx="100" cy="150" r="25" fill="#e74c3c" />
+                <text x="100" y="155" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Cancer</text>
+                
+                <circle cx="400" cy="150" r="25" fill="#e74c3c" />
+                <text x="400" y="155" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Bronchitis</text>
+                
+                <circle cx="200" cy="250" r="25" fill="#2ecc71" />
+                <text x="200" y="255" font-family="Arial" font-size="14" text-anchor="middle" fill="white">X-ray</text>
+                
+                <circle cx="300" cy="250" r="25" fill="#2ecc71" />
+                <text x="300" y="255" font-family="Arial" font-size="14" text-anchor="middle" fill="white">Fatigue</text>
+                
+                <!-- Edges -->
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9.5" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+                    </marker>
+                </defs>
+                <line x1="150" y1="75" x2="110" y2="125" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+                <line x1="350" y1="75" x2="120" y2="140" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+                <line x1="350" y1="75" x2="380" y2="125" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+                <line x1="100" y1="175" x2="190" y2="225" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+                <line x1="400" y1="175" x2="310" y2="225" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+                <line x1="100" y1="175" x2="280" y2="240" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)" />
+            </svg>
+        </div>
+
+        <p>
+            The joint probability distribution for this network can be factorized as:
+        </p>
+        <div class="formula">
+            <p>P(A, S, C, B, F, X) = P(A) × P(S) × P(C|A,S) × P(B|S) × P(F|C,B) × P(X|C)</p>
+        </div>
+
+        <p>
+            This factorization significantly reduces the number of parameters needed to specify the joint distribution. 
+            Instead of needing 2⁶ - 1 = 63 parameters (for a full joint distribution table), we only need:
+        </p>
+        <ul>
+            <li>P(A): 1 parameter</li>
+            <li>P(S): 1 parameter</li>
+            <li>P(C|A,S): 4 parameters</li>
+            <li>P(B|S): 2 parameters</li>
+            <li>P(F|C,B): 4 parameters</li>
+            <li>P(X|C): 2 parameters</li>
+        </ul>
+        <p>
+            Total: 14 parameters, which is much more manageable than 63.
+        </p>
+    </div>
+
+    <h2>Sampling Techniques for Bayesian Networks</h2>
+    <p>
+        Sampling techniques are essential for approximate inference in Bayesian Networks, especially when exact inference is computationally intractable. Here are two common sampling methods:
+    </p>
+
+    <h3>1. Ancestral Sampling (Forward Sampling)</h3>
+    <p>
+        Ancestral sampling is a straightforward technique that generates samples by traversing the network from parent nodes to child nodes in topological order.
+    </p>
+    
+    <div class="algorithm">
+        <p><strong>Ancestral Sampling Algorithm:</strong></p>
+        <p>1. Sort the nodes in topological order (parents before children)</p>
+        <p>2. For each node X<sub>i</sub> in topological order:</p>
+        <p>   a. Sample a value for X<sub>i</sub> based on P(X<sub>i</sub> | Parents(X<sub>i</sub>)) using the values already sampled for Parents(X<sub>i</sub>)</p>
+        <p>3. Return the complete sample (X<sub>1</sub>, X<sub>2</sub>, ..., X<sub>n</sub>)</p>
+    </div>
+
+    <div class="note">
+        <p><strong>Properties of Ancestral Sampling:</strong></p>
+        <ul>
+            <li>Simple and efficient to implement</li>
+            <li>Samples are drawn directly from the joint distribution defined by the network</li>
+            <li>Cannot incorporate evidence (observed values) directly</li>
+            <li>Requires a rejection-based approach for conditional sampling (sampling given evidence), which can be inefficient when evidence is rare</li>
+        </ul>
+    </div>
+
+    <h3>2. Gibbs Sampling with Markov Blanket</h3>
+    <p>
+        Gibbs sampling is a Markov Chain Monte Carlo (MCMC) method that generates samples by iteratively sampling each variable conditioned on the current values of all other variables.
+    </p>
+
+    <p>
+        The <strong>Markov Blanket</strong> of a node X in a Bayesian Network consists of:
+    </p>
+    <ul>
+        <li>X's parents</li>
+        <li>X's children</li>
+        <li>The parents of X's children (co-parents)</li>
+    </ul>
+
+    <div class="graph-container">
+        <svg width="400" height="300" viewBox="0 0 400 300">
+            <!-- Target node X -->
+            <circle cx="200" cy="150" r="25" fill="#e74c3c" />
+            <text x="200" y="155" font-family="Arial" font-size="14" text-anchor="middle" fill="white">X</text>
+            
+            <!-- Parents -->
+            <circle cx="120" cy="80" r="20" fill="#3498db" />
+            <text x="120" y="85" font-family="Arial" font-size="12" text-anchor="middle" fill="white">P1</text>
+            
+            <circle cx="280" cy="80" r="20" fill="#3498db" />
+            <text x="280" y="85" font-family="Arial" font-size="12" text-anchor="middle" fill="white">P2</text>
+            
+            <!-- Children -->
+            <circle cx="120" cy="220" r="20" fill="#2ecc71" />
+            <text x="120" y="225" font-family="Arial" font-size="12" text-anchor="middle" fill="white">C1</text>
+            
+            <circle cx="280" cy="220" r="20" fill="#2ecc71" />
+            <text x="280" y="225" font-family="Arial" font-size="12" text-anchor="middle" fill="white">C2</text>
+            
+            <!-- Co-parents -->
+            <circle cx="50" cy="220" r="20" fill="#f39c12" />
+            <text x="50" y="225" font-family="Arial" font-size="12" text-anchor="middle" fill="white">CP1</text>
+            
+            <circle cx="350" cy="220" r="20" fill="#f39c12" />
+            <text x="350" y="225" font-family="Arial" font-size="12" text-anchor="middle" fill="white">CP2</text>
+            
+            <!-- Edges -->
+            <defs>
+                <marker id="arrow" markerWidth="10" markerHeight="7" refX="9.5" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#666" />
+                </marker>
+            </defs>
+            
+            <!-- Parent to X edges -->
+            <line x1="130" y1="95" x2="190" y2="135" stroke="#666" stroke-width="2" marker-end="url(#arrow)" />
+            <line x1="270" y1="95" x2="210" y2="135" stroke="#666" stroke-width="2" marker-end="url(#arrow)" />
+            
+            <!-- X to children edges -->
+            <line x1="190" y1="165" x2="130" y2="205" stroke="#666" stroke-width="2" marker-end="url(#arrow)" />
+            <line x1="210" y1="165" x2="270" y2="205" stroke="#666" stroke-width="2" marker-end="url(#arrow)" />
+            
+            <!-- Co-parents to children edges -->
+            <line x1="65" y1="210" x2="105" y2="210" stroke="#666" stroke-width="2" marker-end="url(#arrow)" />
+            <line x1="335" y1="210" x2="295" y2="210" stroke="#666" stroke-width="2" marker-end="url(#arrow)" />
+            
+            <!-- Markov Blanket Highlight -->
+            <path d="M 200,150 m -110,-90 a 140,140 0 1,0 220,0 a 140,140 0 1,0 -220,0" fill="none" stroke="#9b59b6" stroke-width="2" stroke-dasharray="5,5" />
+            <text x="330" y="30" font-family="Arial" font-size="14" fill="#9b59b6" text-anchor="middle">Markov Blanket</text>
+        </svg>
+    </div>
+
+    <p>
+        The key property of the Markov Blanket is that a node is conditionally independent of all other nodes in the network given its Markov Blanket.
+    </p>
+
+    <div class="algorithm">
+        <p><strong>Gibbs Sampling Algorithm:</strong></p>
+        <p>1. Initialize all non-evidence variables to arbitrary values</p>
+        <p>2. For i = 1 to N (number of samples):</p>
+        <p>   a. For each non-evidence variable X<sub>j</sub>:</p>
+        <p>      i. Sample X<sub>j</sub> ~ P(X<sub>j</sub> | MB(X<sub>j</sub>)), where MB(X<sub>j</sub>) is the Markov Blanket of X<sub>j</sub></p>
+        <p>      ii. Update the current state with the new value of X<sub>j</sub></p>
+        <p>   b. Record the current state as a sample</p>
+        <p>3. Return all samples (typically after discarding initial "burn-in" samples)</p>
+    </div>
+
+    <div class="note">
+        <p><strong>Properties of Gibbs Sampling:</strong></p>
+        <ul>
+            <li>Can incorporate evidence naturally by fixing the values of observed variables</li>
+            <li>Only requires conditional probabilities of each node given its Markov Blanket</li>
+            <li>Converges to the true posterior distribution as the number of samples increases</li>
+            <li>May get trapped in local modes of the distribution</li>
+            <li>Requires a "burn-in" period to reach the stationary distribution</li>
+            <li>Samples are correlated (not independent), requiring thinning for some applications</li>
+        </ul>
+    </div>
+
+    <p>
+        The formula for sampling a node X<sub>i</sub> given its Markov Blanket in Gibbs sampling is:
+    </p>
+    <div class="formula">
+        <p>P(X<sub>i</sub> | MB(X<sub>i</sub>)) ∝ P(X<sub>i</sub> | Parents(X<sub>i</sub>)) × ∏<sub>c ∈ Children(X<sub>i</sub>)</sub> P(c | Parents(c))</p>
+    </div>
+
+    <h2>Conclusion</h2>
+    <p>
+        Bayesian Networks provide a powerful framework for representing and reasoning about probabilistic relationships among variables. They offer a compact representation of joint probability distributions by leveraging conditional independence relationships. While they have some computational challenges, various sampling techniques like Ancestral Sampling and Gibbs Sampling enable practical inference in complex networks.
+    </p>
+    <p>
+        The choice between different sampling methods depends on the specific characteristics of the problem, such as the presence of evidence, the network's complexity, and the required accuracy of inference. Ancestral sampling provides a simple approach for generating samples from the joint distribution, while Gibbs sampling offers more flexibility for inference with evidence at the cost of increased computational complexity.
+    </p>
+
+    <div class="note">
+        <p>
+            For more advanced applications of Bayesian Networks, researchers and practitioners often use specialized software tools that implement various learning and inference algorithms, including:
+        </p>
+        <ul>
+            <li>Exact inference methods: Variable elimination, Junction tree algorithm</li>
+            <li>Approximate inference: Loopy belief propagation, Variational methods</li>
+            <li>Other sampling methods: Likelihood weighting, Metropolis-Hastings</li>
+        </ul>
+    </div>
+</body>
+</html>
