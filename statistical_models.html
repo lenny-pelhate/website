@@ -23,12 +23,11 @@
         }
         ul { 
             list-style-type: none; 
-            padding: 0; 
-            max-width: 800px; 
-            margin: 0 auto;
+            padding: 0;
+            margin: 0;
         }
         li { 
-            margin: 10px 10px; 
+            margin: 10px 0; 
         }
         strong {
             font-size: 1.2em;
@@ -40,8 +39,9 @@
             font-weight: bold;
             transition: color 0.3s;
         }
-        a:hover {
-            color: #d6d6d6;
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .category {
             background: #fff; 
@@ -53,115 +53,263 @@
         .subcategory {
             padding-left: 20px;
         }
+        .description {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .flex-item {
+            flex: 1;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #00155c;
+        }
     </style>
 </head>
 <body>
-    <h1>Statistical Models</h1>
-    <ul>
-        <li class="category"><strong>1. Generative Models (Estimate Joint Distribution P(X, Y))</strong>
-            <ul class="subcategory">
-                <li><strong>1.1 Discrete Generative Models</strong>
-                    <ul class="subcategory">
-                        <li>1.1.1 With Observable States
-                            <ul class="subcategory">
-                                <li><a href="./stat_models/Naive_bayes.html">Naïve Bayes</a></li>
-                                <li><a href="./stat_models/Markov_chains.html">Markov Chains (MC)</a></li>
-                                <li><a href="./stat_models/Bayesian_networks.html">Bayesian Networks (Discrete Case)</a></li>
-                            </ul>
-                        </li>
-                        <li>1.1.2 With Latent (Non-Observable) States
-                            <ul class="subcategory">
-                                <li><a href="#">Latent Dirichlet Allocation (LDA)</a></li>
-                                <li><a href="#">Mixture Models (MM) (Discrete)</a>
-                                    <ul class="subcategory">
-                                        <li><a href="#">Categorical Mixture Models (CMM)</a></li>
-                                        <li><a href="#">Finite Mixture Models (Discrete Case)</a></li>
-                                        <li><a href="#">Infinite Mixture Models (Discrete Case)</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Hidden Markov Model (HMM)</a></li>
-                                <li><a href="#">Infinite Hidden Markov Models (IHMM)</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li><strong>1.2 Continuous Generative Models</strong>
-                    <ul class="subcategory">
-                        <li>1.2.1 With Observable States
-                            <ul class="subcategory">
-                                <li><a href="#">Bayesian Networks (Continuous)</a></li>
-                            </ul>
-                        </li>
-                        <li>1.2.2 With Latent (Non-Observable) States
-                            <ul class="subcategory">
-                                <li><a href="#">Mixture Models (MM) (Continuous Case)</a>
-                                    <ul class="subcategory">
-                                        <li><a href="#">Gaussian Mixture Model (GMM)</a></li>
-                                        <li><a href="#">Finite Mixture Models (Continuous Case)</a></li>
-                                        <li><a href="#">Infinite Mixture Models (Continuous Case)</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Kalman Filter (KF)</a></li>
-                                <li><a href="#">Extended Kalman Filter (EKF)</a></li>
-                                <li><a href="#">Unscented Kalman Filter (UKF)</a></li>
-                                <li><a href="#">Hidden Markov Model (HMM)</a></li>
-                                <li><a href="#">Factor Analysis (FA)</a></li>
-                                <li><a href="#">Variational Autoencoders (VAE)</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li class="category"><strong>2. Discriminative Models (Estimate Conditional Distribution P(Y | X))</strong>
-            <ul class="subcategory">
-                <li><strong>2.1 Discrete Discriminative Models</strong>
+    <div class="main-container">
+        <h1>Statistical Models</h1>
+        
+        <div class="category">
+            <strong>1. Supervised Learning</strong>
+            <p class="description">Models that learn from labeled data to predict outcomes for unseen data.</p>
+            
+            <div class="flex-container">
+                <!-- Classification Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>1.1 Classification Models</strong>
+                    </div>
+                    <p class="description">Predict discrete class labels or categories.</p>
+                    
+                    <strong>1.1.1 Discriminative Classification Models</strong>
+                    <p class="description">Model P(Y|X) directly to make predictions.</p>
                     <ul class="subcategory">
                         <li><a href="#">Logistic Regression</a></li>
+                        <li><a href="#">Multinomial Logistic Regression</a></li>
+                        <li><a href="#">Support Vector Machines (SVM)</a></li>
                         <li><a href="#">Decision Trees</a></li>
                         <li><a href="#">Random Forests</a></li>
-                        <li><a href="#">Support Vector Machines (SVM)</a></li>
-                        <li><a href="#">Discriminative Markov Models</a></li>
+                        <li><a href="#">Neural Networks for Classification</a></li>
                         <li><a href="#">Discriminative Hidden Markov Models (D-HMM)</a></li>
                     </ul>
-                </li>
-                <li><strong>2.2 Continuous Discriminative Models</strong>
+                    
+                    <strong>1.1.2 Generative Classification Models</strong>
+                    <p class="description">Model P(X,Y) and use Bayes rule to make predictions.</p>
                     <ul class="subcategory">
-                        <li><a href="#">Generalized Linear Models (GLMs)</a></li>
-                            <ul class="subcategory">
-                                <li><a href="#">Linear Regression</a></li>
-                                <li><a href="#">Logistic Regression (for binary/multinomial outcomes)</a></li>
-                                <li><a href="#">Poisson Regression (for data counting)</a></li>
-                                <li><a href="#">Negative Binomial Regression (for overdispersed data counting)</a></li>
-                                <li><a href="#">Gamma Regression (for positive continuous data)</a></li>
-                                <li><a href="#">Beta Regression (for proportions/rates)</a></li>
-                            </ul>
-                        <li><a href="#">Extensions of GLMs</a></li>
-                            <ul class="subcategory">
-                                <li><a href="#">Generalized Additive Models (GAMs)</a></li>
-                                <li><a href="#">Generalized Linear Mixed Models (GLMMs)</a></li>
-                                <li><a href="#">Elastic Net GLMs</a></li>
-                            </ul>
-                        <li><a href="#">Ridge/Lasso Regression</a></li>
-                        <li><a href="#">Support Vector Regression (SVR)</a></li>
-                        <li><a href="#">Neural Networks</a></li>
-                        <li><a href="#">Gaussian Process Regression (GPR)</a></li>
+                        <li><a href="#">Naïve Bayes</a></li>
                         <li><a href="#">Linear Discriminant Analysis (LDA)</a></li>
                         <li><a href="#">Quadratic Discriminant Analysis (QDA)</a></li>
-                        <li><a href="#">Discriminative Kalman Filters</a></li>
+                        <li><a href="#">Mixture Models</a></li>
+                        <ul class="subcategory">
+                            <li>Gaussian Mixture Models (GMM)</li>
+                            <li>Categorical Mixture Models (GMM)</li>
+                        </ul>
+                        <li><a href="#">Hidden Markov Models (HMM) for Classification</a></li>
                     </ul>
-                </li>
-            </ul>
-        </li>
-        <li class="category"><strong>3. Hybrid Models (Both Generative & Discriminative Aspects)</strong>
+                </div>
+                
+                <!-- Regression Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>1.2 Regression Models</strong>
+                    </div>
+                    <p class="description">Predict continuous numeric values.</p>
+                    
+                    <strong>1.2.1 Discriminative Regression Models</strong>
+                    <p class="description">Directly model the relationship between inputs and outputs.</p>
+                    <ul class="subcategory">
+                        <li><a href="#">Linear Regression (OLS)</a></li>
+                        <li><a href="#">Regularized Linear Models</a>
+                            <ul class="subcategory">
+                                <li>LASSO Regression (L1 Regularization)</li>
+                                <li>Ridge Regression (L2 Regularization)</li>
+                                <li>Elastic Net Regression (L1/L2 Regularization)</li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Generalized Linear Models (GLMs)</a>
+                            <ul class="subcategory">
+                                <li>Poisson Regression (for count data)</li>
+                                <li>Negative Binomial Regression (for overdispersed count data)</li>
+                                <li>Gamma Regression (for positive continuous data)</li>
+                                <li>Beta Regression (for proportions/rates)</li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Support Vector Regression (SVR)</a></li>
+                        <li><a href="#">Neural Networks for Regression</a></li>
+                        <li><a href="#">Generalized Additive Models (GAMs)</a></li>
+                        <li><a href="#">Generalized Linear Mixed Models (GLMMs)</a></li>
+                    </ul>
+                    
+                    <strong>1.2.2 Generative Regression Models</strong>
+                    <p class="description">Model the joint distribution of inputs and outputs.</p>
+                    <ul class="subcategory">
+                        <li><a href="#">Gaussian Process Regression (GPR)</a></li>
+                        <li><a href="#">Bayesian Linear Regression</a></li>
+                        <li><a href="#">Kalman Filter (KF)</a></li>
+                        <ul class="subcategory">
+                            <li>Kalman Filters</li>
+                            <li>Extended Kalman Filters (EKF)</li>
+                            <li>Unscented Kalman Filters (UKF)</li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <strong>2. Unsupervised Learning</strong>
+            <p class="description">Models that find patterns in unlabeled data.</p>
+            
+            <div class="flex-container">
+                <!-- Clustering Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>2.1 Clustering Models</strong>
+                    </div>
+                    <p class="description">Group similar data points together.</p>
+                    
+                    <strong>2.1.1 Discriminative Clustering</strong>
+                    <ul class="subcategory">
+                        <li><a href="#">K-means Clustering</a></li>
+                        <li><a href="#">Hierarchical Clustering</a></li>
+                        <li><a href="#">DBSCAN</a></li>
+                    </ul>
+                    
+                    <strong>2.1.2 Generative Clustering</strong>
+                    <ul class="subcategory">
+                        <li><a href="#">Mixture Models</a></li>
+                        <ul class="subcategory">
+                            <li>Gaussian Mixture Models (GMM)</li>
+                            <li>Categorical Mixture Models (GMM)</li>
+                        </ul>
+                        <li><a href="#">Latent Dirichlet Allocation (LDA)</a></li>
+                        <li><a href="#">Dirichlet Process Mixture Models</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Dimensionality Reduction Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>2.2 Dimensionality Reduction</strong>
+                    </div>
+                    <p class="description">Reduce the number of features while preserving important information.</p>
+                    
+                    <strong>2.2.1 Linear Methods</strong>
+                    <ul class="subcategory">
+                        <li><a href="#">Principal Component Analysis (PCA)</a></li>
+                        <li><a href="#">Linear Discriminant Analysis (LDA)</a></li>
+                        <li><a href="#">Factor Analysis (FA)</a></li>
+                    </ul>
+                    
+                    <strong>2.2.2 Non-linear Methods</strong>
+                    <ul class="subcategory">
+                        <li><a href="#">t-Distributed Stochastic Neighbor Embedding (t-SNE)</a></li>
+                        <li><a href="#">Uniform Manifold Approximation and Projection (UMAP)</a></li>
+                        <li><a href="#">Autoencoders</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Data Generation Models -->
+            <strong>2.3 Generative Models for Data Generation</strong>
+            <p class="description">Learn data distributions to generate new samples.</p>
             <ul class="subcategory">
-                <li><a href="#">Semi-Supervised Variational Autoencoders (VAE)</a></li>
+                <li><a href="#">Variational Autoencoders (VAE)</a></li>
+                <li><a href="#">Generative Adversarial Networks (GANs)</a></li>
+                <li><a href="#">Autoregressive Models</a></li>
+            </ul>
+        </div>
+        
+        <div class="category">
+            <strong>3. Sequential Models</strong>
+            <p class="description">Models for data with temporal or sequential dependencies.</p>
+            
+            <div class="flex-container">
+                <!-- Discrete State Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>3.1 Discrete State Models</strong>
+                    </div>
+                    <ul class="subcategory">
+                        <li><a href="#">Markov Chains (MC)</a></li>
+                        <li><a href="#">Hidden Markov Models (HMM)</a></li>
+                        <li><a href="#">Infinite Hidden Markov Models (IHMM)</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Continuous State Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>3.2 Continuous State Models</strong>
+                    </div>
+                    <ul class="subcategory">
+                        <li><a href="#">State Space Models</a></li>
+                        <li><a href="#">Kalman Filters</a></li>
+                        <ul class="subcategory">
+                            <li>Kalman Filters</li>
+                            <li>Extended Kalman Filters (EKF)</li>
+                            <li>Unscented Kalman Filters (UKF)</li>
+                        </ul>
+                        <li><a href="#">Recurrent Neural Networks (RNN)</a></li>
+                        <li><a href="#">Long Short-Term Memory Networks (LSTM)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <strong>4. Hybrid Models</strong>
+            <p class="description">Models that combine generative and discriminative aspects.</p>
+            <ul class="subcategory">
+                <li><a href="#">Semi-Supervised Variational Autoencoders</a></li>
                 <li><a href="#">Generative Adversarial Networks (GANs)</a></li>
                 <li><a href="#">Deep Belief Networks (DBN)</a></li>
                 <li><a href="#">Hidden Conditional Random Fields (HCRF)</a></li>
                 <li><a href="#">Mixture of Experts (MoE)</a></li>
             </ul>
-        </li>
-    </ul>
+        </div>
+        
+        <div class="category">
+            <strong>5. Graphical Models</strong>
+            <p class="description">Models that represent probabilistic relationships through graphs.</p>
+            
+            <div class="flex-container">
+                <!-- Directed Graphical Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>5.1 Directed Graphical Models</strong>
+                    </div>
+                    <ul class="subcategory">
+                        <li><a href="#">Bayesian Networks (Discrete Case)</a></li>
+                        <li><a href="#">Bayesian Networks (Continuous Case)</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Undirected Graphical Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>5.2 Undirected Graphical Models</strong>
+                    </div>
+                    <ul class="subcategory">
+                        <li><a href="#">Markov Random Fields</a></li>
+                        <li><a href="#">Conditional Random Fields (CRF)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

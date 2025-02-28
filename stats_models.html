@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistical Models</title>
+    <link rel="shortcut icon" href="./media/cs_icon.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+            TeX: {equationNumbers: {autoNumber: "AMS"}}
+        });
+    </script>
+    <style>
+        body { 
+            font-family: 'Arial', sans-serif; 
+            line-height: 1.6; 
+            background-color: #f4f4f4; 
+            color: #333; 
+            margin: 0; 
+            padding: 20px;
+        }
+        h1 { 
+            text-align: center; 
+            color: white; 
+            background: #00155c; 
+            padding: 15px;
+            border-radius: 8px;
+        }
+        ul { 
+            list-style-type: none; 
+            padding: 0;
+            margin: 0;
+        }
+        li { 
+            margin: 10px 0; 
+        }
+        strong {
+            font-size: 1.2em;
+            color: #00155c;
+        }
+        a {
+            text-decoration: none;
+            color: #003eba;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .category {
+            background: #fff; 
+            padding: 15px; 
+            border-radius: 8px; 
+            margin-bottom: 15px; 
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .subcategory {
+            padding-left: 20px;
+        }
+        .description {
+            font-style: italic;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        .flex-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .flex-item {
+            flex: 1;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #00155c;
+        }
+        .formula {
+            background-color: #f9f9f9;
+            padding: 8px;
+            border-left: 3px solid #00155c;
+            margin: 5px 0 10px 0;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>Statistical Models</h1>
+        
+        <div class="category">
+            <strong>1. Supervised Learning</strong>
+            <p class="description">Models that learn from labeled data to predict outcomes for unseen data.</p>
+            
+            <div class="flex-container">
+                <!-- Classification Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>1.1 Classification Models</strong>
+                    </div>
+                    <p class="description">Predict discrete class labels or categories.</p>
+                    
+                    <strong>1.1.1 Discriminative Classification Models</strong>
+                    <p class="description">Model P(Y|X) directly to make predictions.</p>
+                    <ul class="subcategory">
+                        <li><a href="#">Logistic Regression</a></li>
+                        <p class="formula">$p(y^*|x^*, D) = \int p(y^*|x^*, w) p(w|D) dw \approx \sigma(x^{*T}\bar{w})$</p>
+                        <p class="description">where $\sigma$ is the sigmoid function, $\bar{w}$ is the posterior mean of weights, and $D$ is the observed data.</p>
+                        
+                        <li><a href="#">Multinomial Logistic Regression</a></li>
+                        <p class="formula">$p(y^*=k|x^*, D) = \int \text{softmax}(x^{*T}W)_k p(W|D) dW \approx \text{softmax}(x^{*T}\bar{W})_k$</p>
+                        <p class="description">where $\bar{W}$ is the posterior mean of weight matrix and $k$ is the class index.</p>
+                        
+                        <li><a href="#">Support Vector Machines (SVM)</a></li>
+                        <p class="formula">$p(y^*=1|x^*, D) \approx \sigma(a \cdot f(x^*))$</p>
+                        <p class="description">where $f(x^*)$ is the distance from $x^*$ to the decision boundary and $a$ is a scaling parameter.</p>
+                        
+                        <li><a href="#">Decision Trees</a></li>
+                        <p class="formula">$p(y^*=k|x^*, D) = \frac{n_k}{n}$</p>
+                        <p class="description">where $n_k$ is the number of training examples of class $k$ in the leaf node that $x^*$ falls into, and $n$ is the total number of examples in that node.</p>
+                        
+                        <li><a href="#">Random Forests</a></li>
+                        <p class="formula">$p(y^*=k|x^*, D) = \frac{1}{T}\sum_{i=1}^{T} p_i(y^*=k|x^*, D)$</p>
+                        <p class="description">where $T$ is the number of trees and $p_i$ is the prediction of the $i$-th tree.</p>
+                        
+                        <li><a href="#">Neural Networks for Classification</a></li>
+                        <p class="formula">$p(y^*|x^*, D) \approx \int p(y^*|x^*, \theta) p(\theta|D) d\theta$</p>
+                        <p class="description">Often approximated using the MAP estimate: $p(y^*|x^*, D) \approx p(y^*|x^*, \hat{\theta}_{MAP})$</p>
+                        
+                        <li><a href="#">Discriminative Hidden Markov Models (D-HMM)</a></li>
+                        <p class="formula">$p(y^*|x^*, D) = \sum_{s} p(y^*|s) p(s|x^*, D)$</p>
+                        <p class="description">where $s$ represents hidden states and the sum is over all possible state sequences.</p>
+                    </ul>
+                    
+                    <strong>1.1.2 Generative Classification Models</strong>
+                    <p class="description">Model P(X,Y) and use Bayes rule to make predictions.</p>
+                    <ul class="subcategory">
+                        <li><a href="#">Naïve Bayes</a></li>
+                        <p class="formula">$p(y^*=k|x^*, D) \propto p(y^*=k|D) \prod_{j} p(x^*_j|y^*=k, D)$</p>
+                        <p class="description">where $j$ indexes the features of $x^*$, assuming conditional independence.</p>
+                        
+                        <li><a href="#">Linear Discriminant Analysis (LDA)</a></li>
+                        <p class="formula">$p(y^*=k|x^*, D) \propto p(y^*=k) \cdot \mathcal{N}(x^*|\mu_k, \Sigma)$</p>
+                        <p class="description">where $\mu_k$ is the mean vector for class $k$ and $\Sigma$ is the shared covariance matrix.</p>
+                        
+                        <li><a href="#">Quadratic Discriminant Analysis (QDA)</a></li>
+                        <p class="formula">$p(y^*=k|x^*, D) \propto p(y^*=k) \cdot \mathcal{N}(x^*|\mu_k, \Sigma_k)$</p>
+                        <p class="description">where $\Sigma_k$ is the class-specific covariance matrix.</p>
+                        
+                        <li><a href="#">Mixture Models</a></li>
+                        <ul class="subcategory">
+                            <li>Gaussian Mixture Models (GMM)</li>
+                            <p class="formula">$p(x^*|D) = \sum_{k} \pi_k \cdot \mathcal{N}(x^*|\mu_k, \Sigma_k)$</p>
+                            <p class="description">where $\pi_k$ are mixture weights, $\mu_k$ and $\Sigma_k$ are component means and covariances.</p>
+                            
+                            <li>Categorical Mixture Models</li>
+                            <p class="formula">$p(x^*|D) = \sum_{k} \pi_k \cdot \prod_{j} p(x^*_j|\theta_{kj})$</p>
+                            <p class="description">where $\theta_{kj}$ are the parameters for feature $j$ in component $k$.</p>
+                        </ul>
+                        
+                        <li><a href="#">Hidden Markov Models (HMM) for Classification</a></li>
+                        <p class="formula">$p(y^*|x^*, D) = \sum_{s} p(y^*|s) p(s|x^*, D)$</p>
+                        <p class="description">Calculated using the forward-backward algorithm, where $s$ are hidden states.</p>
+                    </ul>
+                </div>
+                
+                <!-- Regression Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>1.2 Regression Models</strong>
+                    </div>
+                    <p class="description">Predict continuous numeric values.</p>
+                    
+                    <strong>1.2.1 Discriminative Regression Models</strong>
+                    <p class="description">Directly model the relationship between inputs and outputs.</p>
+                    <ul class="subcategory">
+                        <li><a href="#">Linear Regression (OLS)</a></li>
+                        <p class="formula">$p(y^*|x^*, D) = \mathcal{N}(y^*|x^{*T}\hat{\beta}, \sigma^2)$</p>
+                        <p class="description">where $\hat{\beta}$ is the estimated coefficient vector and $\sigma^2$ is the estimated error variance.</p>
+                        
+                        <li><a href="#">Regularized Linear Models</a>
+                            <ul class="subcategory">
+                                <li>LASSO Regression (L1 Regularization)</li>
+                                <p class="formula">$p(y^*|x^*, D) = \mathcal{N}(y^*|x^{*T}\hat{\beta}_{lasso}, \sigma^2)$</p>
+                                <p class="description">where $\hat{\beta}_{lasso}$ minimizes $\|y-X\beta\|^2 + \lambda\|\beta\|_1$</p>
+                                
+                                <li>Ridge Regression (L2 Regularization)</li>
+                                <p class="formula">$p(y^*|x^*, D) = \mathcal{N}(y^*|x^{*T}\hat{\beta}_{ridge}, \sigma^2)$</p>
+                                <p class="description">where $\hat{\beta}_{ridge}$ minimizes $\|y-X\beta\|^2 + \lambda\|\beta\|^2$</p>
+                                
+                                <li>Elastic Net Regression (L1/L2 Regularization)</li>
+                                <p class="formula">$p(y^*|x^*, D) = \mathcal{N}(y^*|x^{*T}\hat{\beta}_{elastic}, \sigma^2)$</p>
+                                <p class="description">where $\hat{\beta}_{elastic}$ minimizes $\|y-X\beta\|^2 + \lambda_1\|\beta\|_1 + \lambda_2\|\beta\|^2$</p>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="#">Generalized Linear Models (GLMs)</a>
+                            <ul class="subcategory">
+                                <li>Poisson Regression (for count data)</li>
+                                <p class="formula">$p(y^*|x^*, D) = \text{Poisson}(y^*|\exp(x^{*T}\hat{\beta}))$</p>
+                                <p class="description">where $\hat{\beta}$ is estimated using maximum likelihood.</p>
+                                
+                                <li>Negative Binomial Regression (for overdispersed count data)</li>
+                                <p class="formula">$p(y^*|x^*, D) = \text{NegBin}(y^*|\exp(x^{*T}\hat{\beta}), r)$</p>
+                                <p class="description">where $r$ is the dispersion parameter.</p>
+                                
+                                <li>Gamma Regression (for positive continuous data)</li>
+                                <p class="formula">$p(y^*|x^*, D) = \text{Gamma}(y^*|\alpha, \beta/\exp(x^{*T}\hat{\beta}))$</p>
+                                <p class="description">where $\alpha, \beta$ are shape and scale parameters.</p>
+                                
+                                <li>Beta Regression (for proportions/rates)</li>
+                                <p class="formula">$p(y^*|x^*, D) = \text{Beta}(y^*|a(x^*), b(x^*))$</p>
+                                <p class="description">where $a(x^*), b(x^*)$ are functions of the covariates and parameters.</p>
+                            </ul>
+                        </li>
+                        
+                        <li><a href="#">Support Vector Regression (SVR)</a></li>
+                        <p class="formula">$p(y^*|x^*, D) = \mathcal{N}(y^*|f(x^*), \sigma^2)$</p>
+                        <p class="description">where $f(x^*) = \sum_i(\alpha_i - \alpha_i^*)K(x_i, x^*) + b$</p>
+                        
+                        <li><a href="#">Neural Networks for Regression</a></li>
+                        <p class="formula">$p(y^*|x^*, D) = \mathcal{N}(y^*|f_\theta(x^*), \sigma^2)$</p>
+                        <p class="description">where $f_\theta(x^*)$ is the output of the neural network with parameters $\theta$.</p>
+                        
+                        <li><a href="#">Generalized Additive Models (GAMs)</a></li>
+                        <p class="formula">$p(y^*|x^*, D) = \mathcal{N}(y^*|\sum_j f_j(x^*_j), \sigma^2)$</p>
+                        <p class="description">where $f_j$ are smooth functions for each feature $j$.</p>
+                        
+                        <li><a href="#">Generalized Linear Mixed Models (GLMMs)</a></li>
+                        <p class="formula">$p(y^*|x^*, z^*, D) = \int p(y^*|x^*, z^*, \beta, b) p(\beta, b|D) d\beta db$</p>
+                        <p class="description">where $\beta$ are fixed effects, $b$ are random effects, and $z^*$ are group indicators.</p>
+                    </ul>
+                    
+                    <strong>1.2.2 Generative Regression Models</strong>
+                    <p class="description">Model the joint distribution of inputs and outputs.</p>
+                    <ul class="subcategory">
+                        <li><a href="#">Gaussian Process Regression (GPR)</a></li>
+                        <p class="formula">$p(y^*|x^*, D) = \mathcal{N}(y^*|\mu_*(x^*), \sigma^2_*(x^*))$</p>
+                        <p class="formula">$\mu_*(x^*) = k(x^*, X)(K + \sigma^2I)^{-1}y$</p>
+                        <p class="formula">$\sigma^2_*(x^*) = k(x^*, x^*) - k(x^*, X)(K + \sigma^2I)^{-1}k(X, x^*)$</p>
+                        <p class="description">where $k$ is the kernel function and $K$ is the kernel matrix for training data.</p>
+                        
+                        <li><a href="#">Bayesian Linear Regression</a></li>
+                        <p class="formula">$p(y^*|x^*, D) = \int p(y^*|x^*, \beta) p(\beta|D) d\beta = t_\nu(y^*|x^{*T}\bar{\beta}, s^2(1 + x^{*T}\Sigma_n x^*))$</p>
+                        <p class="description">where $\bar{\beta}$ is the posterior mean, $\Sigma_n$ is the posterior covariance, $s^2$ is the estimated noise, and $\nu$ are the degrees of freedom.</p>
+                        
+                        <li><a href="#">Kalman Filter (KF)</a></li>
+                        <ul class="subcategory">
+                            <li>Kalman Filters</li>
+                            <p class="formula">$p(y^*_{t+1}|y_{1:t}) = \mathcal{N}(y^*_{t+1}|\hat{y}_{t+1|t}, \Sigma_{t+1|t})$</p>
+                            <p class="description">where $\hat{y}_{t+1|t}$ is the predicted state and $\Sigma_{t+1|t}$ is the predicted covariance.</p>
+                            
+                            <li>Extended Kalman Filters (EKF)</li>
+                            <p class="formula">$p(y^*_{t+1}|y_{1:t}) \approx \mathcal{N}(y^*_{t+1}|\hat{y}_{t+1|t}, \Sigma_{t+1|t})$</p>
+                            <p class="description">using linearized dynamics for non-linear systems.</p>
+                            
+                            <li>Unscented Kalman Filters (UKF)</li>
+                            <p class="formula">$p(y^*_{t+1}|y_{1:t}) \approx \mathcal{N}(y^*_{t+1}|\hat{y}_{t+1|t}, \Sigma_{t+1|t})$</p>
+                            <p class="description">using sigma points to handle non-linearities.</p>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <strong>2. Unsupervised Learning</strong>
+            <p class="description">Models that find patterns in unlabeled data.</p>
+            
+            <div class="flex-container">
+                <!-- Clustering Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>2.1 Clustering Models</strong>
+                    </div>
+                    <p class="description">Group similar data points together.</p>
+                    
+                    <strong>2.1.1 Discriminative Clustering</strong>
+                    <ul class="subcategory">
+                        <li><a href="#">K-means Clustering</a></li>
+                        <p class="formula">$p(x^*|D) \approx \sum_k p(z^*=k) \cdot \delta(\|x^* - \mu_k\|)$</p>
+                        <p class="description">where $\mu_k$ are cluster centroids and $\delta$ is a distance-based similarity function.</p>
+                        
+                        <li><a href="#">Hierarchical Clustering</a></li>
+                        <p class="formula">$p(x^*|D) \approx p(x^*|h(x^*, T))$</p>
+                        <p class="description">where $h(x^*, T)$ assigns $x^*$ to a cluster in the hierarchy $T$.</p>
+                        
+                        <li><a href="#">DBSCAN</a></li>
+                        <p class="formula">$p(x^*|D) \approx p(x^*|c(x^*))$</p>
+                        <p class="description">where $c(x^*)$ assigns $x^*$ to the nearest density-connected cluster.</p>
+                    </ul>
+                    
+                    <strong>2.1.2 Generative Clustering</strong>
+                    <ul class="subcategory">
+                        <li><a href="#">Mixture Models</a></li>
+                        <ul class="subcategory">
+                            <li>Gaussian Mixture Models (GMM)</li>
+                            <p class="formula">$p(x^*|D) = \sum_k \hat{\pi}_k \cdot \mathcal{N}(x^*|\hat{\mu}_k, \hat{\Sigma}_k)$</p>
+                            <p class="description">where $\hat{\pi}_k, \hat{\mu}_k, \hat{\Sigma}_k$ are estimated weights, means, and covariances.</p>
+                            
+                            <li>Categorical Mixture Models</li>
+                            <p class="formula">$p(x^*|D) = \sum_k \hat{\pi}_k \cdot \prod_j p(x^*_j|\hat{\theta}_{kj})$</p>
+                            <p class="description">where $\hat{\theta}_{kj}$ are estimated categorical parameters.</p>
+                        </ul>
+                        
+                        <li><a href="#">Latent Dirichlet Allocation (LDA)</a></li>
+                        <p class="formula">$p(w^*|D) = \int \sum_k p(w^*|z^*=k) p(z^*=k|\theta) p(\theta|\alpha) d\theta$</p>
+                        <p class="description">where $w^*$ is a new word, $z^*$ is its topic, $\theta$ is document-topic distribution, and $\alpha$ is the Dirichlet prior.</p>
+                        
+                        <li><a href="#">Dirichlet Process Mixture Models</a></li>
+                        <p class="formula">$p(x^*|D) = \sum_k \frac{n_k}{n+\alpha} \cdot p(x^*|\theta_k) + \frac{\alpha}{n+\alpha} \cdot \int p(x^*|\theta) p(\theta) d\theta$</p>
+                        <p class="description">where $n_k$ is the number of points in cluster $k$, $\alpha$ is the concentration parameter.</p>
+                    </ul>
+                </div>
+                
+                <!-- Dimensionality Reduction Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>2.2 Dimensionality Reduction</strong>
+                    </div>
+                    <p class="description">Reduce the number of features while preserving important information.</p>
+                    
+                    <strong>2.2.1 Linear Methods</strong>
+                    <ul class="subcategory">
+                        <li><a href="#">Principal Component Analysis (PCA)</a></li>
+                        <p class="formula">$p(x^*|D) = \mathcal{N}(x^*|\mu, WW^T + \sigma^2I)$</p>
+                        <p class="description">where $W$ are the principal components, $\mu$ is the data mean.</p>
+                        
+                        <li><a href="#">Linear Discriminant Analysis (LDA)</a></li>
+                        <p class="formula">$p(x^*|y^*, D) = \mathcal{N}(x^*|\mu_k, \Sigma)$</p>
+                        <p class="description">where $k$ is the class of $y^*$, oriented to maximize class separation.</p>
+                        
+                        <li><a href="#">Factor Analysis (FA)</a></li>
+                        <p class="formula">$p(x^*|D) = \int p(x^*|z) p(z) dz = \mathcal{N}(x^*|\mu, WW^T + \Psi)$</p>
+                        <p class="description">where $W$ is the factor loading matrix and $\Psi$ is a diagonal noise covariance.</p>
+                    </ul>
+                    
+                    <strong>2.2.2 Non-linear Methods</strong>
+                    <ul class="subcategory">
+                        <li><a href="#">t-Distributed Stochastic Neighbor Embedding (t-SNE)</a></li>
+                        <p class="formula">$p(x^*|D) \approx p(x^*|y(x^*))$</p>
+                        <p class="description">where $y(x^*)$ maps $x^*$ to the low-dimensional embedding using similarity preservation.</p>
+                        
+                        <li><a href="#">Uniform Manifold Approximation and Projection (UMAP)</a></li>
+                        <p class="formula">$p(x^*|D) \approx p(x^*|y(x^*))$</p>
+                        <p class="description">where $y(x^*)$ is the embedding of $x^*$ that preserves the topological structure.</p>
+                        
+                        <li><a href="#">Autoencoders</a></li>
+                        <p class="formula">$p(x^*|D) \approx \mathcal{N}(x^*|f_{decoder}(f_{encoder}(x^*)), \sigma^2I)$</p>
+                        <p class="description">where $f_{encoder}$ maps $x^*$ to a low-dimensional representation and $f_{decoder}$ reconstructs it.</p>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Data Generation Models -->
+            <strong>2.3 Generative Models for Data Generation</strong>
+            <p class="description">Learn data distributions to generate new samples.</p>
+            <ul class="subcategory">
+                <li><a href="#">Variational Autoencoders (VAE)</a></li>
+                <p class="formula">$p(x^*|D) = \int p_\theta(x^*|z) p(z) dz$</p>
+                <p class="description">where $p_\theta(x^*|z)$ is the decoder network and $p(z)$ is the prior over latent variables.</p>
+                
+                <li><a href="#">Generative Adversarial Networks (GANs)</a></li>
+                <p class="formula">$p(x^*|D) \approx \delta(x^* - G(z))$</p>
+                <p class="description">where $G$ is the generator network mapping noise $z$ to the data space.</p>
+                
+                <li><a href="#">Autoregressive Models</a></li>
+                <p class="formula">$p(x^*|D) = \prod_i p(x^*_i|x^*_1,...,x^*_{i-1}, D)$</p>
+                <p class="description">where each dimension $i$ is conditioned on previous dimensions.</p>
+            </ul>
+        </div>
+        
+        <div class="category">
+            <strong>3. Sequential Models</strong>
+            <p class="description">Models for data with temporal or sequential dependencies.</p>
+            
+            <div class="flex-container">
+                <!-- Discrete State Models Column -->
+                <div class="flex-item">
+                    <div class="section-title">
+                        <strong>3.1 Discrete State Models</strong>
+                    </div>
+                    <ul class="subcategory">
+                        <li><a href="#">Markov Chains (MC)</a></li>
+                        <p class="formula">$p(x^*_{t+1}|x_{1:t}, D) = p(x^*_{t+1}|x_t, D) = P[x_t, x^*_{t+1}]$</p>
+                        <p class="description">where $P$ is the transition matrix estimated from data.</p>
+                        
+                        <li><a href="#">Hidden Markov Models (HMM)</a></li>
+                        <p class="formula">$p(x^*_{t+1}|x_{1:t}, D) = \sum_{s_{t+1}} p(x^*_{t+1}|s_{t+1}) \sum_{s_t} p(s_{t+1}|s_t) p(s_t|x_{1:t}, D)$</p>
+                        <p class="description">where $p(s_t|x_{1:t}, D)$ is computed using the forward algorithm.</p>
+                        
+                        <li><a href="#">Infinite Hidden Markov Models (IHMM)</a></li>
+                        <p class="formula">$p(x^*_{t+1}|x_{1:t}, D) = \sum_{s_{t+1}} p(x^*_{t+1}|s_{t+1}) \left[\sum_{s_t} \frac{n_{s_t,s_{t+1}}}{n_{s_t}} p(s_t|x_{1:t}, D) + \frac{\alpha}{N} p_{new}(s_{t+1})\right]$</p>
+                        <p class="description">where $n_{s_t,s_{t+1}}$ counts transitions from $s_t$ to $s_{t+1}$, and $\alpha$ is the concentration parameter.</p>
+                    </ul>
+                </div>
+            </div>  
+        </div>
+    </div>
+</body>
+</html>
