@@ -7,12 +7,84 @@
     <title>Finance Resources</title>
 
     <link rel="shortcut icon" href="./media/cs_icon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #121212;
+        }
+        .category {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #121212;
+            border-bottom: 2px solid #191970;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #191970;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #A9A9A9;
+        }
+    </style>
 </head>
 
 <body>
-    <li><a href="./resources_pdf/Machine_Learning_for_Algorithmic_Trading.pdf" target="_blank">Machine Learning for Algorithmic Trading (2nd Edition) - Stefan Jansen</a></li>
-    <li><a href="./resources_pdf/Python_for_Finance.pdf" target="_blank">Python for Finance (2nd edition) - Yves Hilpisch</a></li>
-    <li><a href="./resources_pdf/Python_for_Data_Analysis.pdf" target="_blank">Python for Data Analysis (2nd edition) - Wes McKinney</a></li>
-    <li><a href="./resources_pdf/Cpp_Design_Patterns_and_Derivatives_Pricing.pdf" target="_blank">C++ Design Patterns and Derivatives Pricing (2nd edition) - Mark Joshi</a></li>
-    <li><a href="./resources_pdf/DSA.pdf" target="_blank">DSA super study guide - Afshine Amidi, Shervine Amidi</a></li>
+    <h1>Finance Resources</h1>
+
+    <!-- Algorithmic Trading -->
+    <div class="category">
+        <h2>Data Structures and Algorithms</h2>
+        <ul>
+            <li><a href="./resources_pdf/DSA.pdf" target="_blank">DSA Super Study Guide - Afshine Amidi, Shervine Amidi</a></li>
+        </ul>
+    </div>
+
+    <!-- Machine Learning & Data Science -->
+    <div class="category">
+        <h2>Data Science: Machine Learning, Reinforcement Learning, Deep Learning</h2>
+        <ul>
+            <li><a href="./resources_pdf/Machine_Learning_for_Algorithmic_Trading.pdf" target="_blank">Machine Learning for Algorithmic Trading (2nd Edition) - Stefan Jansen</a></li>
+            <li><a href="./resources_pdf/Python_for_Data_Analysis.pdf" target="_blank">Python for Data Analysis (2nd edition) - Wes McKinney</a></li>
+            <li><a href="./resources_pdf/RL_course.pdf" target="_blank">Reinforcement Learning (2nd edition) - Richard S. Sutton, Andrew G. Barto</a></li>
+        </ul>
+    </div>
+
+    <!-- Programming for Finance -->
+    <div class="category">
+        <h2>Programming for Finance</h2>
+        <ul>
+            <li><a href="./resources_pdf/Python_for_Finance.pdf" target="_blank">Python for Finance (2nd edition) - Yves Hilpisch</a></li>
+            <li><a href="./resources_pdf/Python_for_Algorithmic_Trading.pdf" target="_blank">Python for Algorithmic Trading (1st Edition) - Yves Hilpisch</a></li>
+        </ul>
+    </div>
+
+    <!-- Quantitative Finance & Derivatives -->
+    <div class="category">
+        <h2>C++ for Finance</h2>
+        <ul>
+            <li><a href="./resources_pdf/Cpp_Design_Patterns_and_Derivatives_Pricing.pdf" target="_blank">C++ Design Patterns and Derivatives Pricing (2nd edition) - Mark Joshi</a></li>
+        </ul>
+    </div>
+
 </body>
+</html>

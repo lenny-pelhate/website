@@ -7,11 +7,77 @@
     <title>Finance Resources</title>
 
     <link rel="shortcut icon" href="./media/cs_icon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #121212;
+        }
+        .category {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #121212;
+            border-bottom: 2px solid #191970;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #191970;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+            color: #A9A9A9;
+        }
+    </style>
 </head>
 
 <body>
-    <li><a href="./resources_pdf/Hull.pdf" target="_blank">Options, Futures, and Other Derivatives (11th edition) - John C. Hull</a></li>
-    <li><a href="./resources_pdf/Frequently_Asked_Questions_in_Quantitative_Finance.pdf" target="_blank">Frequently Asked Questions in Quantitative Finance (2nd edition) - Paul Wilmott</a></li>
-    <li><a href="./resources_pdf/Nassim_Taleb.pdf" target="_blank">Dynamic Hedging - Nassim Taleb.</a></li>
-    <li>Finance de marché - Patrice Poncet (incoming...)</li>
+    <h1>Finance Resources</h1>
+
+    <!-- Stochastic Calculus -->
+    <div class="category">
+        <h2>Stochastic Calculus</h2>
+        <ul>
+            <li><a href="./resources_pdf/Steve_Shreve_Stochastic_Calculus_for_Finance_I.pdf" target="_blank">Stochastic Calculus for Finance I - Steve Shreve</a></li>
+            <li><a href="./resources_pdf/Steve_ShreveStochastic_Calculus_for_Finance_II.pdf" target="_blank">Stochastic Calculus for Finance II - Steve Shreve</a></li>
+        </ul>
+    </div>
+
+    <!-- Options & Derivatives -->
+    <div class="category">
+        <h2>Options & Derivatives</h2>
+        <ul>
+            <li><a href="./resources_pdf/Hull.pdf" target="_blank">Options, Futures, and Other Derivatives (11th edition) - John C. Hull</a></li>
+            <li><a href="./resources_pdf/FN6905_Notes.pdf" target="_blank">Exotic Options and Structured Products - Nicholas Privault</a></li>
+            <li><a href="./resources_pdf/Nassim_Taleb.pdf" target="_blank">Dynamic Hedging - Nassim Taleb</a></li>
+        </ul>
+    </div>
+
+    <!-- Quantitative Finance & Risk Management -->
+    <div class="category">
+        <h2>Quantitative Finance & Risk Management</h2>
+        <ul>
+            <li><a href="./resources_pdf/Frequently_Asked_Questions_in_Quantitative_Finance.pdf" target="_blank">Frequently Asked Questions in Quantitative Finance (2nd edition) - Paul Wilmott</a></li>
+            <li><a href="./resources_pdf/Inside_the_Black_Box-Rashi_K_Narang.pdf" target="_blank">Inside the Black Box - Rashi K. Narang</a></li>
+        </ul>
+    </div>
+
 </body>
+</html>
