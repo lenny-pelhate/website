@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>math_tools</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Numeraire_ChgOfMeasure</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7516,26 +7516,138 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Mathematical-tools"><strong>Mathematical tools</strong><a class="anchor-link" href="#Mathematical-tools">¶</a></h1><br/>
+<h3 id="Existence-of-Equivalent-Martingale-Measure:"><strong>Existence of Equivalent Martingale Measure:</strong><a class="anchor-link" href="#Existence-of-Equivalent-Martingale-Measure:">¶</a></h3><p>Let $f$ and $g$ be the prices of traded securities dependent on a single source of uncertainty (they rely on the same brownian motion):
+$$
+df = \mu_f f dt + \sigma_f f dW_t \\
+dg = \mu_g g dt + \sigma_g g dW_t
+$$</p>
+<p><i>Assumptions:</i></p>
+<ul>
+<li>The securities provide no income during the time period under consideration</li>
+<li>The price of $g$ is always strictly positive ($g &gt; 0$)</li>
+<li>Define $\phi = f/g$:<ul>
+<li>$\phi$ is the relative price of $f$ with respect to $g$.</li>
+<li>It can be thought of as measuring the price of $f$ in units of $g$ rather than dollars.</li>
+<li>The security price $g$ is referred to as the numeraire.</li>
+</ul>
+</li>
+</ul>
+<p>The equivalent martingale measure result shows that, when there are no arbitrage opportunities, $\phi$ is a martingale when the market price of risk is the volatility of the numeraire (i.e. $\sigma_g$).</p>
+<p>The world where the market price of risk is $\sigma_g$ (the volatility of $g$) is referred to as a world that is <i>forward risk neutral with respect to $g$.</i></p>
+<br/>
+<p><i>Proof:</i></p>
+<p>\begin{cases}
+df = \mu_f f dt + \sigma_f f dW_t \\
+dg = \mu_g g dt + \sigma_g g dW_t \\
+\end{cases}</p>
+<p>with $\frac{\mu_f-r}{\sigma_f} = \frac{\mu_g-r}{\sigma_g} = \sigma_g$ :</p>
+<p>\begin{cases}
+df = (r + \sigma_g \sigma_f) f dt + \sigma_f f dW_t \\
+dg = (r + \sigma_g^2) g dt + \sigma_g g dW_t \\
+\end{cases}</p>
+<p>Using Itô's lemma:</p>
+<p>\begin{cases}
+d \ln f = (r + \sigma_g \sigma_f - \sigma_f^2/2) dt + \sigma_f dW_t \\
+d\ln g = (r + \sigma_g^2/2) dt + \sigma_g dW_t \\
+\end{cases}</p>
+<p>By substraction:
+$$
+d \Big( \ln \frac{f}{g} \Big) = - \frac{(\sigma_f - \sigma_g)^2}{2} dt + (\sigma_f - \sigma_g) dW_t
+$$</p>
+<p>Using Itô's lemma again:
+$$
+d \Big(\frac{f}{g} \Big) = (\sigma_f - \sigma_g) \frac{f}{g} dW_t
+$$</p>
+<p>i.e.
+$$
+d \phi = (\sigma_f - \sigma_g) \, \phi \, dW_t
+$$</p>
+<p>which shows that $\phi$ is a martingale.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<blockquote>
 <h3 id="Change-of-probability"><strong>Change of probability</strong><a class="anchor-link" href="#Change-of-probability">¶</a></h3><p><strong>Radon-Nikodym derivative process</strong>
 <br/></p>
 <ul>
-<li>$D$ est une $(\mathcal{F_t}, \mathbb{P})$-martingale u.i.</li>
-<li>$D$ admet une modification càdlàg, pour cette version et pour tout temps d'arrêt $T$, on a $D_T = \frac{d\mathbb{Q}}{d\mathbb{P}}\big|_{\mathcal{F}_T}$</li>
-<li>Si $\mathbb{Q} \sim \mathbb{P}$ sur $\mathcal{F}_\infty$ (i.e., $\mathbb{Q} \ll \mathbb{P}$ et $\mathbb{P} \ll \mathbb{Q}$), alors p.s. $\forall t \ge 0, D_t &gt; 0$</li>
+<li>$D$ is auniformly integrable $(\mathcal{F_t}, \mathbb{P})$-martingale.</li>
+<li>$D$ admits a càdlàg modification, and for this version and for any stopping time $T$, we have $D_T = \frac{d\mathbb{Q}}{d\mathbb{P}}\big|_{\mathcal{F}_T}$</li>
+<li>If $\mathbb{Q} \sim \mathbb{P}$ on $\mathcal{F}_\infty$ (i.e., $\mathbb{Q} \ll \mathbb{P}$ and $\mathbb{P} \ll \mathbb{Q}$), then almost surely, $\forall t \ge 0, D_t &gt; 0$</li>
 </ul>
-<p>Sur $[0,T]$, $D_t = \frac{d\mathbb{Q}}{d\mathbb{P}}\big|_{\mathcal{F}_t} = \mathbb{E}_{\mathbb{P}} \Big[D_T | \mathcal{F}_t \Big]$ p.s. par unicité de la dérivée de Radon-Nikodym. $D$ est une $\mathcal{F}_t$ martingale u.i. car fermée.</p>
-<p>Logarithme Stochastique:
+<p>On $[0,T]$, $D_t = \frac{d\mathbb{Q}}{d\mathbb{P}}\big|_{\mathcal{F}_t} = \mathbb{E}_{\mathbb{P}} \Big[D_T | \mathcal{F}_t \Big]$ almost surely, by the uniqueness of the Radon-Nikodym derivative. $D$ is a  $\mathcal{F}_t$ martingale that is uniformly integrable because it is closed.</p>
+<p><strong>Stochastic Logarithm:</strong>
 <br/>
-Soit D une martingale locale à trajectoires continues strictement positive. Alors, il existe une unique martingale locale, à trajectoires continues, $L$, appelée logarithme stochastique de $D$, tq:
+Let D be a strictly positive local martingale with continuous paths. then, there exists a unique local martingale with continuous paths, $L$, called the stochastic logarithm of $D$, such that:
 $$
 D_t = exp \Big(L_t - \frac{1}{2} \langle L, L \rangle _t \Big) = \mathcal{E}(L)_t
 $$</p>
-<p>Soit $\mathbb{Q} \sim \mathbb{P}$ sur $\mathcal{F}_\infty$  et $L$ le logarithme stochastique associé à la martingale $D_t = \mathbb{E}_{\mathbb{P}} [D_{\infty} | \mathcal{F}_t]$ qu'on suppose à trajectoires continues.</p>
+<p>Let $\mathbb{Q} \sim \mathbb{P}$ on $\mathcal{F}_\infty$, and let $L$ be the stochastic logarithm associated with the martingale $D_t = \mathbb{E}_{\mathbb{P}} [D_{\infty} | \mathcal{F}_t]$ which is assumed to have continuous paths.</p>
 <ul>
-<li>Si $XD$ est une $\mathbb{P}$-martingale locale, alors $X$ est une $\mathbb{Q}$-martingale locale.</li>
+<li>If $XD$ is a local $\mathbb{P}$-martingale, then $X$ is a local $\mathbb{Q}$-martingale.</li>
 </ul>
 <br/>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Probability Change Formula for Conditional Expectations:</strong> (Switching from $\mathbb{P}$ to $\mathbb{Q}$)
+<br/>
+For a square-integrable, $\mathcal{F}_T$ mesurable random variable $X$, we have:
+$$
+\boxed{\mathbb{E}_{\mathbb{Q}} (X | \mathcal{F}_t) = \frac{\mathbb{E}_{\mathbb{P}} (X \, D_T | \mathcal{F}_t)}{\mathbb{E}_{\mathbb{P}} (D_T | \mathcal{F}_t)}}
+$$</p>
+<p>where:</p>
+<ul>
+<li>$D_T = \frac{d\mathbb{Q}}{d\mathbb{P}}$ is the Radon-Nikodym derivative of $\mathbb{Q}$ with respect to $\mathbb{P}$</li>
+<li>$D_t = \mathbb{E}_{\mathbb{P}} [D_T | \mathcal{F}_t]$ is a $\mathbb{P}$-martingale</li>
+</ul>
+<p><strong>Proof:</strong></p>
+<p>By the definition of conditional expectation under $\mathbb{Q}$, we require that for any bounded $\mathcal{F}_t$-measurable function $Z$:</p>
+<p>$$
+\mathbb{E}_{\mathbb{Q}} \left[ Z \mathbb{E}_{\mathbb{Q}}(X | \mathcal{F}_t) \right] = \mathbb{E}_{\mathbb{Q}} [Z X]
+$$</p>
+<p>Using the definition of expectation under the measure $\mathbb{Q}$:</p>
+<p>$$
+\mathbb{E}_{\mathbb{Q}} [Z X] = \int Z X d\mathbb{Q} = \int Z X D_T \, d\mathbb{P} = \mathbb{E}_{\mathbb{P}} \left[ Z X D_T \right]
+$$</p>
+<p>Similarly,
+$$
+\mathbb{E}_{\mathbb{Q}} [Z X] = \mathbb{E}_{\mathbb{Q}} \left[\mathbb{E}_{\mathbb{Q}}(Z X | \mathcal{F}_t) \right] = \mathbb{E}_{\mathbb{Q}} \left[ Z \mathbb{E}_{\mathbb{Q}}(X | \mathcal{F}_t) \right] = \mathbb{E}_{\mathbb{P}} \left[ Z D_t \mathbb{E}_{\mathbb{Q}}(X | \mathcal{F}_t) \right]
+$$</p>
+<p>Thus, equating both sides, we get:
+$$
+\mathbb{E}_{\mathbb{P}} \left[ Z D_t \mathbb{E}_{\mathbb{Q}}(X | \mathcal{F}_t) \right] = \mathbb{E}_{\mathbb{P}} \left[ Z X D_T \right]
+$$</p>
+<p>Rewriting the previous equation:
+$$
+\mathbb{E}_{\mathbb{P}} \left[ Z D_t \mathbb{E}_{\mathbb{Q}}(X | \mathcal{F}_t) \right] = \mathbb{E}_{\mathbb{P}} \left[ Z \mathbb{E}_{\mathbb{P}} (X D_T | \mathcal{F}_t) \right]
+$$</p>
+<p>Since this holds for all $\mathcal{F}_t$-measurable test functions $Z$, we conclude:
+$$
+D_t \mathbb{E}_{\mathbb{Q}}(X | \mathcal{F}_t) = \mathbb{E}_{\mathbb{P}} (X D_T | \mathcal{F}_t)
+$$</p>
+<p>Solving for $\mathbb{E}_{\mathbb{Q}}(X | \mathcal{F}_t)$, we obtain:
+$$
+\mathbb{E}_{\mathbb{Q}}(X | \mathcal{F}_t) = \frac{\mathbb{E}_{\mathbb{P}} (X D_T | \mathcal{F}_t)}{D_t}
+$$</p>
+<p>Since $D_t = \mathbb{E}_{\mathbb{P}}(D_T | \mathcal{F}_t)$, we get the desired result:
+$$
+\mathbb{E}_{\mathbb{Q}} (X | \mathcal{F}_t) = \frac{\mathbb{E}_{\mathbb{P}} (X \, D_T | \mathcal{F}_t)}{\mathbb{E}_{\mathbb{P}} (D_T | \mathcal{F}_t)}
+$$</p>
 </div>
 </div>
 </div>
@@ -7549,12 +7661,48 @@ $$</p>
 <h3 id="Change-of-Numeraire:"><strong>Change of Numeraire:</strong><a class="anchor-link" href="#Change-of-Numeraire:">¶</a></h3><p>A process $(N_t)_{t \ge 0}$ is a numeraire if:</p>
 <ul>
 <li>The discounted value of $N_t$ is a $\mathbb{P}$-martingale</li>
-<li>$(N_t)_{t \ge 0} &gt; 0$
-For all asset value $(X_t)_{t \ge 0}$ (the discounted value of $(X_t)_{t \ge 0}$ is a $\mathbb{P}$-martingale), $\Big(\frac{X_t}{N_t}\Big)$ is a martingale under $\mathbb{Q}$</li>
+<li>$(N_t)_{t \ge 0} &gt; 0$</li>
 </ul>
-<p>A risk-neutral measure is a probability measure $\mathbb{P}$ under which the discounted asset price $(Y_t)_{t \ge 0} = (e^{-rt}X_t)_{t \ge 0}$ is a martingale
+<p>A risk-neutral measure is a probability measure $\mathbb{P}$ under which the discounted asset price $(Y_t)_{t \ge 0} = (e^{-rt}X_t)_{t \ge 0}$ is a martingale</p>
+<p>Thus, $\Big(e^{-\int_{0}^{t} r_s ds} X_t\Big)$ is a $\mathbb{P}$-martingale</p>
 <br/>
-Thus, $\Big(e^{-\int_{0}^{t} r_s ds} X_t\Big)$ is a $\mathbb{P}$-martingale</p>
+<p><strong>Numeraire Change General Formula:</strong>
+$$
+\boxed{N_t \, \mathbb{E}_{\mathbb{Q}} (Y | \mathcal{F}_t) = \mathbb{E}_{\mathbb{P}} \bigg(Y \, e^{-\int_{t}^{T} r_s ds} N_T \bigg| \mathcal{F}_t \bigg)}
+$$</p>
+<p><strong>Proof:</strong></p>
+<ul>
+<li>$D$ is a $\mathbb{P}$-martingale (as the Radon-Nikodym derivative process).</li>
+<li>$\Big(e^{-\int_0^t r_s ds} Y_t\Big)$ is a $\mathbb{P}$-martingale (i.e., the discounted reference asset is a $\mathbb{P}$-martingale).</li>
+<li>We want $\Big(\frac{Y_t}{N_t}\Big)_{t \ge 0}$ to be a $\mathbb{Q}$-martingale for a reference asset $Y$ and a numéraire $N$.</li>
+</ul>
+<p>Thus:
+$$
+\mathbb{E}_{\mathbb{Q}} \bigg(\frac{Y_T}{N_T} \bigg| \mathcal{F}_t \bigg) = \frac{\mathbb{E}_{\mathbb{P}} (\frac{Y_T}{N_T} \, D_T | \mathcal{F}_t)}{D_t}
+$$</p>
+<p>which gives:
+$$
+\frac{Y_t}{N_t} = \frac{\mathbb{E}_{\mathbb{P}} (\frac{Y_T}{N_T} \, D_T | \mathcal{F}_t)}{D_t}
+$$</p>
+<p>i.e., it suffices to show that $D_t \frac{Y_t}{N_t}$ is a $\mathbb{P}$-martingale. Since $\Big(e^{-\int_0^t r_s ds} Y_t\Big)$ is also a $\mathbb{P}$-martingale, we obtain:
+$$
+D_t \frac{Y_t}{N_t} = C \Big(e^{-\int_0^t r_s ds} Y_t\Big) \, , \qquad C \in \mathbb{R}
+$$</p>
+<p>Thus, $C = \frac{Y_0}{N_0}$, and since $(D_t)_{t \ge 0}$ is a density process, we have $L_0=1$.</p>
+<p>Hence $D_t = \frac{e^{-\int_{0}^{t} r_s ds} N_t}{N_0}$</p>
+<p>For any $\mathcal{F}_T$-mesurable, square-integrable asset Y, we derive:</p>
+<p>$$
+\begin{alignat}{2}
+&amp;&amp; D_t \, \mathbb{E}_{\mathbb{Q}} (Y | \mathcal{F}_t)
+&amp; = \mathbb{E}_{\mathbb{P}} (Y \, D_T | \mathcal{F}_t) \\
+&amp;\Rightarrow \quad
+&amp;\frac{e^{-\int_{0}^{t} r_s ds} N_t}{N_0} \, \mathbb{E}_{\mathbb{Q}} (Y | \mathcal{F}_t)
+&amp;= \mathbb{E}_{\mathbb{P}} \bigg(Y \, \frac{e^{-\int_{0}^{T} r_s ds} N_T}{N_0} \bigg| \mathcal{F}_t \bigg) \\
+&amp;\Rightarrow
+&amp;N_t \, \mathbb{E}_{\mathbb{Q}} (Y | \mathcal{F}_t)
+&amp;= \mathbb{E}_{\mathbb{P}} \bigg(Y \, e^{-\int_{t}^{T} r_s ds} N_T \bigg| \mathcal{F}_t \bigg) \\
+\end{alignat}
+$$</p>
 </div>
 </div>
 </div>
@@ -7609,7 +7757,7 @@ $$</p>
 $$
 dS_t = \mu S_t dt + \sigma S_t dB^\mathbb{P}_t
 $$</p>
-<p>Let B be the value of the ZCB:
+<p>Let $B(t,T)$ be the value of the ZCB (zero-coupon bond) at time $t$, which pays $1€$ at time $T$:
 $$
 B(t,T) = \mathbb{E}_{\mathbb{P}} \bigg[e^{-\int_t^T r_s \, ds} \Big| \mathcal{F}_t \bigg] \qquad B(T,T) = 1
 $$</p>
@@ -7622,14 +7770,15 @@ $$
 S_0 = B(0,T) \, \mathbb{E}_{\mathbb{Q}^T} (S_T)
 $$
 The key difference compared to the savings account is that here the discounting factor lies outside of the expected value.</p>
-<p>Note that $F(t,T) = \frac{S_t}{B(t,T)}$, where $F(t,T)$ is the forward price/rate observed at time $t$ for a contract maturing at time $T$. Thus the forward is a $\mathbb{Q}^T$-martingale, stating that the price of a forward contract maturing at time $T$ is the expected value of the future spot price at time $T$:
+<p>Note that $F_{orward}(t,T) = \frac{S_t}{B(t,T)}$, where $F_{orward}(t,T)$ is the forward price/rate observed at time $t$ for a contract maturing at time $T$.</p>
+<p>Thus the forward is a $\mathbb{Q}^T$-martingale, stating that the price of a forward contract maturing at time $T$ is the expected value of the future spot price at time $T$:
 $$
-F(0,T) = \mathbb{E}_{\mathbb{Q}^T} (S_T)
+F_{orward}(0,T) = \mathbb{E}_{\mathbb{Q}^T} (S_T)
 $$</p>
-<p>For this reason, the probability measure $\mathbb{Q}^T$ is also called the <strong><em>forward-neutral measure</em></strong>.</p>
+<p>For this reason, the probability measure $\mathbb{Q}^T$ is also called the <strong><em>forward-neutral measure</em></strong> with respect to the ZCB of maturity $T$ as the numeraire.</p>
 <p>Also note that the forward price is different from the futures price. The futures price is the expected price at time T in the risk-neutral universe:
 $$
-F_{fut}(t,T) = \mathbb{E}_{\mathbb{Q}} (S_T)
+F_{utures}(0,T) = \mathbb{E}_{\mathbb{Q}} (S_T)
 $$
 where $\mathbb{Q}$ is the risk-neutral measure.</p>
 <br/>
@@ -7646,7 +7795,7 @@ where $\mathbb{Q}$ is the risk-neutral measure.</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <blockquote>
 <p><strong>Example 3:</strong> (Annuity as the numeraire)</p>
-<p>Under $\mathbb{P}$, we denote $V_t$ the value observed at time $t$, of the floating leg of a swap starting at time $T=T_0$, with payment dates at ⟦$T_1 , T_N$⟧.</p>
+<p>Under $\mathbb{P}$, we denote $V_t$ the value observed at time $t$, of the floating leg of a swap starting at time $T=T_0$, with payment dates at $⟦T_1 , T_N⟧$.</p>
 <p>Let $A$ be the annuity of this swap:
 $$
 A_t = \sum_{i=0}^{n-1} (T_{i+1} - T_i) \, B(t,T_{i+1})
@@ -7663,7 +7812,7 @@ $$</p>
 $$
 s_0 = \mathbb{E}_{\mathbb{Q}^S} (s_T)
 $$</p>
-<p>For this reason, the probability measure $\mathbb{Q}^S$ is also called the <strong><em>swap-neutral measure</em></strong>.</p>
+<p>For this reason, the probability measure $\mathbb{Q}^S$ called the <strong><em>swap-neutral measure</em></strong> (or forward-neutral measure with respect to the annuity $A_t$ as a numeraire).</p>
 <br/>
 </blockquote>
 </div>
@@ -7676,7 +7825,49 @@ $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<br/>
+<p><strong>Application to interest rate calculations:</strong></p>
+<p>Let $B(t,T)$ be the price at time $t$ of a ZCB which pays $1€$ at time $T$.
+$$
+B(t,T) = \mathbb{E}_{\mathbb{P}} \bigg[e^{-\int_t^T r_s \, ds} \Big| \mathcal{F}_t \bigg] \qquad B(T,T) = 1
+$$</p>
+<p>Let $N$ be the value of the savings account, worth $1€$ at time $t$:
+$$
+N_T = e^{\int_t^T r_u \, du} \qquad N_t = 1
+$$</p>
+<p>Define a new probability measure $\mathbb{Q}$ (risk-neutral probability measure) where $\Big(\frac{B(t,T)}{N_t}\Big)_{t \ge 0}$ is a $\mathbb{Q}$-martingale:
+$$
+\frac{B(t,T)}{N_t} = \mathbb{E}_{\mathbb{Q}} \bigg(\frac{B(T,T)}{N_T} \bigg)
+$$</p>
+<p>which gives:
+$$
+B(t,T) = \mathbb{E}_{\mathbb{Q}} \bigg( e^{-\int_t^T r_u \, du} \bigg) \qquad \text{since} \; B(T,T) = 1
+$$</p>
+<p>With $\bar{r} = \frac{1}{T-t} \int_t^T r_u \, du$, we have:
+$$
+B(t,T) = \mathbb{E}_{\mathbb{Q}} \bigg( e^{-\bar{r} \, (T-t)} \bigg) \tag{1}
+$$</p>
+<p>On the other hand, let $R(t,T)$ be the continuously compounded risk-free interest rate at time $t$ for a term of $T-t$:
+$$
+B(t,T) = e^{- R(t,T) \, (T-t)}
+$$</p>
+<p>Solving for $R(t,T)$, we have:
+$$
+R(t,T) = - \frac{1}{T-t} \ln [B(t,T)] \tag{2}
+$$</p>
+<p>Then, by plugging equation $(1)$ in $(2)$, we have:
+$$
+R(t,T) = - \frac{1}{T-t} \ln \bigg(\mathbb{E}_{\mathbb{Q}} \Big[ e^{-\bar{r} \, (T-t)} \Big] \bigg)
+$$</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Girsanov:"><strong>Girsanov:</strong><a class="anchor-link" href="#Girsanov:">¶</a></h3><p><strong>1-dimensional</strong>
 <br/>
 Let $\mathbb{Q} \sim \mathbb{P}$ on $\mathcal{F}_\infty$, and $L$ be the stochastic logarithm associated to the martingale $D_t = \frac{d\mathbb{Q}}{d\mathbb{P}}_{|\mathcal{F_t}}$.
@@ -7731,7 +7922,13 @@ dS_t &amp;= \mu S_t dt + \sigma S_t dB^\mathbb{P}_t \\
      &amp;= \mu S_t dt + \sigma S_t \bigg(dB^\mathbb{Q}_t - \frac{\mu - r}{\sigma} dt\bigg) \\
      &amp;= r S_t dt + \sigma S_t dB^\mathbb{Q}_t \\
 \end{align}</p>
-<p>which is a geometric brownian motion of drift r under the measure $\mathbb{Q}$</p>
+<p>which is a geometric brownian motion of drift r under the measure $\mathbb{Q}$ (which is called the <i><strong>risk-neutral probability measure</strong></i>)</p>
+<br/>
+<p><strong>Note 1:</strong> The quantity $\lambda = \frac{\mu - r}{\sigma}$ is called the <i><strong>market price of risk</strong></i>.
+<br/>
+In the context of portfolio management, it is called the <i><strong>Sharpe ratio</strong></i>.</p>
+<p><strong>Note 2:</strong> Choosing a particular market price of risk is also referred to as defining a probability measure.</p>
+<p><strong>Note 3:</strong> As we move from one market price of risk to another, the expected growth rates of security prices change, but their volatilities remain the same.</p>
 <br/>
 </blockquote>
 </div>
@@ -7775,7 +7972,7 @@ dF &amp;= \frac{\partial F}{\partial S} dS + \frac{\partial F}{\partial B} dB + 
 &amp;= \Big(\mu_S - r_t - \sigma_S \sigma_B + \sigma_B^2 \Big) dt + \Big(\sigma_S - \sigma_B \Big) \Big(dW^{\mathbb{Q}^T}_t + \sigma_B \, dt \Big) \\
 &amp;= \Big(\mu_S - r_t \Big) dt + \Big(\sigma_S - \sigma_B \Big) \, dW^{\mathbb{Q}^T}_t \\
 \end{align}</p>
-<p>Since in the forward measure $\mathbb{Q}^T$, the drift of tradable assets (like forward prices) must be zero, we set:
+<p>For $F$ to be a martingale under the forward measure $\mathbb{Q}^T$, its drift must be zero, which gives us:
 $$
 \mu_S - r_t = 0
 $$</p>
@@ -7783,7 +7980,7 @@ $$</p>
 $$
 \frac{dF}{F} = (\sigma_S - \sigma_B) \, dW^{\mathbb{Q}^T}_t
 $$</p>
-<p>This shows that the forward price $F(t,T)$ follows a martingale under the forward-neutral measure $\mathbb{Q}^T$, and its lognormal volatility is $(\sigma_S - \sigma_B)$.</p>
+<p>This shows that the forward price $F(t,T)$ is a martingale under the forward-neutral measure $\mathbb{Q}^T$, and its lognormal volatility is $(\sigma_S - \sigma_B)$.</p>
 <br/>
 </blockquote>
 </div>
@@ -7842,7 +8039,7 @@ $$</p>
 \frac{ds}{s} &amp;= \Big(\sigma_{s,t}^2 - \sigma_{s,t} \, \sigma_V \Big) \, dt + \Big(\sigma_V  - \sigma_{s,t} \Big) \, \Big(dW^{\mathbb{Q}^S}_t + \sigma_{s,t} \, dt \Big) \\
   &amp;= \Big(\sigma_V  - \sigma_{s,t} \Big) \, dW^{\mathbb{Q}^S}_t
 \end{align}</p>
-<p>This shows that the swap rate $s$ follows a martingale under the swap-neutral measure $\mathbb{Q}^S$, and its lognormal volatility is $(\sigma_V - \sigma_{s,t})$.</p>
+<p>This shows that the swap rate $s$ is a martingale under the swap-neutral measure $\mathbb{Q}^S$, and its lognormal volatility is $(\sigma_V - \sigma_{s,t})$.</p>
 <br/>
 </blockquote>
 </div>
