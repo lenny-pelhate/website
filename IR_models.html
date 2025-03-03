@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>1_Vasicek_IR_model_1977</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>IR_models</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7516,26 +7516,790 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Vasicek-Model">Vasicek Model<a class="anchor-link" href="#Vasicek-Model">¶</a></h2><p>The Vasicek model is a one factor model of the spot rate $r_t$. It supposes that the spot rate follows an Ornstein-Uhlenbeck process (mean-reverting), with $a, b, \sigma &gt; 0$, where $b$ is the long term observed interest rate and $a$ is the reversion speed.</p>
+<h1 id="Interest-Rate-Models'-Introduction"><font color="#191970"><strong>Interest Rate Models' Introduction</strong></font><a class="anchor-link" href="#Interest-Rate-Models'-Introduction">¶</a></h1><ul>
+<li><font color="#191970"><strong>Short-term interest rate models</strong></font><ul>
+<li><strong>Equilibrium models</strong><ul>
+<li>One-factor models<ul>
+<li>Rendleman and Bartter (1979)</li>
+<li>Vasicek (1977)</li>
+<li>Cox-Ingersoll-Ross (CIR) (1985)</li>
+<li>Brennan and Schwartz (1980)</li>
+<li>Dothan model (1978)</li>
+</ul>
+</li>
+<li>Two-factor models<ul>
+<li>Vasicek (extended)</li>
+<li>Longstaff and Schwartz (1992)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>No-arbitrage models</strong><ul>
+<li>One-factor models<ul>
+<li>Ho &amp; Lee (1986)</li>
+<li>Hull &amp; White (1-factor) (1990)</li>
+<li>Black-Derman-Toy (BDT) (1990)</li>
+<li>Black-Karasinski (1991)</li>
+</ul>
+</li>
+<li>Two-factor models<ul>
+<li>Hull &amp; White (2-factor extension)</li>
+<li>G2++ model by Brigo and Mercurio</li>
+<li>Health, Jarrow &amp; Morton (special case as a 2-factor)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><font color="#191970"><strong>Forward interest rate models</strong></font><ul>
+<li>Health, Jarrow &amp; Morton (HJM) (1992)</li>
+<li>Brace, Gatarek &amp; Musiela (BGM) (i.e. the LIBOR Market Model or LMM)</li>
+<li>Mercurio (for inflation-linked instruments)</li>
+</ul>
+</li>
+</ul>
+<br/>
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/IR_category.JPG" width="900"/>
+</div>
+<br/>
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Short-Term-Interest-Rate-Models"><font color="#191970"><strong>Short-Term Interest Rate Models</strong></font><a class="anchor-link" href="#Short-Term-Interest-Rate-Models">¶</a></h1><p>When the short-term rate is a Markov process, all the rates can be expressed as a function of a short-term rate.</p>
+<p>This short-term rates can be used to price bonds and interest rate derivatives:</p>
+<ul>
+<li>Since the market price of risk for a bond is positive, the market price of risk of an interest rate is negative (bonds and interest rates are negatively correlated)<ul>
+<li>Thus, the trend of an interest rate process is weaker in the real world than in the risk-neutral universe</li>
+<li>The expected future value of an interest rate is smaller in the real world than in the risk-nautral universe</li>
+</ul>
+</li>
+</ul>
+<p>Term structure model:</p>
+<ul>
+<li>Model describing the evolution of all zero-coupon interest rates</li>
+</ul>
+<p>Instantaneous short rate:</p>
+<ul>
+<li>The risk-free short rate $r$ at time $t$ is the rate that applies to an infinitesimally short period of time at time $t$</li>
+</ul>
+<h2 id="Equilibrium-Models:"><font color="#191970"><strong>Equilibrium Models:</strong></font><a class="anchor-link" href="#Equilibrium-Models:">¶</a></h2><h2 id="One-factor-Models:">One-factor Models:<a class="anchor-link" href="#One-factor-Models:">¶</a></h2><p>In a one-factor model, the short-term interest rate only depends on one source of uncertainty.</p>
+<p>Usually the risk-neutral process for the short rate is described by an Itô process of the form:
+$$
+dr = m_r \, dt + s_r \, dW_t
+$$</p>
+<p>where $m$ (instantaneous drift) and $s$ (instantaneous standard deviation) only depend on $r$ and are therefore independent of time.</p>
+<p>Under this hypothesis, all the rates evolve in the same direction over any small time interval, but their variations can have different magnitudes, allowing the yield curve to change shape with time.</p>
+<br/>
+<p><strong>Examples of one-factor models:</strong></p>
+<ul>
+<li><strong>Rendleman and Bartter model:</strong> $\; m_r = \mu r, \qquad \quad \; s_r = \sigma r$</li>
+<li><strong>Vasicek model:</strong> $ \qquad \qquad \qquad \;\, m_r = a(b-r), \quad s_r = \sigma$</li>
+<li><strong>Cox, Ingersoll, and Ross model:</strong> $\, m_r = a(b-r), \quad s_r = \sigma \sqrt{r}$</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Rendleman-and-Bartter-Model"><font color="red"><strong>Rendleman and Bartter Model</strong></font><a class="anchor-link" href="#Rendleman-and-Bartter-Model">¶</a></h3><p>In Rendleman and Bartter's model, the risk-neutral process for $r$ is:
+$$
+dr = \mu r dt + \sigma r dW_t
+$$</p>
+<p>where $\mu$ and $r$ are constants, which means that $r$ follows a geometric brownian motion.</p>
+<p>The assumption that the short-term interest rate behaves like a stock price is a natural starting point but is less than ideal. One important difference between interest rates and stock prices is that interest rates appear to be pulled back to some long-run average level over time (mean reversion).</p>
+<ul>
+<li>When rates are high, the economy tends to slow down and there is low demand for funds from borrowers, making rates decline</li>
+<li>When rates are low, there tends to be a high demand for funds on the part of borrowers and rates tend to rise</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Vasicek-Model-(One-factor)"><font color="red"><strong>Vasicek Model</strong> (One-factor)</font><a class="anchor-link" href="#Vasicek-Model-(One-factor)">¶</a></h3><p>The Vasicek model is a one factor model of the spot rate $r_t$. It supposes that the spot rate follows an Ornstein-Uhlenbeck process (mean-reverting), with $a, b, \sigma &gt; 0$, where $b$ is the long term observed interest rate and $a$ is the reversion speed. The variations are gaussian since the stochastic term is $\sigma dB_t$.</p>
 <p>$$
 dr_t = a (b-r_t) dt + \sigma dB_t
 $$</p>
-<p>Indeed, let $X_t = r_t - b$:</p>
+<br/>
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/vasicek_animation_VF.gif" width="900"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>One of the drawbacks of the Vasicek model, is that the short-term interest rate $r$ can become negative as the instantaneous standard deviation $\sigma$ does not depend on the level of $r$.</p>
+<br/>
+<blockquote>
+<p><strong>Property 1:</strong></p>
+<p>$r_t$ follows a normal distribution:</p>
+<p>$$
+r_t \sim \mathcal{N} \left(r_0 \, e^{-a t} + b \, \Big(1 - e^{-a t} \Big), \; \; \frac{\sigma^2}{2a} \Big(1-e^{-2at}\Big) \right)
+$$
+<br/></p>
+</blockquote>
+<br/>
+<blockquote>
+<p><strong>Proof:</strong></p>
+<p>Let $X_t = r_t - b$:</p>
 <p>$$
 dX_t = -a \, X_t \, dt + \sigma dB_t
 $$</p>
 <p>Using Itô's lemma, with $F(x,t)=x \, e^{a t}$ applied to $X_t$ and $t$ we have:</p>
 <p>\begin{align}
 F(X_t, t) &amp;= F(X_0, 0) + \int_{0}^{t} \frac{\partial F}{\partial x} (X_s, s) \, dX_s + \int_{0}^{t} \frac{\partial F}{\partial t} (X_s, s) \, ds \\
-          &amp;= F(X_0, 0) - a \int_{0}^{t} \frac{\partial F}{\partial x} (X_s, s) \, X_s \,  ds + \sigma \int_{0}^{t} \frac{\partial F}{\partial x} (X_s, s) \, dB_s + \int_{0}^{t} \frac{\partial F}{\partial t} (X_s, s) \, ds \\
+         &amp;= F(X_0, 0) - a \int_{0}^{t} \frac{\partial F}{\partial x} (X_s, s) \, X_s \,  ds + \sigma \int_{0}^{t} \frac{\partial F}{\partial x} (X_s, s) \, dB_s + \int_{0}^{t} \frac{\partial F}{\partial t} (X_s, s) \, ds \\
 
 X_t \, e^{a t} &amp;= X_0 - a \int_{0}^{t} X_s \, e^{a s} \, ds + \sigma \int_{0}^{t} e^{a s} \, dB_s + a \int_{0}^{t} X_s \, e^{a s} \, ds \\
 X_t &amp;= X_0 \, e^{-a t} + \sigma \int_{0}^{t} e^{-a(t-s)} \, dB_s \\
 \end{align}</p>
-<p>Thus, $X_t$ follows a normal distribution:</p>
-<p>$$
+<p>Thus, $X_t$ follows a normal distribution:
+$$
 X_t \sim \mathcal{N} \left(X_0 \, e^{-a t}, \; \; \sigma^2 \int_{0}^{t} e^{-2 a(t-s)} \, ds \right)
 $$</p>
+<p>and:
+$$
+r_t \sim \mathcal{N} \left((r_0 - b) \, e^{-a t} + b, \; \; \sigma^2 \int_{0}^{t} e^{-2 a(t-s)} \, ds \right)
+$$</p>
+<p>i.e.,
+$$
+r_t \sim \mathcal{N} \left(r_0 \, e^{-a t} + b \, \Big(1 - e^{-a t} \Big), \; \; \frac{\sigma^2}{2a} \Big(1-e^{-2at}\Big) \right)
+$$</p>
+<p>Note that when $t \rightarrow \infty$, we see that $b$ is the long term mean, and $a$ is the reversion speed, as:
+$$
+r_{\infty} \sim \mathcal{N}  \left( b, \frac{\sigma^2}{2a} \right)
+$$</p>
+<br/>
+</blockquote>
+<br/>
+<blockquote>
+<p><strong>Property 2:</strong></p>
+<p>The price of a ZCB under Vasicek is:
+$$
+B(t,T) = e^{A_1(t,T)-A_2(t,T) \, r_t}
+$$</p>
+<p>where
+\begin{align}
+A_1(t,T) &amp;= \bigg(b - \frac{\sigma^2}{2a^2}\bigg)\Big(A_2(t,T) - (T - t)\Big) - \frac{\sigma^2}{4 a} A_2(t,T)^2 \\
+A_2(t,T) &amp;= \frac{1 - e^{-a \, (T-t)}}{a}
+\end{align}</p>
+<br/>
+</blockquote>
+<br/>
+<blockquote>
+<p><strong>Proof:</strong></p>
+<p>Let the dynamic of $r$ follow the process:
+$$
+dr = m(r,t) \, dt + s(r,t) \, dB_t
+$$</p>
+<p>For any derivative $f$ dependent on $r$, Itô's lemma gives:
+$$
+df = \Big(\frac{\partial f}{\partial t} + m \frac{\partial f}{\partial r} + \frac{1}{2} s^2 \frac{\partial^2 f}{\partial r^2}\Big) dt + s \frac{\partial f}{\partial r} dB_t
+$$</p>
+<p>In the risk-neutral universe, if the derivative provides no income, $df$ must have the form:
+$$
+df = rf \, dt + ...
+$$</p>
+<p>Thus, by coefficient identification, we must have:
+$$
+\frac{\partial f}{\partial t} + m \frac{\partial f}{\partial r} + \frac{1}{2} s^2 \frac{\partial^2 f}{\partial r^2} = rf
+$$</p>
+<p>Since the ZCB $B(t,T)$ must be a solution of this equation, we have:
+$$
+\frac{\partial B(t,T)}{\partial t} + m \frac{\partial B(t,T)}{\partial r} + \frac{1}{2} s^2 \frac{\partial^2 B(t,T)}{\partial r^2} = rB(t,T)
+$$</p>
+<p>When $m=a(b-r)$ and $s=\sigma$, the previous equation gives:
+$$
+\frac{\partial B(t,T)}{\partial t} + a(b-r) \frac{\partial B(t,T)}{\partial r} + \frac{1}{2} \sigma^2 \frac{\partial^2 B(t,T)}{\partial r^2} = rB(t,T)
+$$</p>
+<p>By substitution, since the ZCB is of the form $B(t,T) = A(t,T) e^{-A_2(t,T) \, r_t}$, with $A \neq 0$:
+$$
+\frac{\partial}{\partial t}\Big(A(t,T) e^{-A_2(t,T) \, r}\Big) + a(b-r) \frac{\partial}{\partial r}\Big(A(t,T) e^{-A_2(t,T) \, r}\Big) + \frac{1}{2} \sigma^2 \frac{\partial^2}{\partial r^2}\Big(A(t,T) e^{-A_2(t,T) \, r}\Big) = r A(t,T) e^{-A_2(t,T) \, r}
+$$
+$$
+\frac{\partial A(t,T)}{\partial t} e^{-A_2(t,T) \, r} -r A(t,T) \frac{\partial A_2(t,T)}{\partial t} e^{-A_2(t,T) \, r} - a(b-r) A(t,T) A_2(t,T) e^{-A_2(t,T) \, r} + \frac{1}{2} \sigma^2 A(t,T) A_2(t,T)^2 e^{-A_2(t,T) \, r} = r A(t,T) e^{-A_2(t,T) \, r}
+$$</p>
+<p>By coefficient identification, we have:
+\begin{array}{l}
+\begin{cases}
+    \frac{\partial A}{\partial t} e^{-A_2 \, r} - ab A A_2 e^{-A_2 \, r} + \frac{1}{2} \sigma^2 A A_2^2 e^{-A_2 \, r} = 0 \\
+    - A \frac{\partial A_2}{\partial t} e^{-A_2 \, r} + a A A_2 e^{-A_2 \, r} = A e^{-A_2 \, r} \\
+\end{cases} \\
+\\
+\begin{cases}
+    \frac{\partial A}{\partial t} - ab A A_2 + \frac{1}{2} \sigma^2 A A_2^2 = 0 \\
+    - A \frac{\partial A_2}{\partial t} + a A A_2 = A \\
+\end{cases} \\
+\\
+\begin{cases}
+    \frac{\partial A}{\partial t} - ab A A_2 + \frac{1}{2} \sigma^2 A A_2^2 = 0 \\
+    \frac{\partial A_2}{\partial t} - a A_2 + 1 = 0 \\
+\end{cases} \\
+\end{array}</p>
+<p>Solving for the second equation, we get:
+$$
+A_2(t,T) = C \, e^{at} + \frac{1}{a} \qquad \text{where C} \in \mathbb{R}
+$$</p>
+<p>The boundary condition $B(T,T) = 1$ is satisfied if $A(T,T) = 1$ and $A_2(T,T) = 0$ for example.</p>
+<p>Since $A_2(T,T) = 0$, we have:
+$$
+C =  - \frac{1}{a} e^{-aT}
+$$</p>
+<p>and:
+\begin{align}
+A_2(t,T) &amp;= - \frac{1}{a} e^{-a(T-t)} + \frac{1}{a} \\
+    &amp;= \frac{1 - e^{-a \, (T-t)}}{a}
+\end{align}</p>
+<p>Now, solving for $A$:
+\begin{align}
+\frac{\partial A}{\partial t} &amp;= ab A A_2 - \frac{1}{2} \sigma^2 A A_2^2 \
+&amp;= f(t) A \qquad \qquad \qquad \qquad \text{where} ; f(t) = ab A_2 - \frac{1}{2} \sigma^2 A_2^2
+end{align}</p>
+<p>Solving this, we find:
+$$
+A(t,T) = \text{exp} \Bigg(\bigg(b - \frac{\sigma^2}{2a^2}\bigg)\Big(A_2(t,T) - (T - t)\Big) - \frac{\sigma^2}{4 a} A_2(t,T)^2 \Bigg)
+$$</p>
+<p>i.e., with $A(t,T) = e^{A_1(t,T)}$,
+$$
+A_1(t,T) = \bigg(b - \frac{\sigma^2}{2a^2}\bigg)\Big(A_2(t,T) - (T - t)\Big) - \frac{\sigma^2}{4 a} A_2(t,T)^2
+$$</p>
+<br/>
+</blockquote>
+<br/>
+<blockquote>
+<p><strong>Property 3:</strong></p>
+<p>Under Vasicek, the continuously compounded risk-free interest rate $R(t,T)$ which prevails at time $t$ with a term of $T-t$ is:
+$$
+R(t,T) = - \frac{1}{T-t} \Big(A_1(t,T) - A_2(t,T) \, r_t \Big)
+$$</p>
+<ul>
+<li>This shows that the entire term structure at time $t$ can be determined as a function of $r_t$ once $a$, $b$, and $\sigma$ have been chosen.</li>
+<li>The rate $R(t,T)$ is linearly dependent on $r_t$, which means that the value of $r_t$ determines the level of the term structure at time $t$.</li>
+<li>The shape of the term structure at time $t$ is independent of $r_t$, but does depend on $t$.</li>
+</ul>
+<br/>
+</blockquote>
+<br/>
+<blockquote>
+<p><strong>Proof:</strong></p>
+<p>Since $R(t,T)$ be the continuously compounded risk-free interest rate at time $t$ for a term of $T-t$:
+$$
+B(t,T) = e^{- R(t,T) \, (T-t)}
+$$</p>
+<p>Solving for $R(t,T)$, we have:
+$$
+R(t,T) = - \frac{1}{T-t} \ln [B(t,T)] \tag{1}
+$$</p>
+<p>Then, from the previous property, the price of a ZCB under Vasicek is:
+$$
+B(t,T) = e^{A_2(t,T)-A_1(t,T) \, r_t} \tag{2}
+$$</p>
+<p>Plugging $(2)$ in $(1)$, we have:
+$$
+R(t,T) = - \frac{1}{T-t} \Big(A_1(t,T) - A_2(t,T) \, r_t \Big)
+$$</p>
+<br/>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Cox-Ingersoll-Ross-(CIR)-Model"><font color="red"><strong>Cox-Ingersoll-Ross (CIR) Model</strong></font><a class="anchor-link" href="#Cox-Ingersoll-Ross-(CIR)-Model">¶</a></h3><p>The CIR model is a one factor model of the spot rate $r_t$. It supposes that the spot rate follows an Ornstein-Uhlenbeck process (mean-reverting), with $a, b, \sigma &gt; 0$, where $b$ is the long term observed interest rate and $a$ is the reversion speed.</p>
+<p>$$
+dr_t = a (b-r_t) dt + \sigma \sqrt{r} \, dB_t
+$$</p>
+<br/>
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/cir_animation_VF.gif" width="900"/>
+</div>
+<br/>
+<p>CIR has the same mean-reverting drift as Vasicek, but the standard deviation of the change in the short rate in a short period of time is proportional to $\sqrt{r}$.</p>
+<ul>
+<li>As the short-term interest rate increases, the standard deviation increases</li>
+<li>As the short-term interest rate decreases, the standard deviation decreases, not allowing $r$ to become negative<ul>
+<li>As $r \rightarrow 0^+$: the drift stays positive and approaches $ab\, dt$, the stochastic term becomes zero and the rate $r$ climbs back to positive values again</li>
+</ul>
+</li>
+</ul>
+<br/>
+<blockquote>
+<p><strong>Property 1:</strong></p>
+<p>The price of a ZCB under CIR is:
+$$
+B(t,T) = A(t,T) e^{-A_2(t,T) \, r_t}
+$$</p>
+<p>where
+\begin{align}
+A_2(t,T) &amp;= \frac{2 (e^{\gamma (T-t)} - 1)}{(\gamma + a)(e^{\gamma (T-t)} - 1) + 2\gamma} \\
+A(t,T) &amp;= \bigg( \frac{2 \gamma e^{(a+\gamma)(T-t)/2}}{(\gamma + a)(e^{\gamma (T-t)} - 1) + 2\gamma}\bigg)^{2ab/\sigma^2} \\
+\end{align}</p>
+<p>and $\gamma = \sqrt{a^2 + 2 \sigma^2}$</p>
+<br/>
+</blockquote>
+<br/>
+<blockquote>
+<p><strong>Proof:</strong></p>
+<p>Let the dynamic of $r$ follow the process:
+$$
+dr = m(r,t) \, dt + s(r,t) \, dB_t
+$$</p>
+<p>We proceed the same way as in the proof of <i>Property 2</i> in Vasicek's model, with $m=a(b-r)$ and $s=\sigma \sqrt{r}$</p>
+<br/>
+</blockquote>
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/Vasicek_CIR.JPG" width="700"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Two-factor-Models:">Two-factor Models:<a class="anchor-link" href="#Two-factor-Models:">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Vasicek-Model-(Two-factor)"><font color="red"><strong>Vasicek Model</strong> (Two-factor)</font><a class="anchor-link" href="#Vasicek-Model-(Two-factor)">¶</a></h3><p>$$
+dr = (u-ar) \, dt + \sigma_1 \, dB_{1,t} \\
+du = -bu \, dt + \sigma_2 \, dB_{2,t}
+$$</p>
+<p>In this extended model, the mean reverting parameter $\frac{u}{a}$ is a stochastic process.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Longstaff-and-Schwartz-Model"><font color="red"><strong>Longstaff and Schwartz Model</strong></font><a class="anchor-link" href="#Longstaff-and-Schwartz-Model">¶</a></h3><p>$$
+dr_t = \kappa (\theta_t - r_t) \, dt + \sigma_r \, dB_{r,t} \\
+d\theta_t = \alpha (\bar{\theta} - \theta_t) \, dt + \sigma_{\theta} \, dB_{\theta,t}
+$$</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The disadvantage of the equilibrium models we have presented is that they do not automatically fit today’s term structure of interest rates. By choosing the parameters judiciously, they can be made to provide an approximate fit to many of the term structures that are encountered in practice. But the fit is not an exact one.</p>
+<br/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="No-Arbitrage-Models:"><font color="#191970"><strong>No-Arbitrage Models:</strong></font><a class="anchor-link" href="#No-Arbitrage-Models:">¶</a></h2><p>A no-arbitrage model is a model designed to be exactly consistent with today’s term structure of interest rates:</p>
+<ul>
+<li>In an equilibrium model, the drift of the short rate (i.e., the coefficient of dt) is not usually a function of time</li>
+<li>In a no-arbitrage model, the drift is, in general, dependent on time<ul>
+<li>It's because the shape of the initial zero curve governs the average path taken by the short rate in the future in a no-arbitrage model.<ul>
+<li>If the zero curve is steeply upward-sloping for maturities between $t_1$ and $t_2$, then $r$ has a positive drift between these times</li>
+<li>If it is steeply downward-sloping for these maturities, then $r$ has a negative drift between these times</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>The essential difference between an equilibrium and a no-arbitrage model is therefore as follows:</p>
+<ul>
+<li>In an equilibrium model, today’s term structure of interest rates is an output</li>
+<li>In a no-arbitrage model, today’s term structure of interest rates is an input</li>
+</ul>
+<p>Some equilibrium models can be converted to no-arbitrage models by including a function of time in the drift of the short rate.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="One-factor-Models:">One-factor Models:<a class="anchor-link" href="#One-factor-Models:">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Ho-&amp;-Lee-Model"><font color="red"><strong>Ho &amp; Lee Model</strong></font><a class="anchor-link" href="#Ho-&amp;-Lee-Model">¶</a></h3><p>Originally presented the model in the form of a binomial tree of bond prices with two parameters:</p>
+<ul>
+<li>short-rate standard deviation</li>
+<li>market price of risk of the short rate</li>
+</ul>
+<p>The continuous-time limit of the model in the traditional risk-neutral world is:
+$$
+dr = \theta(t) dt + \sigma dB_t
+$$</p>
+<p>with $\sigma$ the instantaneous standard deviation of the short rate being constant and $\theta(t)$ a function of time chosen to ensure that the model fits the initial term structure.</p>
+<ul>
+<li>$\theta(t)$ defines the average variation of the short rate and does not depend on the level of $r$</li>
+</ul>
+<p>Ho and Lee’s parameter that concerns the market price of risk is irrelevant when the model is used to price interest rate derivatives.</p>
+<p>$$
+\theta(t) = \frac{\partial}{\partial t} F(0,t) + \sigma^2 t
+$$</p>
+<p>where $F(0,t)$ is the instantaneous forward rate for a maturity $t$ as seen at time zero.</p>
+<p>As an approximation, $\theta(t)$ equals $F(0,t)$:</p>
+<ul>
+<li>The average direction that the short rate will be moving in the future is approximately equal to the slope of the instantaneous forward curve</li>
+<li>And a normally distributed uncertainty $\sigma dB_t$ adds up to this trend</li>
+</ul>
+<br/>
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/Ho_Lee.JPG" width="700"/>
+</div>
+<br/>
+<p>The price of a ZCB under Ho &amp; Lee is:
+$$
+B(t,T) = A(t,T) e^{-r_t (T-t)}
+$$</p>
+<p>where
+$$
+\ln A(t,T) = \ln \bigg(\frac{B(0,T)}{B(0,t)} \bigg) + (T-t) F(0,T) - \frac{1}{2} \sigma^2 t (T-t)^2
+$$</p>
+<p><strong>Volatility:</strong></p>
+<p>In the Ho &amp; Lee model, the volatility is the same for all maturities</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Hull-White-Model-(One-factor)"><font color="red"><strong>Hull-White Model</strong> (One-factor)</font><a class="anchor-link" href="#Hull-White-Model-(One-factor)">¶</a></h3><p>Hull and White extends the Vasicek model to provide an exact fit to the initial term structure:
+\begin{align}
+dr &amp;= [\theta(t) - ar] \, dt + \sigma dB_t \\
+   &amp;= a \bigg[\frac{\theta(t)}{a} - r \bigg] \, dt + \sigma dB_t
+\end{align}</p>
+<p>Hull &amp; White can be seen as:</p>
+<ul>
+<li>the Ho–Lee model with mean reversion at rate $a$ (the Ho &amp; Lee model is a particular case of the Hull &amp; White model with $a=0$)</li>
+<li>the Vasicek model with a time-dependent reversion level</li>
+</ul>
+<p>$\theta(t)$ is derived from the inital term structure:
+$$
+\theta(t) = \frac{\partial}{\partial t} F(0,t) + a F(0,t) + \frac{\sigma^2}{2a} (1 - e^{-2at})
+$$</p>
+<p>The last term is usually fairly small. If we ignore it:</p>
+<ul>
+<li>The drift of the process for $r$ at time $t$ is: $\frac{\partial}{\partial t} F(0,t) + a [F(0,t) - r]$</li>
+<li>On average, $r$ follows the slope of the initial instantaneous forward rate curve</li>
+</ul>
+<br/>
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/Hull_White.JPG" width="700"/>
+</div>
+<br/>
+<p>The bond price at time $t$ under the Hull &amp; White model is:
+$$
+B(t,T) = A_1(t,T) e^{-A_2(t,T) \, r_t}
+$$</p>
+<p>where
+\begin{cases}
+A_2(t,T) = \frac{1-e^{-a(T-t)}}{a} \\
+\ln A_1(t,T) = \ln \frac{B(0,T)}{B(0,t)} + A_2(t,T) F(0,t) - \frac{1}{4a^3} \sigma^2 (e^{-aT} - e^{-at})^2 (e^{2at} - 1) 
+\end{cases}</p>
+<p><strong>Volatility:</strong></p>
+<p>In the one-factor Hull &amp; White model, the volatility is a declining function of maturity due to the effect of mean reversion</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Black-Derman-Toy-Model"><font color="red"><strong>Black-Derman-Toy Model</strong></font><a class="anchor-link" href="#Black-Derman-Toy-Model">¶</a></h3><p>$$
+d \ln r = [\theta(t) - a(t) \ln r] \, dt + \sigma(t) dB_t
+$$</p>
+<p>where
+$$
+a(t) = - \frac{\sigma'(t)}{\sigma(t)}
+$$</p>
+<p>Advantages:</p>
+<ul>
+<li>The short-term interest rate cannot become negative (contrary to Ho–Lee and Hull–White)</li>
+<li>The Brownian motion $dB_t$ can cause $\ln(r)$ to be negative, but $r$ itself is always positive</li>
+</ul>
+<p>Drawbacks:</p>
+<ul>
+<li>There are no analytic properties of this model</li>
+<li>The way the tree is constructed imposes a relationship between the volatility parameter $\sigma(t)$ and the reversion rate parameter $a(t)$:<ul>
+<li>The reversion rate is positive only if the volatility of the short rate is a decreasing function of time</li>
+</ul>
+</li>
+</ul>
+<p>In practice, the most useful version of the model is when $\sigma(t)$ is constant:</p>
+<ul>
+<li>The parameter $a = 0$, so that there is no mean reversion and the model reduces to:
+<br/>
+$\; d \ln r = \theta(t) dt + \sigma dB_t$</li>
+<li>This can be seen as a lognormal version of the Ho &amp; Lee model</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Black%E2%80%93Karasinski-Model"><font color="red"><strong>Black–Karasinski Model</strong></font><a class="anchor-link" href="#Black%E2%80%93Karasinski-Model">¶</a></h3><p>Extension of the Black–Derman–Toy model where the reversion rate and volatility are determined independently of each other:
+$$
+d \ln r = [\theta(t) - a(t) \ln r] \, dt + \sigma(t) dB_t
+$$</p>
+<p>The model is the same as Black–Derman–Toy model except that there is no relation between $a(t)$ and $\sigma(t)$.</p>
+<p>In practice, $a(t)$ and $\sigma(t)$ are often assumed to be constant, so that the model becomes:
+$$
+d \ln r = [\theta(t) - a \ln r] \, dt + \sigma dB_t
+$$</p>
+<p>The $\theta(t)$ function is determined to provide an exact fit to the initial term structure of interest rates.</p>
+<br/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Two-factor-Models:">Two-factor Models:<a class="anchor-link" href="#Two-factor-Models:">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Hull-White-Model-(Two-factor)"><font color="red"><strong>Hull-White Model</strong> (Two-factor)</font><a class="anchor-link" href="#Hull-White-Model-(Two-factor)">¶</a></h3><p>Extends the two-factor vasicek model to make it a no-arbitrage model:
+$$
+d f(r) = [\theta(t) + u - a f(r)] \, dt + \sigma_1 \, dB_{1,t}
+$$
+$$
+du = - bu \, dt + \sigma_2 \, dB_{2,t}
+$$</p>
+<ul>
+<li>$f(r)$ is a function of $r$</li>
+<li>$u$ has an initial value of zero</li>
+<li>$u$ is a component of the reversion level of $f(r)$ and reverts to a level of zero at rate $b$</li>
+<li>$B_1$ and $B_2$ are Brownian motions with instantaneous correlation of $\rho$</li>
+<li>$\theta(t)$ is chosen to make the model consistent with the initial term structure</li>
+</ul>
+<p><strong>Volatility:</strong></p>
+<p>In the two-factor Hull-White model, the volatility has a "humped" look when parameters are chosen appropriately</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="G2++-Model"><font color="red"><strong>G2++ Model</strong></font><a class="anchor-link" href="#G2++-Model">¶</a></h3><p>The G2++ model assumes that the instantaneous short rate $r_t$ is driven by two Gaussian factors, $x_t$ and $y_t$.</p>
+<ul>
+<li>$x_t$ and $y_t$ follow mean-reverting Ornstein-Uhlenbeck processes</li>
+<li>$\phi(t)$ is a deterministic function chosen to fit the initial yield curve</li>
+<li>$W^x_t$ and $W^y_t$ are correlated Brownian motions, with correlation $\rho$</li>
+</ul>
+<p>\begin{align}
+r_t &amp;= x_t + y_t + \phi(t) \\
+dx_t &amp;= -a x_t dt + \sigma_x dW^x_t \\
+dy_t &amp;= -b y_t dt + \sigma_y dW^y_t \\
+&amp;dW^x_t \, dW^y_t = \rho dt
+\end{align}</p>
+<br/>
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Forward-Interest-Rate-Models"><font color="#191970"><strong>Forward Interest Rate Models</strong></font><a class="anchor-link" href="#Forward-Interest-Rate-Models">¶</a></h1><p>Two limitations of the short-term interest rate models are that:</p>
+<ul>
+<li>Most involve only one factor (i.e., one source of uncertainty)</li>
+<li>They do not give the user complete freedom in choosing the volatility structure</li>
+</ul>
+<p>By making the parameters $a$ and $\sigma$ functions of time in the previous models, we can make them fit the volatilities observed in the market today, but the volatility term structure is then non-stationary. The volatility structure in the future is liable to be quite different from that observed in the market today.</p>
+<p>Forward rate models:</p>
+<ul>
+<li>fit the term structure</li>
+<li>give more flexibility in specifying the volatility environment</li>
+<li>allow several factors to be used</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Health,-Jarrow-&amp;-Morton-(HJM)"><font color="red"><strong>Health, Jarrow &amp; Morton (HJM)</strong></font><a class="anchor-link" href="#Health,-Jarrow-&amp;-Morton-(HJM)">¶</a></h3><p>HJM specify the no-arbitrage conditions that must be satisfied by a model of the yield curve.</p>
+<p><strong>One-factor version:</strong></p>
+<p>In the risk-neutral world, a ZCB must have a return of $r$:
+$$
+dB(t,T) = r_t B(t,T) dt + \nu (t,T, \Omega_t) B(t,T) dB_t
+$$</p>
+<p>where:</p>
+<ul>
+<li>$B(t,T)$ is the price at time $t$ of a risk-free ZCB with principal $1€$ maturing at time $T$</li>
+<li>$\Omega_t$ is the vector of past and present values of interest rates and bond prices at time $t$ used to determine bond price volatilities at that time</li>
+<li>$\nu (t,T, \Omega_t)$ is the volatility of $B(t,T)$</li>
+</ul>
+<p>Because a bond's price volatility decline to zero at maturity, we must have: $\; \nu (T,T, \Omega_T) = 0$</p>
+<p>$$
+dF(t,T) = \nu (t,T, \Omega_t) \, \nu_T (t,T \Omega_t) \, dt - \nu_T(t, T, \Omega_t) \, dB_t
+$$</p>
+<p>Thus, we see that there is a link between the drift and standard deviation of an instantaneous forward rate.</p>
+<p>If $\; dF(t,T) = m(t,T,\Omega_t) \, dt + s(t,T, \Omega_t) \, dB_t$:
+$$
+m(t,T,\Omega_t) = s(t,T, \Omega_t) \int_t^T s(t, \tau, \Omega_t) \, d\tau
+$$</p>
+<p><strong>Extension to several factors:</strong></p>
+<p>Suppose:
+$$
+dF(t,T) = m(t,T,\Omega_t) \, dt + \sum_k s_k(t,T, \Omega_t) \, dB_{k,t}
+$$</p>
+<p>We have:
+$$
+m(t,T,\Omega_t) = \sum_k s_k(t,T, \Omega_t) \int_t^T s(t, \tau, \Omega_t) \, d\tau
+$$</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Brace,-Gatarek-&amp;-Musiela-(BGM)-also-called-LIBOR-Market-Model-(LMM)"><font color="red"><strong>Brace, Gatarek &amp; Musiela (BGM)</strong></font> also called <font color="red"><strong>LIBOR Market Model (LMM)</strong></font><a class="anchor-link" href="#Brace,-Gatarek-&amp;-Musiela-(BGM)-also-called-LIBOR-Market-Model-(LMM)">¶</a></h3><p>One drawback of the HJM model is that it is expressed in terms of instantaneous forward rates and these are not directly observable in the market. Another related drawback is that it is difficult to calibrate the model to prices of actively traded instruments.</p>
+<p>The BGM/LMM is expressed in terms of the forward rates that traders use in conjunction with LIBOR discounting:</p>
+<p>Today, the LIBOR has been removed from the market</p>
+<p><strong>One-factor version:</strong></p>
+<p>In a world that is forward risk neutral with respect to $B(t,t_{k+1})$, $F(t, t_k, t_{k+1})$ is a martingale:
+$$
+dF(t, t_k, t_{k+1}) = \sigma_k(t) \, F(t, t_k, t_{k+1}) \, dB_t
+$$</p>
+<p>where $\sigma_k(t)$ is the volatility of $F(t, t_k, t_{k+1})$ at time $t$</p>
+<p>Rolling forward risk-neutral world:</p>
+<ul>
+<li>In practice, it is often most convenient to value interest rate derivatives by working in a world that is always forward risk neutral with respect to a bond maturing at the next reset date</li>
+</ul>
+<br/>
+<hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Interest-Rate-Trees"><font color="#191970"><strong>Interest Rate Trees</strong></font><a class="anchor-link" href="#Interest-Rate-Trees">¶</a></h1><p>The main difference between interest rate trees and stock price trees is in the way that discounting is done. In a stock price tree, the discount rate is usually assumed to be the same at each node or a function of time. In an interest rate tree, the discount rate varies from node to node.</p>
+<p>It often proves to be convenient to use a trinomial rather than a binomial tree for interest rates. The main advantage of a trinomial tree is that it provides an extra degree of freedom, making it easier for the tree to represent features of the interest rate process such as mean reversion.</p>
+<p>using a trinomial tree is equivalent to using the explicit finite difference method.</p>
+<br/>
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/trinomial_trees.JPG" width="500"/>
+</div>
+<br/>
+<ul>
+<li>Left: the usual branching <i>"up one/straight along/down one"</i></li>
+<li>Middle: alternative <i>"up two/up one/straight along"</i><ul>
+<li>useful for incorporating mean reversion when interest rates are very low</li>
+</ul>
+</li>
+<li>Right: <i>"straight along/down one/down two"</i><ul>
+<li>useful for incorporating mean reversion when interest rates are very high</li>
+</ul>
+</li>
+</ul>
 </div>
 </div>
 </div>
