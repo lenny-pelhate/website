@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Finance Interview Questions</title>
+</head>
+<body>
+    <h1>Market Finance Interview Questions</h1>
+    
+    <h2>Table of Contents</h2>
+    <ul>
+        <li><a href="#basic-knowledge">I. Basic Knowledge in Finance</a></li>
+        <li><a href="#economics">II. Knowledge in Economics and Financial Markets</a></li>
+        <li><a href="#portfolio-management">III. Portfolio Management</a></li>
+        <li><a href="#stochastic-modeling">IV. Stochastic Modeling</a></li>
+        <li><a href="#payoffs">V. Payoffs and Sensitivities</a></li>
+        <li><a href="#computing">VI. Computing</a></li>
+        <li><a href="#fit-questions">VII. "Fit" Questions</a></li>
+    </ul>
+    
+    <h2 id="basic-knowledge">I. Basic Knowledge in Finance</h2>
+    <ul>
+        <li>What is a forward contract? What is the forward price? What are the differences between a forward contract and a futures contract?</li>
+        <li>What is a call, an Asian option, a lookback option, a barrier option (up and out, etc.), a digital option, a Bermudan option, a bond, an interest rate swap, a swaption, a caplet, a floorlet...?</li>
+        <li>What is a European/American option? Vanilla/exotic? Path-dependent?</li>
+        <li>What is a CDS? A CDO? An ABS? An RMBS?</li>
+        <li>What is an interest rate? A repo rate? A dividend?</li>
+        <li>What is volatility? Historical volatility? Implied volatility? What is the relationship between implied volatility and historical volatility?</li>
+        <li>What is the volatility smile? Why is it not flat? What is the typical shape of a volatility smile for an index? For forex? Why?</li>
+        <li>What is the Sharpe ratio? The beta and alpha of a security?</li>
+        <li>What are the "Greeks"? What do they represent and what are they used for?</li>
+        <li>What are the different types of correlation?</li>
+        <li>What is the AOA hypothesis? Why is this assumption made? Is it realistic in the market?</li>
+        <li>What assumptions are commonly made in most models? Is there a link to the AOA?</li>
+        <li>What is a risk-neutral probability? What is its purpose? What is the relationship between AOA and risk-neutral probability?</li>
+        <li>What is the put-call parity relationship? Is it always an equality?</li>
+        <li>Can you establish a relationship between spot and forward exchange rates?</li>
+        <li>What are the upper and lower bounds of the price of a European call?</li>
+        <li>Why is the price of a European call convex concerning the strike? Is it the same for a put?</li>
+        <li>What is alternative management? What is traditional management? What is asset management?</li>
+        <li>What is a Hedge Fund?</li>
+        <li>What is cushion management? A CPPI? An OBPI?</li>
+        <li>What is a tracker? A reference portfolio?</li>
+        <li>Name different types of mutual funds and leveraged instruments.</li>
+        <li>Assume the 4-year risk-free rate is 2.1%. What is the present value of the 4-year zero coupon bond?</li>
+        <li>Define derivatives? Structured products?</li>
+        <li>Define the following products and draw their payoff diagrams: Call, Put</li>
+        <li>What is volatility? Draw the "Volatility Smile".</li>
+        <li>Name five "Greeks" and explain the definition of Vega.</li>
+        <li>Assume a call and a put on the same underlying asset, with the same maturity and strike price. Which one is more expensive? Why?</li>
+        <li>Analyze the payoff of optional strategies (combination of calls/puts like Butterfly, Call Spread).</li>
+        <li>Present two hedging strategies in the foreign exchange market, name their benefits and drawbacks</li>
+        <li>Impact of movements on the price of a call option:</li>
+        <ul>
+            <li>Increase in the underlying asset price</li>
+            <li>Increase in the underlying asset volatility</li>
+            <li>Increase in interest rates</li>
+        </ul>
+        <li>What is the pricing formula for a forward contract? What is the delta of the forward contract? Which elements of the formula present estimation risks?</li>
+        <li>You have a perfectly hedged forward position. Interest rates increase by 5%. What is the impact on your portfolio?</li>
+    </ul>
+    
+    <h2 id="economics">II. Knowledge in Economics and Financial Markets</h2>
+    <ul>
+        <li>Name 5 European indices, 3 American indices, and 2 Japanese indices.</li>
+        <li>What is the current value of the CAC 40?</li>
+        <li>What is the name of the main German index?</li>
+        <li>How many stocks are in the Nikkei index?</li>
+        <li>What is the name of the second index of the Tokyo Stock Exchange?</li>
+        <li>What are the current central bank interest rates of the ECB and the Fed?</li>
+        <li>Mention a significant financial news event from the last few days or the past year and explain why it is important.</li>
+        <li>What is Alternative Management?</li>
+        <li>What is the trend of European and global stock market indices for the month and the year?</li>
+        <li>What is the current price of a barrel of Brent oil?</li>
+        <li>What is the current Euro-Dollar exchange rate? When we say Euro-Dollar, does it mean 1 Euro for X Dollars or 1 Dollar for X Euros?</li>
+        <li>If the CAC 40 loses 50% of its value, how much does it need to increase to return to flat? The same question for a 60% loss.</li>
+        <li>What is an Interest Rate Swap? A Cap and a Floor?</li>
+        <li>What is the influence of central bank policies on the behavior of the interest rate market?</li>
+        <li>What effect is caused by a central bank's monetary injection?</li>
+        <li>What is the influence of a decrease in key interest rates on the equity market?</li>
+        <li>Who are the different "players" in a financial market?</li>
+        <li>What are the different interest rates and/or rate conventions you know?</li>
+        <li>Is it possible for interest rates to be negative?</li>
+        <li>What can be said about the empirical evolution of the yield curve?</li>
+        <li>What are the main differences between an organized market and an OTC market?</li>
+        <li>What products can be found on OTC markets that are not available on an organized market?</li>
+        <li>What do you think about the current economy? Its short-term evolution?</li>
+        <li>What do you think of OPEC?</li>
+        <li>What is the concept of the "invisible hand"? Who introduced it?</li>
+        <li>What are the different financial market crises you know? What were their causes?</li>
+        <li>You have 1 million euros. What do you do with it?</li>
+        <li>What different market indicators are monitored in a trading room?</li>
+        <li>What are the different types of risks that can be encountered in a trading room?</li>
+        <li>In the Basel II agreements, how much capital must a bank hold?</li>
+    </ul>
+    
+    <h2 id="portfolio-management">III. Portfolio Management</h2>
+    <ul>
+        <li>What is the market for tennis balls in France?</li>
+        <li>A company has 50 in equity, 50 in debt, invests 100 at a 6% return rate, what is its ROE? (Assuming a debt rate of 4%)</li>
+        <li>What are the different asset classes?</li>
+    </ul>
+    
+    <h2 id="stochastic-modeling">IV. Stochastic Modeling</h2>
+    <ul>
+        <li>What is the definition of a Brownian motion? A Lévy process?</li>
+        <li>Why do we choose a Brownian motion for modeling? What is the problem with this model? What can be done to remedy it? Is it effective? What happens if one or more of the 3 fundamental properties of Brownian motion are removed?</li>
+        <li>State the Itô's formula: classical, in the case where the function depends on time, when the function is not C², when the underlying asset has jumps, and in the multidimensional case. Prove these formulas.</li>
+        <li>Resolve the Black-Scholes and Ornstein-Uhlenbeck SDEs. Are the solutions unique? What are the distributions of these processes?</li>
+        <li>What is the SDE of the CIR model? What is the condition for the CIR process to be positive? How do you solve this SDE? What problems are encountered and how can they be remedied?</li>
+        <li>What is the Lévy process representation theorem?</li>
+        <li>State Girsanov's theorem. What is it used for in finance?</li>
+        <li>What is the relationship between Itô processes and PDEs? (Feynman-Kac formula)</li>
+        <li>What is the principle of the Monte Carlo method? What variance reduction methods do you know?</li>
+        <li>How do you simulate Brownian motion? A Poisson process?</li>
+        <li>How do you solve a PDE?</li>
+        <li>What is calibration? What is it used for?</li>
+        <li>What is the advantage of PDE-based valuation over Monte Carlo method valuation?</li>
+        <li>What is model risk?</li>
+        <li>How can counterparty risk be accounted for? Liquidity risk?</li>
+        <li>What are the assumptions of the Black-Scholes model?</li>
+        <li>What is the diffusion SDE of the underlying asset in this model?</li>
+        <li>What is the interest of this model, and its limitations?</li>
+        <li>What is the formula for the price of a Call? A Put?</li>
+        <li>What are the formulas for the Delta of a Call? A Put?</li>
+        <li>What is the PDE for pricing a vanilla option? How can it be easily derived?</li>
+        <li>Plot the payoff, price, delta, and gamma curves for a call and a put. What happens if dividends (continuous or discrete) are added?</li>
+        <li>What is the Black-Scholes robustness formula?</li>
+        <li>How to price and hedge an option whose payoff is: integral from 0 to T of the indicator function 𝟙<sub>{S<sub>T</sub> &gt; K}</sub>?</li>
+        <li>What is the corresponding system of SDEs?</li>
+        <li>Under what condition is the market complete?</li>
+        <li>What is an exchange option? How is it valued?</li>
+        <li>What is a currency option? Do you know the Garman-Kohlhagen model? How is valuation performed in this model?</li>
+        <li>What is the Black-Scholes robustness formula in the multivariate case?</li>
+        <li>How can jumps be added to a continuous model?</li>
+        <li>What problems arise when adding jumps to a diffusion model?</li>
+        <li>Does a jump model preserve the AOA (Arbitrage Opportunity Absence)? If so, always? If not, in which cases?</li>
+        <li>Is a jump model complete? What are the different hedging methods used in such models?</li>
+        <li>What is the diffusion SDE of the underlying asset in this model?</li>
+        <li>What are the advantages and limitations of this model?</li>
+        <li>What is the relationship between local volatility and Black-Scholes implied volatility?</li>
+        <li>What is the PDE for pricing in a local volatility model?</li>
+        <li>Do you know any examples of local volatility models?</li>
+        <li>In a local volatility model for an equity index, what skew dynamics does the model induce? Is this consistent with what is observed in the market?</li>
+        <li>What stochastic volatility models do you know?</li>
+        <li>What is the diffusion SDE of the underlying asset in such a model?</li>
+        <li>What are the advantages and limitations of these models?</li>
+        <li>What is the replication portfolio of a contingent claim in a stochastic volatility model? What observations can be made about the sensitivities of such a portfolio?</li>
+        <li>How is the pricing PDE derived from the replication portfolio?</li>
+        <li>What is the risk-neutral approach that allows us to derive these results?</li>
+        <li>In a stochastic volatility model for a typical index, how does the implied volatility skew evolve when the volatility/underlying correlation becomes even more negative? When the vol-of-vol increases? And for at-the-money implied volatility?</li>
+        <li>Is there an expression similar to the "robustness formula" in a stochastic volatility model?</li>
+        <li>What interest rate models do you know?</li>
+        <li>What assumption underlies the modeling of interest rate models? What are its consequences on the expression of a zero-coupon bond price? And on the stochastic diffusion of zero-coupon bonds?</li>
+        <li>What is the Vasicek model? How do you price a zero-coupon bond in this model? What is the major problem with this model? What are its advantages?</li>
+        <li>What is the CIR model? What are the advantages and limitations of this model?</li>
+        <li>What is the HJM model? What are the advantages and limitations of this model? What models are derived from the HJM model?</li>
+        <li>What is the Forward Neutral Probability? What classic numéraire change method is used to express the price of an equity option in a stochastic interest rate model?</li>
+        <li>What is the Libor rate? What property does the forward Libor rate have under the Forward Neutral Probability? For which specific Forward Neutral Probability?</li>
+        <li>What is the main drawback of models assuming that the instantaneous short rate follows a log-normal diffusion?</li>
+        <li>What is the BGM model or Libor Market Model? How can this model be improved?</li>        
+    </ul>
+    
+    <h2 id="payoffs">V. Payoffs and Sensitivities</h2>
+    <ul>
+        <li>Why is the price of an American option different from that of a European option?</li>
+        <li>We know there will be a jump in a stock price. What strategy should be adopted?</li>
+        <li>We are short a European call and delta-hedging. We know the underlying will experience a jump. Which direction of the jump is most favorable for us?</li>
+        <li>We are long a put. How can we implement a hedge in Rho?</li>
+        <li>We are long a call. Is it preferable for the underlying to be highly volatile in-the-money, at-the-money, or out-of-the-money?</li>
+        <li>Consider a highly volatile stock that fluctuates around 100. Is it better to be long or short a European call with a strike of 105?</li>
+        <li>Consider a highly volatile stock that fluctuates around 100. We are long a call with a strike of 100. Is it preferable for volatility to be high at the beginning of the option's life or close to maturity?</li>
+        <li>How can an option payoff be replicated using calls? Using both calls and puts?</li>
+        <li>What is the relationship between the gamma and vega of a call? Of an option in general?</li>
+        <li>What is the relationship between the gamma of a call and the delta of a digital option that pays 1 if the underlying exceeds the call's strike at maturity?</li>
+        <li>Is it possible to have a position with positive theta and positive gamma on an underlying?</li>
+        <li>What is the sign of the vega of a call and why? Of a put and why? What is the shape of the vega of a call and why?</li>
+        <li>For an American call paying dividends and deep in the money, how does its intrinsic value evolve with respect to the spot price?</li>
+        <li>What is the gamma of an option? How does it behave in a call spread?</li>
+        <li>We are short a call and delta-hedging. The spot price drops and volatility rises—what should we do?</li>
+        <li>What is vega hedging, and how can it be implemented?</li>
+        <li>Construct a linear combination of vanilla options to create a portfolio with positive gamma and negative vega.</li>
+        <li>What is a barrier option? Is a barrier option more expensive or cheaper than a vanilla option? Why?</li>
+        <li>What is a condor?</li>
+        <li>What is a call spread? Draw the payoff as a function of the underlying's value at maturity.</li>
+        <li>Plot the price of a call spread one year before expiration, then one week before expiration.</li>
+        <li>We are long a call with a strike of 100. The spot price is 105, and we are delta-hedged. What is the approximate delta value of the call?</li>
+        <li>Gamma vs. Theta: trader's P&L</li>
+        <li>Black-Scholes PDE with greeks</li>
+        <li>Show that \( C(\lambda S, \lambda K, T-t) = \lambda C(S, K, T-t) \).</li>
+        <li>What is a proxy formula for an ATM Call, assuming \( r = 0 \)? (Answer in %: \( 0.4\sigma \sqrt{T-t} \)).</li>
+        <li>Retrieve the formula for Delta.</li>
+        <li>Retrieve the formula for Gamma.</li>
+        <li>Is Delta the probability of the option ending up in the money?</li>
+        <li>Where is the gamma maximum?</li>
+        <li>What is the delta of an ATM Call?</li>
+        <li>Plot the price of the call at different volatility levels, different time to maturity.</li>
+        <li>How does the delta change with time?</li>
+        <li>How does the delta change with volatility?</li>
+        <li>How does the gamma change with time?</li>
+        <li>How does the gamma change with volatility?</li>
+        <li>Where is the gamma maximum?</li>
+        <li>Gamma of a straddle?</li>
+        <li>Delta, gamma & volatility of a digital option</li>
+        <li>A trader is long $10mio delta on SPX and does not have any option on SPX. SPX drops 5%, has the trader’s delta changed?</li>
+        <li>You are long 3-month calls strike $150 on Apple. Current spot is $138. The delta is $6mio on that option. Apple moves up to $140, what happens to the delta? To the gamma? Vega? Theta?</li>
+        <li>You purchase a 95% strike put maturity 15 days on SPX and pay 1.15% premium for it on $5mio notional. Can you estimate your daily theta bill?</li>
+        <li>Some traders use calendar days (one week is 7 days with 2 non-worked), some others use business days (5 days per week, ignore the weekend), what are the consequences for the computation of theta?</li>
+        <li>You are long 3-month calls strike $150 on Apple. Current spot is $138. The delta is $6mio on that option. Nothing happens. Tomorrow what will be your delta? Gamma?</li>
+        <li>Draw the final payout of call spread, strikes 100% and 120%. Draw the value before maturity, the delta, gamma, vega, theta as a function of Spot.</li>
+        <li>What is the delta of a call at the money?</li>
+        <li>What do you think of this alternative hedging strategy if you were to hedge one short call option: if the stock is below the strike, you have no hedge, when the stock passes through the strike K, you buy one stock at price K. If later on it goes back down and below K, you sell it at price K. So the strategy has zero cost and matches your liability: in other words, you pocket the premium and do not spend it.</li>
+        <li>Do you prefer to be long gamma or short gamma?</li>
+        <li>What is the relationship between vega and gamma in Black-Scholes?</li>
+        <li>You bought an option and “paid” 19 vol. You rehedge it continuously in a Black-Scholes world, the realized vol over the life of the option is 21, will you make or lose money?</li>
+        <li>Volatility smile of a spread option</li>
+        <li>You believe the skew of SPX is too high versus the skew of NDX, can you suggest a trade? What are the main risks?</li>
+        <li>The trade consisting in going short the vol of an Index and going long the vols of the members of that index is called a “dispersion” trade. Can you explain why?</li>
+        <li>You believe that short term skew on SX5E is too low versus long term skew, what trade would you suggest? What are the things you may want to pay attention to?</li>
+        <li>The current 1-week implied vol of MSFT is 32. What is the daily move that you need to break even? MSFT is going to publish its results in 3 days, what can you expect?</li>
+        <li>We learn that an important announcement will be made regarding the underlying. Are we still delta-hedged? If yes, why? If no, what should we do to hedge?</li>
+        <li>What is the delta of an at-the-money call when the underlying is a CPPI?</li>
+        <li>Draw the payoff of a digital option. Assume, for simplicity, that interest rates are zero. Plot the price, delta, and gamma (independent of any model). Plot the same curves when very close to maturity.</li>
+        <li>Assume the expiration is tomorrow, we are short a digital option, and the strike is 100. What hedging strategy can be implemented using only the underlying?</li>
+        <li>What static strategy could have been implemented on the day the option was sold using calls and puts?</li>
+        <li>We are short a single-underlying call and delta-hedging using the Black-Scholes model:</li>
+        <li>In a Black-Scholes world, what is the final P&L?</li>
+        <li>In a Black-Scholes world, how does the final P&L vary if we hedge discretely? What terms contribute to the "dispersion" of the P&L?</li>
+        <li>In a NON-Black-Scholes world but still hedging using the BS model, what is the final P&L? And in the case of multiple underlyings?</li>
+        <li>We calculate our price and Greeks for an American call in a continuous model on a dividend-paying stock. How do vega (and other sensitivities) change when switching to a discrete model?</li>
+        <li>Why is a call spread said to be very sensitive to the volatility smile?</li>
+        <li>The spot price is 100. You are long an in-the-money call spread (90/100). What is the direction of vega on your position?</li>
+        <li>You are long a butterfly spread. What happens to your P&L if the underlying experiences extreme price movements? What are your expectations regarding convexity?</li>
+        <li>You are long a straddle. Are you gamma positive or negative? Are you buying or selling volatility?</li>
+        <li>If you are long a 1-year straddle with a 100% strike and 1-year maturity while being short another straddle with the same strike but 2-year maturity, what is your volatility strategy?</li>
+        <li>How can you construct an options portfolio that is both gamma positive and theta positive?</li>
+        <li>Consider an Asian option A with a 1-year maturity where the underlying value is the arithmetic average over the product's lifetime.</li>
+        <li>Now consider another Asian option B with the same maturity, where the strike value is an arithmetic average of different strikes over the product's lifetime.</li>
+        <li>Which option is more expensive? Justify your answer.</li>
+        <li>How does the delta of a call spread evolve? Plot its evolution as a function of the spot price. Explain.</li>
+        <li>What do you notice when comparing a 1-year call spread with a 1-year digital option? Conclude.</li>
+        <li>Consider a long position on a 1-year maturity Call Up and Out option with a strike of 100 and a barrier at 120. If the spot price is close to the barrier, what is the trader’s delta position on the product? Why?</li>
+        <li>What is a variance swap? Why is the price of a variance swap higher than the implied volatility of an at-the-money call?</li>
+        <li>How can you hedge an Asian option with European calls?</li>
+        <li>What is the sign of the correlation sensitivity of a worst-off call?</li>
+        <li>Consider two stocks, A and B, both priced at 100. You are long a binary option that pays 1 if the best-of the two stocks reaches or exceeds 110. What is the gamma sign when considering only stock A? Only stock B? What is its sign when considering both A and B? Why does this change?</li>
+        <li>What is the sign of correlation sensitivity for a basket option? A Best-Of call? A Worst-Of put? A call on a basket? Justify your answers.</li>
+        <li>What is the sign of quanto correlation sensitivity (correlation between the underlying and the exchange rate) for a currency forward?</li>
+        <li>Do you know any options that have negative vega?</li>
+        <li>How do you price a call option on a bond that pays coupons?</li>
+        <li>How does the price of a bond change when the yield increases by 1%?</li>
+        <li>The yield increases by 1% and then instantly drops back by 1%. What is the bond’s value compared to its previous value?</li>
+        <li>How do you value an interest rate swap? A 5-year interest rate swap is booked—what is its price today? One year later, what is the price of the swap? If the floating rate spikes, how much is the swap worth?</li>
+        <li>What is a swaption? How is it valued?</li>
+        <li>What are Caps and Floors? Caplets and Floorlets? How are they priced?</li>
+        <li>You are long a call option on the EUR/USD exchange rate. The Fed announces a 50 basis point increase in the Fed funds rate. If you want to delta-hedge, should you buy or sell currency?</li>
+        <li>What is the forward rate? What is the par yield?</li>
+        <li>What is the relationship between the forward rate and the instantaneous forward rate?</li>
+        <li>What can be said about the relative positions of the par yield curve, the zero-coupon yield curve, and the forward rate curve?</li>                        
+    </ul>
+    
+    <h2 id="computing">VI. Computing</h2>
+    <p>C++</p>
+    <ul>
+        <li>What is a pointer? A reference? An "lvalue"? A class? A method?</li>
+        <li>What is the difference between the expressions "i++" and "++i"?</li>
+        <li>What is the conditional operator? The sequential operator?</li>
+        <li>In a class, what are the constructor/destructor? The copy constructor? In which case is the copy constructor used? What else is needed?</li>
+        <li>What is multiple inheritance? Polymorphism? A "friend" function? A pure virtual class?</li>
+        <li>What is the purpose of the "default" keyword?</li>
+        <li>If we declare the following array "int t[5][3]", which other element in the array "t" corresponds to the element t[0][5]?</li>
+    </ul>
+
+    <p>VBA</p>
+    <ul>
+        <li>What does Option Explicit mean? Option Base 1?</li>
+        <li>How do you simulate a Gaussian variable (in one line of code)?</li>
+        <li>How do you plot a graph? Print?</li>
+        <li>How do you create a structure?</li>
+        <li>What is a class module?</li>
+        <li>What is the difference between a procedure (sub) and a function?</li>
+    </ul>
+
+    <p>SQL</p>
+    <ul>
+        <li>What basic functions do you know in SQL?</li>
+        <li>How do you perform a join between tables?</li>
+        <li>How do you apply a "where" clause on a grouping?</li>
+        <li>What does the "decode" function do?</li>
+        <li>How many "outer joins" can a table have?</li>
+    </ul>
+    
+    <h2 id="fit-questions">VII. "Fit" Questions</h2>
+    <ul>
+        <li>Introduce yourself in 3 minutes.</li>
+        <li>Give me one word that defines you.</li>
+        <li>What are your particular skills?</li>
+    </ul>
+</body>
+</html>
