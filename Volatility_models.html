@@ -7516,11 +7516,704 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Volatility-Models"><font color="#191970"><strong>Volatility Models</strong></font><a class="anchor-link" href="#Volatility-Models">¶</a></h1><p>There are two main categories of volatility models:</p>
+<ul>
+<li><font color="#191970"><strong>Local volatility models:</strong></font><ul>
+<li>The volatility is a function of both the current asset level $S_t$ and of time $t$ only</li>
+</ul>
+</li>
+<li><font color="#191970"><strong>Stochastic volatility models:</strong></font><ul>
+<li>The instantaneous volatility is not just a function of the asset level $S_t$, but depends also on a new "global" randomness coming from an additional random component (i.e. another Brownian motion)</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <div style="text-align: center;">
 <img alt="No description has been provided for this image" src="./media/Vol_category.JPG" width="900"/>
 </div>
 <br/>
-<p>Coming soon...</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Local-Volatility-Models"><font color="#191970"><strong>Local Volatility Models</strong></font><a class="anchor-link" href="#Local-Volatility-Models">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Dupire-Volatility-Model"><font color="red"><strong>Dupire Volatility Model</strong></font><a class="anchor-link" href="#Dupire-Volatility-Model">¶</a></h3><ul>
+<li>The Dupire model was created to perfectly calibrate the volatility smile</li>
+<li>This model is used to calculate exotic option valuations (which are consistent with observed prices of vanilla options)</li>
+</ul>
+<p>Given the following dynamics:
+$$
+dS_t = (r_t - q_t) S_t dt + \sigma_{loc}(S_t, t) S_t dW_t
+$$</p>
+<p>where:</p>
+<ul>
+<li>$r_t$ is the interest rate</li>
+<li>$q_t$ is the dividend yield</li>
+<li>$\sigma_{loc}(S_t, t)$ is the local volatility (which only depends on $S_t$ and $t$)</li>
+</ul>
+<br/>
+<p>Dupire's general equation for the option price $C(K,T)$ is:
+$$
+\boxed{\frac{\partial C}{\partial T} = \frac{1}{2} \sigma^2 K^2 \frac{\partial^2 C}{\partial K^2} + (r_T - q_T) \Big(C - K \frac{\partial C}{\partial K}\Big) - r_T C}
+$$</p>
+<br/>
+<p>By solving for the local volatility $\sigma^2_{loc}(K,T)$, we get the Dupire local variance:
+$$
+\boxed{\sigma^2_{loc}(K,T) = \frac{\frac{\partial C}{\partial T} + q_T C + (r_T - q_T) K \frac{\partial C}{\partial K}}{\frac{1}{2} K^2 \frac{\partial^2 C}{\partial K^2}}}
+$$</p>
+<p>We often assume zero interest rates and zero dividend yield (i.e. $r_T=0$ and $q_T=0$), so that the underlying process is $dS_t = \sigma_{loc}(S_t, t) S_t dW_t$, and:
+$$
+\sigma^2_{loc}(K,T) = \frac{\frac{\partial C}{\partial T}}{\frac{1}{2} K^2 \frac{\partial^2 C}{\partial K^2}}
+$$</p>
+<br/>
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/dupire_animation_VF.gif" width="900"/>
+</div>
+<br/>
+<p><strong>Proof:</strong> (using the Fokker-Planck equation)</p>
+<br/>
+<blockquote>
+<p><strong>Lemma: Fokker-Planck equation:</strong> (one dimension)</p>
+<p>Given the SDE:
+$$
+dX_t = \mu(X_t,t) dt + \sigma(X_t,t) dW_t
+$$</p>
+<p>and noting $f(X_t,t)$ the pdf of the random variable $X_t$, the Fokker-Planck equation for $f$ is:
+$$
+\boxed{\frac{\partial}{\partial t}f(x,t) = - \frac{\partial}{\partial x} [\mu(x,t) f(x,t)] + \frac{1}{2} \frac{\partial^2}{\partial x^2} [\sigma^2(x,t) f(S,t)]}
+$$</p>
+<p>Note:</p>
+<ul>
+<li>The <strong>Fokker–Planck equation</strong> is used with problems where the initial distribution is known</li>
+<li>The <strong>Feynman–Kac formula</strong> is used if the problem is to know the distribution at previous times<ul>
+<li>it is a consequence of the Kolmogorov backward equation</li>
+</ul>
+</li>
+</ul>
+<br/>
+<br/>
+<p>In our problem, the random variable is the stock price $S_t$ and its pdf is expressed as $f(S_t,t)$.</p>
+<ul>
+<li>The drift is $(r_t - q_t) S_t$</li>
+<li>The diffusion term is $\sigma(S_t,t) S_t$</li>
+</ul>
+<p>Thus, the Fokker-Planck equation at time $t=T$ for our specific problem is:
+$$
+\frac{\partial}{\partial T}f(S,T) = - \frac{\partial}{\partial S} [(r_T - q_T) S_T f(S,T)] + \frac{1}{2} \frac{\partial^2}{\partial S^2} [\sigma^2_{loc}(S_T,T) S_T^2 f(S,T)]
+$$</p>
+<br/>
+</blockquote>
+<p>The price of a European call at time $t$ is given by:
+$$
+C(S_t,t) = B(t,T) \, \mathbb{E}\Big[(S_T-K)^+\Big]
+$$</p>
+<p>where $B(t,T) = \text{exp} \Big(- \int_t^T r_s ds \Big)$ is the dicount factor.</p>
+<p>i.e.
+\begin{align}
+C(S_t,t) &amp;= B(t,T) \int_K^{\infty} (S_T-K)^+ \, dS \nonumber\\
+    &amp;= B(t,T) \int_K^{\infty} (S_T-K) 𝟙_{\{S_T&gt;K\}} \, dS \nonumber\\
+    &amp;= B(t,T) \int_K^{\infty} (S_T-K) f(S,T) \, dS \nonumber\\
+\end{align}</p>
+<p>where $f(S,T)$ is the pdf of the stock price at time $T$ (i.e. we normalize the previous function to get a density).</p>
+<p>We also assume some boundary conditions:</p>
+<ul>
+<li>$\lim \limits_{S \rightarrow \infty} f(S,T) = 0$<ul>
+<li>meaning the probability density approaches zero as the stock price approaches infinity</li>
+</ul>
+</li>
+<li>$\lim \limits_{S \rightarrow \infty} (S_T - K) S_T f(S,T) = 0$<ul>
+<li>even though $(S_T−K)$ grows linearly with $S_T$​ as $S_T \rightarrow \infty$, the pdf $f(S,T)$ typically decays exponentially or faster (specifically faster than quadratically), ensuring the product approaches zero at infinity</li>
+</ul>
+</li>
+<li>$\lim \limits_{S \rightarrow \infty} \frac{\partial}{\partial S} [\sigma^2_{loc}(S_T,T) S_T^2 f(S,T)] = 0$<ul>
+<li>this is consistent with typical assumptions about the behavior of asset prices in the tails of the distribution</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>Computing the partial derivatives (which are present in the Dupire equation), we have:</p>
+<br/>
+<p>\begin{align}
+\frac{\partial C}{\partial K}
+    &amp;= B(t,T) \int_K^{\infty} \frac{\partial}{\partial K} (S_T - K) f(S,T) \, dS \nonumber\\
+    &amp;= - B(t,T) \int_K^{\infty} f(S,T) \, dS \nonumber\\
+    \nonumber\\
+\frac{\partial^2 C}{\partial K^2} 
+    &amp;= - B(t,T) \Big[f(S,T)\Big]_{S=K}^{S = \infty} \nonumber\\
+    &amp;= B(t,T) f(K,T) \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \text{as} \; \lim \limits_{S \rightarrow \infty} f(S,T) = 0 \nonumber\\
+    \nonumber\\
+\frac{\partial C}{\partial T} 
+    &amp;= \frac{\partial B}{\partial T} (t,T) \int_K^{\infty} (S_T-K) f(S,T) \, dS + B(t,T) \int_K^{\infty} (S_T-K) \frac{\partial f}{\partial T} (S,T) \, dS \nonumber\\
+    &amp;= -r_T \, C(S_t,t) + B(t,T) \int_K^{\infty} (S_T - K) \frac{\partial f}{\partial T}(S,T) \, dS \qquad \quad \; \text{as} \; \frac{\partial B}{\partial T} = -r_T B(t,T) \nonumber\\
+\end{align}</p>
+<br/>
+<p>Using the Fokker-Planck equation for $f$ at time $t=T$, we substitute $\frac{\partial f}{\partial T}$ in the formula above and get:
+$$
+\frac{\partial C}{\partial T} = -r_T \, C(S_t,t) + B(t,T) \int_K^{\infty} (S_T - K) \bigg( - \frac{\partial}{\partial S} [(r_T - q_T) S_T f(S,T)] + \frac{1}{2} \frac{\partial^2}{\partial S^2} [\sigma^2_{loc}(S_T,T) S_T^2 f(S,T)] \bigg) \, dS
+$$</p>
+<p>i.e.
+$$
+\frac{\partial C}{\partial T} = -r_T \, C(S_t,t) + B(t,T) \Bigg(\underbrace{- (r_T - q_T) \int_K^{\infty} (S_T - K) \frac{\partial}{\partial S} [S_T f(S,T)] \, dS}_{I_1} + \underbrace{\frac{1}{2} \int_K^{\infty} (S_T - K) \frac{\partial^2}{\partial S^2} [\sigma^2_{loc}(S_T,T) S_T^2 f(S,T)] \, dS}_{I_2} \Bigg)
+$$</p>
+<p>\begin{align}
+I_1 &amp;= - (r_T - q_T) \int_K^{\infty} (S_T - K) \frac{\partial}{\partial S} [S_T f(S,T)] \, dS \nonumber\\
+    &amp;= - (r_T - q_T) \Bigg(\Big[(S_T - K) S_T f(S,T)\Big]_{S=K}^{S=\infty} - \int_K^{\infty} S_T f(S,T) \, dS \Bigg)\nonumber\\
+    &amp;= (r_T - q_T) \int_K^{\infty} S_T f(S,T) \, dS \qquad \qquad \qquad \qquad \quad \text{as} \; \lim \limits_{S \rightarrow \infty} (S_T-K) S_T f(S,T) = 0 \nonumber\\
+    &amp;= (r_T - q_T) \int_K^{\infty} (S_T - K + K) f(S,T) \, dS \nonumber\\
+    &amp;= (r_T - q_T) \bigg( \int_K^{\infty} (S_T - K) f(S,T) \, dS + \int_K^{\infty} K f(S,T) \, dS\bigg) \nonumber\\
+    &amp;= (r_T - q_T) \bigg( \frac{C(S_t,t)}{B(t,T)} + K \int_K^{\infty} f(S,T) \, dS\bigg) \nonumber\\
+    &amp;= (r_T - q_T) \bigg( \frac{C(S_t,t)}{B(t,T)} - \frac{K}{B(t,T)} \frac{\partial C}{\partial K}\bigg) \qquad \qquad \quad \text{as} \; \frac{\partial C}{\partial K} = - B(t,T) \int_K^{\infty} f(S,T) \, dS\nonumber\\
+    &amp;= (r_T - q_T) \frac{C(S_t,t)}{B(t,T)} - (r_T - q_T) \frac{K}{B(t,T)} \frac{\partial C}{\partial K}\nonumber\\
+    \nonumber\\
+    \nonumber\\
+I_2 &amp;= \frac{1}{2} \int_K^{\infty} (S_T - K) \frac{\partial^2}{\partial S^2} [\sigma^2_{loc}(S_T,T) S_T^2 f(S,T)] \, dS\nonumber\\
+    &amp;= \frac{1}{2} \Bigg(\Big[(S_T - K) \frac{\partial}{\partial S} [\sigma^2_{loc}(S_T,T) S_T^2 f(S,T)]\Big]_{S=K}^{S=\infty} - \int_K^{\infty} \frac{\partial}{\partial S} [\sigma^2_{loc}(S_T,T) S_T^2 f(S,T)] \, dS \Bigg) \nonumber\\
+    &amp;= - \frac{1}{2} \Big[\sigma^2_{loc}(S_T,T) S_T^2 f(S,T)\big]_{S=K}^{S=\infty} \qquad \qquad \qquad \quad \; \; \text{as} \; \lim \limits_{S \rightarrow \infty} \frac{\partial}{\partial S} [\sigma^2_{loc}(S_T,T) S_T^2 f(S,T)] = 0 \nonumber\\
+    &amp;= \frac{1}{2} \sigma^2_{loc}(K,T) K^2 f(K,T) \nonumber\\
+    &amp;= \frac{1}{2} \frac{\sigma^2_{loc}(K,T) K^2}{B(t,T)} \frac{\partial^2 C}{\partial K^2} \qquad \qquad \qquad \qquad \qquad \qquad \text{as} \; \frac{\partial^2 C}{\partial K^2} = B(t,T) f(K,T) \nonumber\\
+\end{align}</p>
+<br/>
+<p>Thus, plugging $I_1$ and $I_2$ back into $\frac{\partial C}{\partial T}$, we get:</p>
+<p>\begin{align}
+\frac{\partial C}{\partial T} 
+    &amp;= - r_T \, C(S_t,t) + B(t,T) \Bigg(\underbrace{- (r_T - q_T) \int_K^{\infty} (S_T - K) \frac{\partial}{\partial S} [S_T f(S,T)] \, dS}_{I_1} + \underbrace{\frac{1}{2} \int_K^{\infty} (S_T - K) \frac{\partial^2}{\partial S^2} [\sigma^2_{loc}(S,T) S_T^2 f(S,T)] \, dS}_{I_2} \Bigg) \nonumber\\
+    &amp;= - r_T \, C(S_t,t) + B(t,T) \Bigg(\underbrace{(r_T - q_T) \frac{C(S_t,t)}{B(t,T)} - (r_T - q_T) \frac{K}{B(t,T)} \frac{\partial C}{\partial K}}_{I_1} + \underbrace{\frac{1}{2} \frac{\sigma^2_{loc}(K,T) K^2}{B(t,T)} \frac{\partial^2 C}{\partial K^2}}_{I_2} \Bigg) \nonumber\\
+    &amp;= - r_T \, C(S_t,t) + (r_T - q_T) \, C(S_t,t) - (r_T - q_T) K \frac{\partial C}{\partial K} + \frac{1}{2} \sigma^2_{loc}(K,T) K^2 \frac{\partial^2 C}{\partial K^2} \nonumber\\
+    &amp;= - r_T \, C(S_t,t) + (r_T - q_T) \bigg(C(S_t,t) - K \frac{\partial C}{\partial K}\bigg) + \frac{1}{2} \sigma^2_{loc}(K,T) K^2 \frac{\partial^2 C}{\partial K^2} \nonumber\\
+\end{align}</p>
+<p>By rearranging the terms, we get Dupire's formula:
+$$
+\frac{\partial C}{\partial T} = \frac{1}{2} \sigma^2_{loc}(K,T) K^2 \frac{\partial^2 C}{\partial K^2} + (r_T - q_T) \bigg(C(S_t,t) - K \frac{\partial C}{\partial K}\bigg) - r_T \, C(S_t,t)
+$$</p>
+<p>which can also be expressed in an alternative way, depending on conventions:
+$$
+\frac{\partial C}{\partial T} = \frac{1}{2} \sigma^2_{loc}(K,T) K^2 \frac{\partial^2 C}{\partial K^2} - (r_T - q_T) K \frac{\partial C}{\partial K} - q_T \, C(S_t,t)
+$$</p>
+<br/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><font color="#191970"><strong>Local volatility in terms of implied volatility:</strong></font></p>
+<br/>
+<p>\begin{align}
+\sigma^2_{loc}(K,T) 
+    &amp;= \sigma^2_{imp}\left[1 + 2T\frac{\partial \ln \sigma_{imp}}{\partial T} + 2T(r_T-q_T)K\frac{\partial \ln \sigma_{imp}}{\partial K} - TK^2\frac{\partial^2 \ln \sigma_{imp}}{\partial K^2} - T\left(K\frac{\partial \ln \sigma_{imp}}{\partial K}\right)^2\right] \nonumber \\
+\end{align}</p>
+<br/>
+<p>This expression expresses Dupire's <strong>local volatility</strong> $\sigma_{loc}(S,T)$ in terms of the <strong>implied volatility surface</strong>:</p>
+<ul>
+<li>its <strong>term structure</strong> $\frac{\partial \sigma_{imp}}{\partial T}$</li>
+<li>its slope (<strong>skew</strong> $\frac{\partial \sigma_{imp}}{\partial K}$)</li>
+<li>its curvature (<strong>smile</strong> $\frac{\partial^2 \sigma_{imp}}{\partial K^2}$)</li>
+</ul>
+<p>It shows how local volatility can be derived from the implied volatility surface, which is observable from market option prices.</p>
+<p>The formula captures how the curvature of the implied volatility smile affects the local volatility, and it's particularly useful for pricing exotic options in a manner consistent with the market prices of vanilla options.</p>
+<br/>
+<p><strong>Proof</strong></p>
+<p align="center">
+<font color="red">not implemented yet</font>
+</p>
+<br/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Source: <a href="https://www.frouah.com/finance%20notes/Dupire%20Local%20Volatility.pdf">https://www.frouah.com/finance%20notes/Dupire%20Local%20Volatility.pdf</a></p>
+<br/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Constant-Elasticity-of-Variance-(CEV)-Model"><font color="red"><strong>Constant Elasticity of Variance (CEV) Model</strong></font><a class="anchor-link" href="#Constant-Elasticity-of-Variance-(CEV)-Model">¶</a></h3><p>The CEV model assumes the existence of a specific form of volatility and, therefore, a particular dynamic of the underlying asset. The advantage of this model lies in the existence of approximate formulas and calibration methods, making it a very good proxy model.</p>
+<p>This model allows the volatility to be a function of the asset price itself. This is particularly useful for modeling markets where volatility exhibits a <strong>leverage effect</strong> (i.e., where lower prices lead to higher volatility, as seen in equity markets for example)</p>
+<p>The CEV model modifies the standard <strong>geometric Brownian motion (GBM)</strong> by introducing a <strong>power-law dependence</strong> on the price:</p>
+<p>$$
+dS_t = \mu S_t dt + \sigma S_t^\beta dW_t
+$$</p>
+<p>where:</p>
+<ul>
+<li>$S_t$ is the asset price at time $t$</li>
+<li>$\mu$ is the drift</li>
+<li>$\sigma$ is the volatility coefficient</li>
+<li>$\beta \in \mathbb{R}$ is the <strong>elasticity parameter</strong> (controls how volatility scales with price)</li>
+<li>$W_t$ is a standard Brownian motion</li>
+</ul>
+<br/>
+<p>Special cases:</p>
+<ul>
+<li>$\beta = 1$:<ul>
+<li>the CEV model reduces to the Black-Scholes model (constant volatility)</li>
+</ul>
+</li>
+<li>$\beta &lt; 1$:<ul>
+<li>volatility <strong>increases as the price decreases</strong>, modeling the <strong>leverage effect</strong> in <strong>equities</strong></li>
+<li>For equity markets, where OTM puts are more partially expensive due to crash risk, $\beta &lt; 1$ explains the skew in implied volatility</li>
+<li>If $\beta = \frac{1}{2}$, this gives the square root process (CIR model) if we make the drifts match</li>
+</ul>
+</li>
+<li>$\beta &gt; 1$:<ul>
+<li>volatility <strong>increases with the price</strong>, often used for <strong>commodities</strong> and <strong>interest rates</strong></li>
+</ul>
+</li>
+</ul>
+<br/>
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/cev_animation_VF.gif" width="900"/>
+</div>
+<br/>
+<p><font color="#191970"><strong>Solution to the CEV Model</strong></font></p>
+<p>For option pricing, the CEV model does not have a closed-form solution like Black-Scholes, but approximate solutions exist:</p>
+<ul>
+<li><strong>Fokker-Planck (Kolmogorov) Equation:</strong><ul>
+<li>The pdf of $S_t$ satisfies a diffusion equation, which can be solved numerically</li>
+</ul>
+</li>
+<li><strong>Closed-Form Approximation (Cox, 1975):</strong><ul>
+<li>Under risk-neutral dynamics, the price distribution is linked to noncentral chi-squared distributions</li>
+</ul>
+</li>
+<li><strong>Monte Carlo Simulations:</strong><ul>
+<li>Since volatility depends on price, Monte Carlo methods can be used to simulate paths and compute option prices</li>
+</ul>
+</li>
+</ul>
+<br/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Stochastic-Volatility-Models"><font color="#191970"><strong>Stochastic Volatility Models</strong></font><a class="anchor-link" href="#Stochastic-Volatility-Models">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Heston-Model"><font color="red"><strong>Heston Model</strong></font><a class="anchor-link" href="#Heston-Model">¶</a></h3><p>The Heston model assumes that:</p>
+<ul>
+<li>the underlying, $S_t$, follows a <strong>Black-Scholes type stochastic process</strong>, but with a stochastic variance $v_t$</li>
+<li>$v_t$ follows a <strong>Cox, Ingersoll, Ross process</strong>:</li>
+</ul>
+<p>\begin{align}
+dS_t &amp;= \mu S_t d_t + \sqrt{v_t} S_t dW_{1,t} \nonumber\\
+dv_t &amp;= \kappa (\theta - v_t) \, dt + \sigma \sqrt{v_t} dW_{2,t} \nonumber\\
+d \langle W_{1,t}, W_{2,t} \rangle &amp;= \rho dt \nonumber \\
+\end{align}</p>
+<p>where:</p>
+<ul>
+<li>$W_{1}$ and $W_{2}$ are Brownian motions, with correlation $\rho$</li>
+<li>$\kappa$ is the mean reversion speed</li>
+<li>$\theta$ is the long term mean variance</li>
+</ul>
+<br/>
+<p><font color="#191970"><strong>The Heston PDE:</strong></font></p>
+<p>\begin{align}
+\boxed{\frac{\partial U}{\partial t} + \frac{1}{2} v S^2 \frac{\partial^2 U}{\partial S^2} + \frac{1}{2} \sigma^2 v \frac{\partial^2 U}{\partial v^2} + \sigma v \rho S \frac{\partial^2 U}{\partial v \partial S} - rU + rS \frac{\partial U}{\partial S} + \Big[\kappa (\theta - v) - \lambda(S,v,t) \Big] \frac{\partial U}{\partial v} = 0}\nonumber
+\end{align}</p>
+<p>where $\lambda(S,v,t)$ is the (unspecified) market price of volatility risk</p>
+<br/>
+<p><strong>Proof:</strong></p>
+<p>Let $\Pi$ be a portfolio consisting of:</p>
+<ul>
+<li>$1$ option $V = V(S,v,t)$</li>
+<li>$\Delta$ units of stock $S$</li>
+<li>$\phi$ units of another option $U=U(S,v,t)$ (that is used to hedge the volatility)<ul>
+<li>$2$ sources of volatility $\Rightarrow$ 2 different options to hedge</li>
+</ul>
+</li>
+</ul>
+<p>Thus:
+$$
+\Pi = V + \Delta S + \phi U
+$$</p>
+<p>Assuming the portfolio is self-financing, the change in portfolio value is:
+$$
+d\Pi = dV + \Delta dS + \phi dU
+$$</p>
+<p>Applying Itô to $V$ and $U$, we have:
+\begin{align}
+dV &amp;= \frac{\partial V}{\partial t} dt + \frac{\partial V}{\partial S} dS + \frac{\partial V}{\partial v} dv + \frac{1}{2} v S^2 \frac{\partial^2 V}{\partial S^2} dt + \frac{1}{2} \sigma^2 v \frac{\partial^2 V}{\partial v^2} dt + \sigma v \rho S \frac{\partial^2 V}{\partial v \partial S} dt \nonumber\\
+\nonumber \\
+dU &amp;= \frac{\partial U}{\partial t} dt + \frac{\partial U}{\partial S} dS + \frac{\partial U}{\partial v} dv + \frac{1}{2} v S^2 \frac{\partial^2 U}{\partial S^2} dt + \frac{1}{2} \sigma^2 v \frac{\partial^2 U}{\partial v^2} dt + \sigma v \rho S \frac{\partial^2 U}{\partial v \partial S} dt \nonumber\\
+\end{align}</p>
+<br/>
+<p>Thus:
+\begin{align}
+d\Pi &amp;= dV + \Delta dS + \phi dU \nonumber \\
+     \nonumber \\
+     &amp;= \Bigg(\frac{\partial V}{\partial t} dt + \frac{\partial V}{\partial S} dS + \frac{\partial V}{\partial v} dv + \frac{1}{2} v S^2 \frac{\partial^2 V}{\partial S^2} dt + \frac{1}{2} \sigma^2 v \frac{\partial^2 V}{\partial v^2} dt + \sigma v \rho S \frac{\partial^2 V}{\partial v \partial S} dt\Bigg) + \Delta dS \nonumber \\
+     &amp;+ \phi \Bigg(\frac{\partial U}{\partial t} dt + \frac{\partial U}{\partial S} dS + \frac{\partial U}{\partial v} dv + \frac{1}{2} v S^2 \frac{\partial^2 U}{\partial S^2} dt + \frac{1}{2} \sigma^2 v \frac{\partial^2 U}{\partial v^2} dt + \sigma v \rho S \frac{\partial^2 U}{\partial v \partial S} dt\Bigg) \nonumber \\
+     \nonumber \\
+     &amp;= \Bigg(\frac{\partial V}{\partial t} + \frac{1}{2} v S^2 \frac{\partial^2 V}{\partial S^2} + \frac{1}{2} \sigma^2 v \frac{\partial^2 V}{\partial v^2} + \sigma v \rho S \frac{\partial^2 V}{\partial v \partial S} \Bigg) dt + \phi \Bigg(\frac{\partial U}{\partial t} + \frac{1}{2} v S^2 \frac{\partial^2 U}{\partial S^2} + \frac{1}{2} \sigma^2 v \frac{\partial^2 U}{\partial v^2} + \sigma v \rho S \frac{\partial^2 U}{\partial v \partial S} \Bigg) dt \nonumber \\
+     &amp;+ \Bigg(\frac{\partial V}{\partial S} + \phi \frac{\partial U}{\partial S} + \Delta \Bigg) dS + \Bigg(\frac{\partial V}{\partial v} + \phi \frac{\partial U}{\partial v} \Bigg) dv \nonumber\\
+\end{align}</p>
+<p>In order for the portfolio to be hedged against movements in the stock and against volatility, the coefficients of $dS$ and $dv$ must be zero (i.e. we get rid of the stochastic part, making the portfolio's evolution deterministic):
+\begin{cases}
+\frac{\partial V}{\partial S} + \phi \frac{\partial U}{\partial S} + \Delta = 0 \\
+\frac{\partial V}{\partial v} + \phi \frac{\partial U}{\partial v} = 0 \\
+\end{cases}</p>
+<p>$$
+\boxed{
+\begin{align}
+\Delta &amp;= - \frac{\partial V}{\partial S} - \phi \frac{\partial U}{\partial S} \nonumber \\
+\phi &amp;= - \frac{\frac{\partial V}{\partial v}}{\frac{\partial U}{\partial v}} \nonumber \\
+\end{align}
+}
+$$</p>
+<p>Furthermore, by the absence of arbitrage (AOA) assumption, this portfolio must earn the risk free rate $r$. Hence:
+$$
+d\Pi = r \Pi dt \nonumber
+$$</p>
+<p>i.e.
+$$
+\underbrace{\Bigg(\frac{\partial V}{\partial t} + \frac{1}{2} v S^2 \frac{\partial^2 V}{\partial S^2} + \frac{1}{2} \sigma^2 v \frac{\partial^2 V}{\partial v^2} + \sigma v \rho S \frac{\partial^2 V}{\partial v \partial S} \Bigg)}_{A} dt + \phi \underbrace{\Bigg(\frac{\partial U}{\partial t} + \frac{1}{2} v S^2 \frac{\partial^2 U}{\partial S^2} + \frac{1}{2} \sigma^2 v \frac{\partial^2 U}{\partial v^2} + \sigma v \rho S \frac{\partial^2 U}{\partial v \partial S} \Bigg)}_{B} dt \nonumber = r \Pi dt
+$$</p>
+<p>Thus:
+$$
+A + \phi B = r (V + \Delta S + \phi U)
+$$</p>
+<br/>
+<p>By plugging the values of $\Delta$ and $\phi$ into the equation, and separating $V$ and $U$ on each side, we have:
+$$
+A - \frac{\frac{\partial V}{\partial v}}{\frac{\partial U}{\partial v}} B = r \Bigg(V - \frac{\partial V}{\partial S} S + \frac{\frac{\partial V}{\partial v}}{\frac{\partial U}{\partial v}} \frac{\partial U}{\partial S} S - \frac{\frac{\partial V}{\partial v}}{\frac{\partial U}{\partial v}} U \Bigg)
+$$
+$$
+\frac{A - r V + r S\frac{\partial V}{\partial S}}{\frac{\partial V}{\partial v}} = \frac{B - r U + r S \frac{\partial U}{\partial S}}{\frac{\partial U}{\partial v}}
+$$</p>
+<br/>
+<p>Since the left side doesn't depend on $U$ and the right side doesn't depend on $V$, each side can be written as a function of $S, v$ and $t$ only:
+\begin{cases}
+\frac{A - r V + r S\frac{\partial V}{\partial S}}{\frac{\partial V}{\partial v}} = f(S,v,t) \\
+\\
+\frac{B - r U + r S \frac{\partial U}{\partial S}}{\frac{\partial U}{\partial v}} = f(S,v,t)
+\end{cases}</p>
+<p>i.e.
+\begin{cases}
+A - r V + r S\frac{\partial V}{\partial S} = f(S,v,t) \frac{\partial V}{\partial v} \\
+\\
+B - r U + r S \frac{\partial U}{\partial S} = f(S,v,t) \frac{\partial U}{\partial v}
+\end{cases}</p>
+<br/>
+<p>This implies that any derivative security whose price depends on $S$ and $v$ must satisfy the partial differential equation:
+$$
+\underbrace{\frac{\partial U}{\partial t} + \frac{1}{2} v S^2 \frac{\partial^2 U}{\partial S^2} + \frac{1}{2} \sigma^2 v \frac{\partial^2 U}{\partial v^2} + \sigma v \rho S \frac{\partial^2 U}{\partial v \partial S}}_{B} - r U + r S \frac{\partial U}{\partial S} - f(S,v,t) \frac{\partial U}{\partial v} = 0
+$$</p>
+<br/>
+<p>Now we need to incorporate the dynamics of $v$. In the Heston model, $v$ follows:
+$$
+dv_t = \kappa (\theta - v_t) \, dt + \sigma \sqrt{v_t} dW_{2,t}
+$$</p>
+<p>However, under risk-neutral pricing (since we have removed the stochastic part of the equation), we need to adjust this with the market price of volatility risk.</p>
+<p>Sources:</p>
+<ul>
+<li><a href="https://www.frouah.com/finance%20notes/The%20Heston%20model%20short%20version.pdf">https://www.frouah.com/finance%20notes/The%20Heston%20model%20short%20version.pdf</a></li>
+<li><a href="https://www.ma.imperial.ac.uk/~ajacquie/IC_Num_Methods/IC_Num_Methods_Docs/Literature/Heston.pdf">https://www.ma.imperial.ac.uk/~ajacquie/IC_Num_Methods/IC_Num_Methods_Docs/Literature/Heston.pdf</a></li>
+</ul>
+<br/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="SABR-Model-(Stochastic-Alpha-Beta-Rho)"><font color="red"><strong>SABR Model</strong> (Stochastic Alpha Beta Rho)</font><a class="anchor-link" href="#SABR-Model-(Stochastic-Alpha-Beta-Rho)">¶</a></h3><ul>
+<li>The SABR model is used to model a forward rate</li>
+<li>The SABR model is an extension of Black's model and of the CEV model</li>
+<li>Unlike other stochastic volatility models such as the Heston model, the model does not produce option prices
+directly</li>
+<li>It aims to capture the volatility smile observed in derivatives markets</li>
+<li>This model produces an estimate of the implied volatility curve of forward rates (forward swap rates, forward tock prices, etc), which is subsequently used as an input in Black's model to price swaptions, caps, and other interest rate derivatives<ul>
+<li>i.e. it describes the implied volatility for a given:<ul>
+<li>strike price $K$</li>
+<li>forward price $F$</li>
+<li>time to maturity $T$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>The SABR model is described by:</p>
+<p>\begin{align}
+dF_t &amp;= \alpha_t F_t^{\beta} dW_{1,t} \nonumber\\
+d \alpha_t &amp;= \nu \, \alpha_t \, dW_{2,t} \nonumber\\
+d \langle W_{1,t}, W_{2,t} \rangle &amp;= \rho dt \nonumber\\
+\end{align}</p>
+<p>where:</p>
+<ul>
+<li>$F_t$ is the forward rate, with an initial value of $F_0$</li>
+<li>$\alpha_t$ is the volatility, with an initial value of $\alpha_0 = \alpha$</li>
+<li>$\nu$ is the volatility of the volatility</li>
+<li>$\beta \in \mathbb{R}$, where $\beta$ influences the slope of the volatility skew</li>
+<li>$\rho$ affects the direction and magnitude of the skew in the volatility surface (slope of the volatility smile)<ul>
+<li>$\rho &gt; 0$ indicates that the volatility and the forward price move in the same direction</li>
+<li>$\rho &lt; 0$ indicates that the volatility and the forward price move in opposite directions</li>
+</ul>
+</li>
+</ul>
+<br/>
+<p>Special cases:</p>
+<ul>
+<li>$\beta=0$: volatility is independent of the forward price<ul>
+<li><strong>stochastic normal model</strong> (without drift)
+$$dF_t = \alpha_t \, dW_{1,t}$$
+<br/></li>
+</ul>
+</li>
+<li>$\beta=\frac{1}{2}$:<ul>
+<li><strong>CIR model</strong> (without drift)
+$$dF_t = \alpha_t \sqrt{F_t} \, dW_{1,t}$$
+<br/></li>
+</ul>
+</li>
+<li>$\beta=1$: volatility is proportional to the forward price (like in BS73):<ul>
+<li><strong>stochastic lognormal model</strong> (without drift)
+$$dF_t = \alpha_t F_t \, dW_{1,t}$$</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><font color="#191970"><strong>SABR Implied Volatility and Option Prices</strong></font></p>
+<p>The prices of European call options in the SABR model are given by Black's model (Black76):</p>
+<p>$$
+C_B(F, K, \sigma_B, T) = e^{-rT} [F N(d_1) - K N(d_2)]
+$$</p>
+<p>with
+$$
+d_1 = \frac{\ln \Big(\frac{F}{K}\Big) + \frac{1}{2} \sigma_B^2 T}{\sigma_B \sqrt{T}} \qquad d_2 = d_1 - \sigma_B \sqrt{T}
+$$</p>
+<p>where:</p>
+<ul>
+<li>$F$ is the current forward rate</li>
+<li>$K$ is the strike price</li>
+<li>$\sigma_B$ is the implied volatility (of the Black 76's formula)</li>
+<li>$T$ is the time to maturity</li>
+<li>$r$, the interest rate is still supposed to be constant</li>
+<li>$N(\cdot)$ is the CDF of the normal distribution</li>
+</ul>
+<br/>
+<p>The volatility parameter $\sigma_B$ is provided by the SABR model:
+\begin{align} 
+\sigma_B(F,K) &amp;= \frac{\alpha \left\{1+\left[\frac{(1-\beta)^2}{24} \frac{\alpha^2}{(FK)^{1-\beta}}+\frac{1}{4} \frac{\rho \beta \nu \alpha}{(FK)^{(1-\beta)/2}} + \frac{2-3 \rho^2}{24} \nu^2\right] T \right\}}
+{(FK)^{(1-\beta)/2} \left[1 + \frac{(1-\beta)^2}{24} \ln^2{\frac{F}{K}} + \frac{(1-\beta)^4}{1920} \ln^4{\frac{F}{K}} \right]}
+\times \frac{z}{\chi(z)} \nonumber\\
+\nonumber\\
+z &amp;= \frac{\nu}{\alpha} (FK)^{(1-\beta)/2} \ln{\frac{F}{K}} \nonumber\\
+\nonumber\\
+\chi(z) &amp;= \ln{\left[\frac{\sqrt{1-2 \rho  z + z^2} + z - \rho}{1-\rho}\right]} \nonumber\\
+\end{align}</p>
+<br/>
+<ul>
+<li>Once the parameters $\alpha, \beta, \rho$ and $\nu$ are estimated, the implied volatility $\sigma_B$ is a
+function only of the forward price $F$ and the strike $K$</li>
+<li>Since the SABR model produces implied volatilities for a single maturity, the dependence of $\sigma_B$ on $T$
+is not reflected in the notation $\sigma_B(F,K)$</li>
+</ul>
+<br/>
+<p>Special case:</p>
+<ul>
+<li>For ATM options (i.e $F=K$), the SABR formula becomes:</li>
+</ul>
+<br/>
+<p>$$
+\sigma_{ATM} = \sigma_B(F,F) = \frac{\alpha \left\{1+\left[\frac{(1-\beta)^2}{24} \frac{\alpha^2}{F^{2-2 \beta}}+\frac{1}{4} \frac{\rho \beta \nu \alpha}{F^{1-\beta}} + \frac{2-3 \rho^2}{24} \nu^2\right] T \right\}}
+{F^{1-\beta}}
+$$</p>
+<br/>
+<p>$$
+\Rightarrow 
+\Bigg(\frac{(1-\beta)^2}{24 F^{2-2 \beta}} T \Bigg) \alpha^3 
++ \Bigg(\frac{\rho \beta \nu}{4 F^{1-\beta}} T \Bigg) \alpha^2
++ \Bigg(1 + \frac{2-3 \rho^2}{24} \nu^2 T \Bigg) \alpha
+- \sigma_{ATM} \; F^{1-\beta} = 0
+$$</p>
+<p>$\alpha$ is not observable and cannot be approximated from historical data
+ATM, we get a cubic function of $\alpha$, for which we can solve the roots</p>
+<br/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><strong>Proof</strong></p>
+<p><i>1. Log-Transformation of the forward price process:</i></p>
+<p>The forward price process follows: $dF_t = \alpha_t F_t^{\beta} dW_{1,t}$</p>
+<p>Let $x = \ln (F)$. By Itô, the new forward price process follows:
+\begin{align}
+dx  &amp;= d \ln (F) \nonumber \\
+    &amp;= \frac{1}{F} dF + \frac{1}{2} \frac{\partial^2 \ln F}{\partial F^2} dF^2 \nonumber \\
+    &amp;= \frac{1}{F} \alpha_t F^{\beta} dW_{1,t} - \frac{1}{2} \frac{1}{F^2} \alpha^2_t F^{2\beta} dt \nonumber \\
+    &amp;= - \frac{1}{2} \alpha_t^2 F^{2\beta-2} dt + \alpha_t F^{\beta-1} dW_{1,t} \nonumber \\
+\end{align}</p>
+<br/>
+<p><i>2. Perturbation Expansion:</i></p>
+<p>$$
+\sigma_{BS} (K) = \frac{\alpha}{(FK)^{(1-\beta)/2}} [1 + \epsilon_1 \ln^2 (F/K) + \epsilon_2 \ln^4 (F/K) + ...]
+$$</p>
+<p>$$
+\epsilon_1 = \frac{(1-\beta)^2}{24 (FK)^{(1-\beta)}} \\
+\epsilon_2 = \frac{(1-\beta)^4}{1920 (FK)^{2(1-\beta)}}
+$$</p>
+<p align="center">
+<font color="red">unfinished</font>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><font color="#191970"><strong>Estimating parameters</strong></font></p>
+<p>The $\beta$ parameter is estimated first, and is not very important in the model because the choice of $\beta$ does not greatly affect the shape of the volatility curve</p>
+<p>The choice of $\beta$, however, can affect the Greeks</p>
+<p>With $\beta$ estimated, there are two possible choices for estimating the remaining parameters:</p>
+<ul>
+<li>Estimate $\alpha$, $\rho$, and $\nu$ directly</li>
+<li>Estimate $\rho$ and $\nu$ directly, and infer $\alpha$ from $\rho$, $\nu$, and the ATM volatility</li>
+</ul>
+<br/>
+<p>Estimating $\beta$:</p>
+<ul>
+<li>$\ln{\sigma_{ATM}} \approx \ln{\alpha} - (1-\beta) \ln{F}$</li>
+<li>Hence, $\beta$ can be estimated by a linear regression on a time series of logs of ATM volatilities and logs of forward rates</li>
+</ul>
+<p>Calibrating $\alpha, \rho, \nu$:</p>
+<ul>
+<li>Method 1: All-in Calibration<ul>
+<li>$f(\alpha, \rho, \nu) = \sigma_B(F, K)$</li>
+<li>$\underset{\alpha, \, \rho, \, \nu}{argmin} \; \underset{K}{\sum} \Big(f(\alpha, \rho, \nu) - \sigma_{mkt}(F,K)\Big)^2$</li>
+</ul>
+</li>
+<li>Method 2: ATM Calibration:<ul>
+<li>$f(\rho, \nu) = \sigma_B (\tilde{\alpha}, F, F)$, where $\tilde{\alpha}$ is the smallest positive real root of the ATM cubic equation</li>
+<li>Then run non-linear optimisation for: $ \; \underset{\rho, \, \nu}{argmin} \; \underset{K}{\sum} \Big(f(\rho, \nu) - \sigma_{mkt}(F,F)\Big)^2$</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><font color="#191970"><strong>Option Sensitivities under SABR</strong></font></p>
+<p>The Greeks from the SABR model resemble those from Black's model, but contain additional terms to reflect the fact that $\sigma_B$ is not constant</p>
+<br/>
+<p><strong>Delta:</strong></p>
+<ul>
+<li>If first parametrization is used:
+$$
+\Delta_{SABR} = \frac{\partial C_B}{\partial F} + \frac{\partial C_B}{\partial \sigma_B} \,  \frac{\partial \sigma_B}{\partial F}
+$$</li>
+<li>If second parametrization is used:
+$$
+\Delta_{SABR} = \frac{\partial C_B}{\partial F} + \frac{\partial C_B}{\partial \sigma_B} \Bigg( \frac{\partial \sigma_B}{\partial F} + \frac{\partial \alpha}{\partial F} \Bigg)
+$$</li>
+</ul>
+<p><strong>Vega:</strong></p>
+<p>$$
+Vega_{SABR} = \frac{\partial C_B}{\partial \alpha} = \frac{\partial C_B}{\partial \sigma_B} \, \frac{\partial \sigma_B}{\partial \alpha}
+$$</p>
+<p><strong>Vanna:</strong></p>
+<p>$$
+Vanna_{SABR} = \frac{\partial C_B}{\partial \rho }
+$$</p>
+<p><strong>Volga:</strong></p>
+<p>$$
+Volga_{SABR} = \frac{\partial C_B}{\partial \nu }
+$$</p>
+<p>SABR introduced the 2 last greeks, for hedging purposes</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Source: <a href="https://www.frouah.com/finance%20notes/The%20SABR%20Model.pdf">https://www.frouah.com/finance%20notes/The%20SABR%20Model.pdf</a></p>
 </div>
 </div>
 </div>
