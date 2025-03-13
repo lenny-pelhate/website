@@ -3,8 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Black-Scholes_MC</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Black-Scholes_MC</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7665,8 +7664,8 @@ $$
 N(x)= \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^{2}}{2}} dt \,.
 $$</p>
 <br/>
-<p><strong>Proof (which doesn't require Girsanov's theorem):</strong></p>
-<p>The discounted value of a derivative is: (definir filtration)
+<p><strong>Proof:</strong></p>
+<p>The discounted value of a derivative is:
 $$
 V(t) = \mathbb{E}\left[e^{- \int_{t}^{T} r(u) du} \; V(T) \Big| \mathcal{F}_t \right]
 $$
@@ -7674,24 +7673,45 @@ Under the Black-Scholes hypotheses, r is constant, and by setting $\tau = T -t$:
 $$
 V(t) = e^{-r\tau} \; \mathbb{E} \left[V(T) \Big| \mathcal{F}_t \right]
 $$
-On the other hand, if $S$ follows a geometric brownian motion,
+On the other hand, let $S$ follow a geometric brownian motion under the real-world probability measure $\mathbb{P}$:
 $$
-dS = \mu S dt + \sigma S dB_t
+dS_t = \mu S_t dt + \sigma S_t dB^{\mathbb{P}}_t
+$$</p>
+<p>By Girsanov, there's an equivalent measure $\mathbb{Q}$ (due to the no-arbitrage hypothesis), called the risk-neutral measure, where $B^{\mathbb{Q}}$ is a Brownian motion under this new measure:</p>
+<p>Define the Radon-Nikodym derivative:
 $$
-using Itô's lemma, and writing $B_t = \epsilon \sqrt{t}$ with $\epsilon \sim \mathcal{N}(0,1)$ (vérifier les indices des intégrandes)
+\frac{d\mathbb{Q}}{d\mathbb{P}} = \mathcal{E} \Bigg(- \int_0^t \theta_s dB^{\mathbb{P}}_s \Bigg)
+$$</p>
+<p>where $\theta_t = \frac{\mu - r}{\sigma}$ is the market price of risk.</p>
+<p>Then, by Girsanov's theorem, we have a new Brownian motion under $\mathbb{Q}$:
 $$
-d[ln(S)] = \left(r-\frac{\sigma^2}{2} \right)dt + \sigma dB_t
+dB^{\mathbb{Q}}_t = dB^{\mathbb{P}}_t + \theta_t dt
+$$</p>
+<p>Thus:
+\begin{align*}
+dS_t &amp;= \mu S_t dt + \sigma S_t dB^{\mathbb{P}}_t \\
+     &amp;= \mu S_t dt + \sigma S_t \bigg( dB^{\mathbb{Q}}_t - \frac{\mu - r}{\sigma} dt \bigg) \\
+     &amp;= r S_t dt + \sigma S_t dB^{\mathbb{Q}}_t
+\end{align*}</p>
+<p>By Itô's lemma applied to $f(S,t) = \ln S$, since $\frac{\partial f}{\partial t} = \frac{\partial^2 f}{\partial t^2} = \frac{\partial^2 f}{\partial S \partial t} = 0$:
+\begin{align*}
+df  &amp;= \frac{\partial f}{\partial S} dS + \frac{1}{2} \frac{\partial^2 f}{\partial S^2} dS^2\\
+    &amp;= \frac{1}{S} dS - \frac{1}{2} \frac{1}{S^2} \sigma^2 S^2 dt \\
+    &amp;= \frac{1}{S} \Big(r S dt + \sigma S dB^{\mathbb{Q}}_t \Big) - \frac{1}{2} \sigma^2 dt
+\end{align*}</p>
+<p>By rearranging, we find:
 $$
+d[ln(S)] = \left(r-\frac{\sigma^2}{2} \right)dt + \sigma dB^{\mathbb{Q}}_t
+$$</p>
+<p>i.e.
 $$
-\int_{t}^{T} dlnS = \int_{t}^{T} \left(r-\frac{\sigma^2}{2} \right)ds + \int_{t}^{T} \sigma dB_s
-$$
-$$
-ln(S_T) - ln(S_t) = \left(r-\frac{\sigma^2}{2} \right)d\tau + \sigma dB_{\tau}
-$$
+ln(S_T) - ln(S_t) = \left(r-\frac{\sigma^2}{2} \right)d\tau + \sigma dB^{\mathbb{Q}}_{\tau}
+$$</p>
+<p>Writing $B^{\mathbb{Q}}_t = \epsilon \sqrt{t}$ with $\epsilon \sim \mathcal{N}(0,1)$:
 $$
 S_T = S_t \, e^{\left(r-\frac{\sigma^2}{2} \right)\tau + \sigma \epsilon \sqrt{\tau}}
-$$
-For a European call, the expected payoff at maturity is:
+$$</p>
+<p>For a European call, the expected payoff at maturity is:
 $$
 V(T) = (S_T - K)^+
 $$
@@ -7700,18 +7720,18 @@ $$
 S_T &gt; K \Rightarrow \epsilon &gt; \frac{ln\left(\frac{K}{S_t}\right) - \left(r - \frac{\sigma^2}{2} \right) \tau}{\sigma \sqrt{\tau}} := -d_2 
 $$
 Thus:
-\begin{align}
+\begin{align*}
 V(t) &amp;= e^{-r\tau} \; \mathbb{E} \left[V(T) \Big| \mathcal{F}_t \right] \\
      &amp;= e^{-r\tau} \; \mathbb{E} \left[(S_T - K)^+ \Big| \mathcal{F}_t \right] \\
      &amp;= e^{-r\tau} \; \int_{-d_2}^{\infty} \left( S_t e^{\left(r-\frac{\sigma^2}{2} \right)\tau + \sigma \epsilon \sqrt{\tau}} - K \right) \frac{1}{\sqrt{2\pi}} e^{-\frac{\epsilon^{2}}{2}} d\epsilon \\
-     &amp;= S_t \int_{-d_2}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{\left(\sigma-\epsilon \sqrt{\tau} \right)^2}{2}} d\epsilon - K \, e^{-r\tau} \int_{-d_2}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{\epsilon^{2}}{2}} d\epsilon \\
-\end{align}
+     &amp;= S_t \int_{-d_2}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{\left(\sigma\sqrt{\tau}-\epsilon \right)^2}{2}} d\epsilon - K \, e^{-r\tau} \int_{-d_2}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{\epsilon^{2}}{2}} d\epsilon \\
+\end{align*}
 With a change the variable $\tilde{\epsilon} = \epsilon - \sigma \sqrt{\tau}$ and by introducing $d_1 = d_2 + \sigma \sqrt{\tau}$
-\begin{align}
+\begin{align*}
 V(t) &amp;= S_t \int_{-d_1}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{\tilde{\epsilon}^2}{2}} d\tilde{\epsilon} - K \, e^{-r\tau} \int_{-d_2}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{\epsilon^{2}}{2}} d\epsilon \\
      &amp;= S_t \left( 1-N(-d_1) \right) - K \, e^{-r\tau} \left(1-N(-d_2) \right) \\
      &amp;= S_t \, N(d_1) - K \, e^{-r\tau} N(d_2) \\
-\end{align}</p>
+\end{align*}</p>
 </div>
 </div>
 </div>
