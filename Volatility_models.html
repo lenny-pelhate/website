@@ -7537,8 +7537,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<div style="text-align: center;">
-<img alt="No description has been provided for this image" src="./media/Vol_category.JPG" width="900"/>
+<div style="display: flex; justify-content: center;">
+<img src="./media/Vol_category.JPG" width="900">
 </div>
 <br/>
 </div>
@@ -7591,9 +7591,15 @@ $$
 \sigma^2_{loc}(K,T) = \frac{\frac{\partial C}{\partial T}}{\frac{1}{2} K^2 \frac{\partial^2 C}{\partial K^2}}
 $$</p>
 <br/>
-<div style="text-align: center;">
-<img alt="No description has been provided for this image" src="./media/dupire_animation_VF.gif" width="900"/>
+<div style="display: flex; justify-content: center;">
+<img src="./media/dupire_animation_VF.gif" width="900">
 </div>
+<br>
+<p>Here we are implementing the "volatility skew" or "volatility smirk" that's commonly observed in equity markets, where out-of-the-money puts (lower prices) have higher implied volatilities than out-of-the-money calls (higher prices). The skewness is set to $-0.05$:</p>
+<ul>
+<li>When moneyness &lt; 1: the negative skew term makes volatility higher</li>
+<li>When moneyness &gt; 1: the negative skew term makes volatility lower</li>
+</ul>
 <br/>
 <p><strong>Proof:</strong> (using the Fokker-Planck equation)</p>
 <br/>
@@ -7801,9 +7807,15 @@ $$</p>
 </li>
 </ul>
 <br/>
-<div style="text-align: center;">
-<img alt="No description has been provided for this image" src="./media/cev_animation_VF.gif" width="900"/>
+<div style="display: flex; justify-content: center;">
+<img src="./media/cev_animation_VF.gif" width="900">
 </div>
+<br>
+<p>Here we have implemented the "leverage effect" commonly observed in equity markets ($\beta = 0.7$), where:</p>
+<ul>
+<li>Lower stock prices $\rightarrow$ higher volatility</li>
+<li>Higher stock prices $\rightarrow$ lower volatility</li>
+</ul>
 <br/>
 <p><font color="#191970"><strong>Solution to the CEV Model</strong></font></p>
 <p>For option pricing, the CEV model does not have a closed-form solution like Black-Scholes, but approximate solutions exist:</p>
@@ -7862,7 +7874,7 @@ d \langle W_{1,t}, W_{2,t} \rangle &amp;= \rho dt \nonumber \\
 <br/>
 <p><font color="#191970"><strong>The Heston PDE:</strong></font></p>
 <p>\begin{align}
-\boxed{\frac{\partial U}{\partial t} + \frac{1}{2} v S^2 \frac{\partial^2 U}{\partial S^2} + \frac{1}{2} \sigma^2 v \frac{\partial^2 U}{\partial v^2} + \sigma v \rho S \frac{\partial^2 U}{\partial v \partial S} - rU + rS \frac{\partial U}{\partial S} + \Big[\kappa (\theta - v) - \lambda(S,v,t) \Big] \frac{\partial U}{\partial v} = 0}\nonumber
+\boxed{\frac{\partial U}{\partial t} + \frac{1}{2} v S^2 \frac{\partial^2 U}{\partial S^2} + \frac{1}{2} \sigma^2 v \frac{\partial^2 U}{\partial v^2} + \sigma v \rho S \frac{\partial^2 U}{\partial v \partial S} - rU + rS \frac{\partial U}{\partial S} + \Big[\kappa (\theta - v) - \lambda(S,v,t) \Big] \frac{\partial U}{\partial v} = 0} \nonumber
 \end{align}</p>
 <p>where $\lambda(S,v,t)$ is the (unspecified) market price of volatility risk</p>
 <br/>
