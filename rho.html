@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black-Scholes 3D Theta Surface</title>
+    <title>Black-Scholes 3D Rho Surface</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/2.24.2/plotly.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
     <style>
@@ -76,7 +76,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Black-Scholes Option Theta 3D Surface</h1>
+        <h1>Black-Scholes Option Rho 3D Surface</h1>
         <div class="controls">
             <div class="control-group">
                 <label for="option-type">Option Type:</label>
@@ -119,16 +119,11 @@
         <div id="surface-plot" class="plot"></div> <!-- Plotly plot will be rendered here -->
         
         <div class="info-text">
-            <p>Theta measures the rate of decline in the value of an option due to the passage of time, often referred to as time decay. It is typically negative for both call and put options, indicating that options lose value as time passes. This plot shows how theta changes with different stock prices at a fixed strike price of 100, expressed in terms of value lost per day.</p>
+            <p>Rho measures the sensitivity of an option's price to changes in the risk-free interest rate. For call options, rho is generally positive, indicating that the option price increases as interest rates rise. For put options, rho is typically negative, meaning the option price decreases as interest rates rise. This plot shows how rho changes with different stock prices at a fixed strike price of 100, expressed in terms of option value change per 1% change in interest rate.</p>
         </div>
     </div>
 
     <script>
-        // Standard normal PDF function
-        function normPDF(x) {
-            return (1 / Math.sqrt(2 * Math.PI)) * Math.exp(-0.5 * x * x);
-        }
-        
         // Standard normal CDF function
         function normCDF(x) {
             const a1 = 0.254829592;
@@ -147,24 +142,24 @@
             return 0.5 * (1.0 + sign * y);
         }
 
-        // Black-Scholes theta calculation for call option
-        function blackScholesTheta(S, K, T, r, sigma, optionType) {
+        // Black-Scholes rho calculation
+        function blackScholesRho(S, K, T, r, sigma, optionType) {
             if (T <= 0.0001) return 0;
             
             const d1 = (Math.log(S / K) + (r + 0.5 * sigma * sigma) * T) / (sigma * Math.sqrt(T));
             const d2 = d1 - sigma * Math.sqrt(T);
             
             if (optionType === 'call') {
-                // Call option theta (daily)
-                return -((S * sigma * normPDF(d1)) / (2 * Math.sqrt(T)) + r * K * Math.exp(-r * T) * normCDF(d2)) / 365;
+                // Call option rho (for 1% change in interest rate)
+                return K * T * Math.exp(-r * T) * normCDF(d2) / 100;
             } else {
-                // Put option theta (daily)
-                return -((S * sigma * normPDF(d1)) / (2 * Math.sqrt(T)) - r * K * Math.exp(-r * T) * normCDF(-d2)) / 365;
+                // Put option rho (for 1% change in interest rate)
+                return -K * T * Math.exp(-r * T) * normCDF(-d2) / 100;
             }
         }
 
-        // Function to generate the theta surface data with fixed strike
-        function generateThetaSurface(strikePrice, minSpot, maxSpot, minMaturity, maxMaturity, 
+        // Function to generate the rho surface data with fixed strike
+        function generateRhoSurface(strikePrice, minSpot, maxSpot, minMaturity, maxMaturity, 
                                      numSpots, numMaturities, r, baseVol, optionType) {
             // Create arrays for spots and maturities
             const spots = numeric.linspace(minSpot, maxSpot, numSpots);
@@ -175,7 +170,7 @@
             const y = [];
             const z = [];
             
-            // Generate the theta surface
+            // Generate the rho surface
             for (let i = 0; i < maturities.length; i++) {
                 const maturity = maturities[i];
                 
@@ -188,13 +183,13 @@
                     const termEffect = 0.05 * Math.log(maturity + 0.5);
                     const vol = Math.max(0.1, baseVol + smileEffect + termEffect);
                     
-                    // Calculate theta
-                    const theta = blackScholesTheta(spot, strikePrice, maturity, r, vol, optionType);
+                    // Calculate rho
+                    const rho = blackScholesRho(spot, strikePrice, maturity, r, vol, optionType);
                     
                     // Store the point
                     x.push(spot);
                     y.push(maturity);
-                    z.push(theta);
+                    z.push(rho);
                 }
             }
             
@@ -207,36 +202,33 @@
             const minZ = Math.min(...data.z);
             const maxZ = Math.max(...data.z);
             
-            // Determine the absolute maximum for symmetric range
-            const absMax = Math.max(Math.abs(minZ), Math.abs(maxZ));
-            
             const surfaceData = [{
                 x: data.x,
                 y: data.y,
                 z: data.z,
                 type: 'mesh3d',
                 intensity: data.z,
-                colorscale: 'Hot',
+                colorscale: "Hot",
                 reversescale: true,
-                opacity: 0.8,
+                opacity: 0.9,
                 colorbar: {
-                    title: 'Theta ($ per day)'
+                    title: 'Rho ($ per 1% change)'
                 }
             }];
             
             const layout = {
-                title: `${optionType === 'call' ? 'Call' : 'Put'} Option Theta Surface (Strike = 100)`,
+                title: `${optionType === 'call' ? 'Call' : 'Put'} Option Rho Surface (Strike = 100)`,
                 scene: {
                     xaxis: {
                         title: 'Stock Price',
                     },
                     yaxis: { title: 'Time to Maturity (Years)' },
                     zaxis: { 
-                        title: 'Theta ($ per day)',
-                        range: [minZ * 1.1, maxZ * 0.1]
+                        title: 'Rho ($ per 1% change)',
+                        range: [minZ * 1.1, maxZ * 1.1]
                     },
                     camera: {
-                        eye: { x: 1.5, y: -2.2, z: 1 }
+                        eye: { x: 1, y: -2.2, z: 1 }
                     }
                 },
                 margin: { l: 0, r: 0, b: 0, t: 50 }
@@ -267,8 +259,8 @@
                 return;
             }
             
-            // Generate the theta surface data
-            const surfaceData = generateThetaSurface(
+            // Generate the rho surface data
+            const surfaceData = generateRhoSurface(
                 strikePrice, minSpot, maxSpot, minMaturity, maxMaturity, 
                 30, 30, riskFreeRate, baseVolatility, optionType
             );
