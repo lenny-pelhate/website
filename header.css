@@ -80,35 +80,13 @@ li {
     width: 100%;
 }
 
-.Interest-rate:hover > .submenu {
-    display: block;
-    position: absolute;
-    border: none;
-    border-radius: 0;
-    right: 100%;  
-    top: 65px;   
-    margin-left: -160px;  
-    width: 120px;  
-}
-
-.Volatility:hover > .submenu {
-    display: block;
-    position: absolute;
-    border: none;
-    border-radius: 0;
-    right: 100%;  
-    top: 95px;   
-    margin-left: -160px;  
-    width: 120px;  
-}
-
 .numerical-methods:hover > .submenu {
     display: block;
     position: absolute;
     border: none;
     border-radius: 0;
     right: 100%;  
-    top: 230px;   
+    top: 260px;   
     margin-left: -160px;  
     width: 120px;  
 }
