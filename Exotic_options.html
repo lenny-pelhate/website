@@ -8716,7 +8716,6 @@ P_{DO}(T) &amp;=
 <li>$P_{DI}(T) + P_{DO}(T) = P(T)$</li>
 </ul>
 <p><strong>Price:</strong></p>
-<p><font color="red">revoir les prix, tout est faux</font></p>
 <p>\begin{array}{|rl|}
 \hline
 \\
@@ -8726,52 +8725,51 @@ P_{DO}(T) &amp;=
 \\
 \hline
 \\
-\text{If} \; B \le K, \; C_{UO}(t) &amp;= \\
+\text{If} \; B \le K, \; C_{UO}(t) &amp;= 0\\
 \\
 \text{If} \; B \ge K, \; C_{UO}(t) &amp;= C(t) - C_{UI}(t) \\
-          &amp;= \bigg[S_t N(d_1) - K e^{-r(T-t)} N(d_2) \bigg] - \bigg[S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_3) - K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_4) \bigg]\\
+          &amp;= \bigg[S_t N(d_1) - K e^{-r(T-t)} N(d_2) \bigg] - \bigg[S_t N(d_5) - K e^{-r(T-t)} N(d_6)\bigg] + \bigg[S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_3) - K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_4) \bigg] - \bigg[S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_7) - K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_8)\bigg]\\
 \\
 \hline
 \\
-\text{If} \; B \le K, \; C_{DI}(t) &amp;= \\
+\text{If} \; B \le K, \; C_{DI}(t) &amp;= S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_3) - K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_4) \\
 \\
-\text{If} \; B \ge K, \; C_{DI}(t) &amp;= S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_3) - K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_4)\\
+\text{If} \; B \ge K, \; C_{DI}(t) &amp;= \bigg[S_t N(d_1) - K e^{-r(T-t)} N(d_2)\bigg] - \bigg[S_t N(d_5) - K e^{-r(T-t)} N(d_6)\bigg] + \bigg[S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_7) - K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_8)\bigg]\\
 \\
 \hline
 \\
-\text{If} \; B \le K, \; C_{DO}(t) &amp;= \\
+\text{If} \; B \le K, \; C_{DO}(t) &amp;= \bigg[S_t N(d_1) - K e^{-r(T-t)} N(d_2)\bigg] - \bigg[S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_3) - K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_4)\bigg] \\
 \\
 \text{If} \; B \ge K, \; C_{DO}(t) &amp;= C(t) - C_{DI}(t) \\
-          &amp;= \bigg[S_t N(d_1) - K e^{-r(T-t)} N(d_2) \bigg] - \bigg[S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_3) - K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_4) \bigg] \\
+          &amp;= \bigg[S_t N(d_5) - K e^{-r(T-t)} N(d_6)\bigg] - \bigg[S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_7) - K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_8)\bigg] \\
 \\
 \hline
 \end{array}</p>
 <p>\begin{array}{|rl|}
 \hline
 \\
-\text{If} \; B \le K, \; P_{UI}(t) &amp;= K \, e^{-r(T-t)} N(-d_2) - S_t N(-d_1) \\
+\text{If} \; B \le K, \; P_{UI}(t) &amp;=  \bigg[K \, e^{-r(T-t)} N(-d_2) - S_t N(-d_1)\bigg] - \bigg[K e^{-r(T-t)} N(-d_6) - S_t N(-d_5)\bigg] + \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_8) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_7)\bigg] \\
 \\
-\text{If} \; B \ge K, \; P_{UI}(t) &amp;= K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_4) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_3)\\
+\text{If} \; B \ge K, \; P_{UI}(t) &amp;= \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_4) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_3)\bigg]\\
 \\
 \hline
 \\
-\text{If} \; B \le K, \;  P_{UO}(t) &amp;= \\
+\text{If} \; B \le K, \;  P_{UO}(t) &amp;= \bigg[K e^{-r(T-t)} N(-d_6) - S_t N(-d_5)\bigg] - \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_8) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_7)\bigg]\\
 \\
 \text{If} \; B \ge K, \; P_{UO}(t) &amp;= P(t) - P_{UI}(t)\\
-          &amp;= \bigg[K \, e^{-r(T-t)} N(-d_2) - S_t N(-d_1)\bigg] - \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_4) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_3) \bigg]\\
+          &amp;= \bigg[K \, e^{-r(T-t)} N(-d_2) - S_t N(-d_1)\bigg] - \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(-d_4) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(-d_3)\bigg]\\
 \\
 \hline
 \\
-\text{If} \; B \le K, \; P_{DI}(t) &amp;= \\
+\text{If} \; B \le K, \; P_{DI}(t) &amp;= \bigg[K e^{-r(T-t)} N(-d_6) - S_t N(-d_5)\bigg] - \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_4) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_3)\bigg] + \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_8) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_7)\bigg]\\
 \\
-\text{If} \; B \ge K, \; P_{DI}(t) &amp;= K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_4) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_3)\\
+\text{If} \; B \ge K, \; P_{DI}(t) &amp;= \bigg[K e^{-r(T-t)} N(-d_2) - S_t N(-d_1)\bigg]\\
 \\
 \hline
 \\
-\text{If} \; B \le K, \; P_{DO}(t) &amp;= \\
+\text{If} \; B \le K, \; P_{DO}(t) &amp;= \bigg[K e^{-r(T-t)} N(-d_2) - S_t N(-d_1)\bigg] - \bigg[K e^{-r(T-t)} N(-d_6) - S_t N(-d_5)\bigg] + \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_4) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_3)\bigg] - \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_8) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_7)\bigg]\\
 \\
-\text{If} \; B \ge K, \; P_{DO}(t) &amp;= P(t) - P_{DI}(t)\\
-          &amp;= \bigg[K \, e^{-r(T-t)} N(-d_2) - S_t N(-d_1)\bigg] - \bigg[K e^{-r(T-t)} \Big(\frac{B}{S_t}\Big)^{2 \lambda - 2} N(d_4) - S_t \Big(\frac{B}{S_t}\Big)^{2 \lambda} N(d_3) \bigg]\\
+\text{If} \; B \ge K, \; P_{DO}(t) &amp;= 0 \\
 \\
 \hline
 \end{array}</p>
@@ -8794,134 +8792,141 @@ d_7 &amp;= \frac{\ln (B/S_t) + (r + \frac{1}{2} \sigma^2 )(T-t)}{\sigma \sqrt{T-
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Proof:</strong></p>
-<ol>
-<li><strong>Up-and-in call:</strong></li>
-</ol>
-<p>Under the measure $\mathbb{Q}$, the underlying asset price follows: $dS_t = r S_t dt + \sigma S_t dB^{\mathbb{Q}}_t$</p>
-<p>By Itô's lemma:
+<blockquote>
+<p><i>lemma 1:</i> <font color="#191970"><strong>(Reflection Principle)</strong></font></p>
+<p>Let $W_t$ be a standard Brownian motion, and $M_0^T = \underset{t \in [0,T]}{\text{Max}} \, W_t.$</p>
+<p>$\forall a \ge b \ge 0,$
 $$
-d[\ln S]_t = \bigg(r - \frac{\sigma^2}{2}\bigg) dt + \sigma dB^{\mathbb{Q}}_t
+\boxed{ \mathbb{P} (M_0^{T} &gt; a, W_{T} \le b) = \mathbb{P} (W_{T} \ge 2a - b )}
 $$</p>
-<p>The price of the up-and-in call option at time $t$ is:
+<p><i>Proof:</i></p>
+<p>Let us define the first hitting time of $a$ as:
 $$
-C_{UI}(t) = e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[(S_T - K)^+ \, 𝟙_{\{M_{t,T} \ge B \}} \Big| \mathcal{F}_t \Big]
+\tau_a = \inf \{t \ge 0 : W_t = a\}
 $$</p>
-<p>Let $\tau_B$ denote the first time passage through barrier $B$ ($\tau$ is a stopping time):
+<p>The event $\{M_0^{T} &gt; a, W_{T} \le b\}$ means that the Brownian motion reaches $a$ at some time before $T$ and ends up at a position $W_T \le b.$</p>
+<p>Note that $\{M_0^{T} \ge a\} = \{\tau_a \le T\}$.</p>
+<p>Once the Brownian motion reaches $a$, the future evolution of the process is independent of its past. The post-hitting process $(W_{t + \tau_a} - W_{\tau_a})_{t \ge 0}$ is again a standard Brownian motion starting from zero, by the <strong>strong Markov property</strong>.</p>
+<p>Define a new process $W'$ (the reflection of the original Brownian motion with respect to level $a$), for $t \ge \tau_a$ as:
 $$
-\tau_B = \inf \{s \ge t, \, S_s \ge B\}
+W'_t = 2a - W_t
 $$</p>
-<p>Note that $\{M_{t,T} \ge B\} = \{\tau_B \le T\}$, such that:
-\begin{align*}
-C_{UI}(t) &amp;= e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[(S_T - K)^+ \, 𝟙_{\{\tau_B \le T\}} \Big| \mathcal{F}_t \Big] \\
-          &amp;= e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[(S_T - K) \, 𝟙_{\{S_T \ge K\}} \, 𝟙_{\{\tau_B \le T\}} \Big| \mathcal{F}_t \Big] \\
-          &amp;= e^{-r(T-t)} \underbrace{\mathbb{E}_{\mathbb{Q}} \Big[S_T\, 𝟙_{\{S_T \ge K, \, \tau_B \le T\}} \Big| \mathcal{F}_t \Big]}_{E_1} - K e^{-r(T-t)} \underbrace{\mathbb{E}_{\mathbb{Q}} \Big[𝟙_{\{S_T \ge K, \, \tau_B \le T\}} \Big| \mathcal{F}_t \Big]}_{E_2}
-\end{align*}</p>
-<p><i>Computation of $E_1$:</i></p>
-<p>We can change the measure from $\mathbb{Q}$ to $\mathbb{Q}^S$ where $S_t\,e^{r(T-t)}$ is the numeraire. Indeed, define the Radon-Nikodym derivative:
+<p>For any Brownian motion path that reaches level $a$ and then moves to level $b$ at time $T$ (where $b&lt;a$), we can construct a corresponding reflected path that ends at level $2a-b$ at time $T$. By the <strong>symmetry property of Brownian motion</strong>, these two types of paths occur with equal probability.</p>
+<p>Thus, for each path where $\tau_a \le T$ and $W_T = y \le b$, we construct a reflected path such that $W'_T = 2a - y \ge 2a -b:$
 $$
-\frac{d \mathbb{Q}^S}{d \mathbb{Q}} \Big| _{\mathcal{F}_T} = \frac{S_T}{S_t \, e^{r(T-t)}} = \exp{\Bigg(\int_t^T \sigma dB^{\mathbb{Q}}_s - \int_t^T \frac{1}{2} \sigma^2 ds\Bigg)} = \mathcal{E} \Bigg(\int_t^T \sigma dB^{\mathbb{Q}}_s\Bigg)
+\mathbb{P} (M_0^{T} &gt; a, W_{T} \le b) = \mathbb{P} (\tau_a \le T, W_{T} \le b) = \mathbb{P} (W_{T} \ge 2a - b )
 $$</p>
-<p>By construction, the process $\big(\frac{S_u}{S_t\,e^{r(T-t)}}\big)_{u \in [t,T]}$ is a $\mathbb{Q}^S$-martingale, and:
-\begin{align*}
-\mathbb{E}_{\mathbb{Q}} \bigg[S_T\, 𝟙_{\{S_T \ge K, \, \tau_B \le T\}} \Big| \mathcal{F}_t \bigg]
-    &amp;= \mathbb{E}_{\mathbb{Q}} \bigg[S_t\,e^{r(T-t)} \frac{S_T}{S_t\,e^{r(T-t)}}\, 𝟙_{\{S_T \ge K, \, \tau_B \le T\}} \Big| \mathcal{F}_t \bigg] \\
-    &amp;= S_t\,e^{r(T-t)} \, \mathbb{E}_{\mathbb{Q}} \bigg[\frac{d \mathbb{Q}^S}{d \mathbb{Q}} \Big| _{\mathcal{F}_T} \, 𝟙_{\{S_T \ge K, \, \tau_B \le T\}} \Big| \mathcal{F}_t \bigg] \\
-    &amp;= S_t\,e^{r(T-t)} \, \mathbb{E}_{\mathbb{Q}^S} \bigg[𝟙_{\{S_T \ge K, \, \tau_B \le T\}} \Big| \mathcal{F}_t \bigg] \\
-    &amp;= S_t\,e^{r(T-t)} \, \mathbb{Q}^S \Big(S_T \ge K, \, \tau_B \le T \, \Big| \mathcal{F}_t \Big) \\
-    &amp;= S_t\,e^{r(T-t)} \, \mathbb{Q}^S \Big(\ln S_T \ge \ln K, \, \tau_{\ln B} \le T \, \Big| \mathcal{F}_t \Big) \qquad \tau_{\ln B} = \inf \{ t \ge 0, \ln S_t \ge \ln B\} = \tau_{B}
-\end{align*}</p>
-<p>On the other hand, Girsanov gives:
-\begin{align*}
-dB^{\mathbb{Q}^S}_t &amp;=  dB^{\mathbb{Q}}_t - d \langle \sigma B^{\mathbb{Q}}_t, B^{\mathbb{Q}}_t \rangle \\
-                    &amp;= dB^{\mathbb{Q}}_t - \sigma dt
-\end{align*}</p>
-<p>Thus:
-\begin{align*}
-d[\ln S]_t &amp;= \bigg(r - \frac{\sigma^2}{2}\bigg) dt + \sigma dB^{\mathbb{Q}}_t \\
-     &amp;= \bigg(r - \frac{\sigma^2}{2}\bigg) dt + \sigma \bigg(dB^{\mathbb{Q}^S}_t + \sigma dt\bigg) \\
-     &amp;= \bigg(r + \frac{\sigma^2}{2}\bigg) dt + \sigma dB^{\mathbb{Q}^S}_t\\
-\end{align*}</p>
-<p>i.e.
+<p>Writing this in integral form gives:
 $$
-\ln S_T - \ln S_t = \bigg(r + \frac{\sigma^2}{2}\bigg)(T-t) + \epsilon \, \sigma \sqrt{T-t} \qquad {where} \qquad \epsilon \sqrt{t} = B^{\mathbb{Q}^S}_t \sim \mathcal{N}(0,t)
+\mathbb{P} (W_{T} \ge 2a - b) = \frac{1}{\sqrt{2 \pi T}} \int_{2a-b}^{\infty} e^{-\frac{x^2}{2T}}dx
 $$</p>
-<p>Using the <strong>reflection principle</strong>, we get:
-$$
-\mathbb{Q}^S \Big(\ln S_T \ge \ln K, \, \tau_{\ln B} \le T \, \Big| \mathcal{F}_t \Big) = \mathbb{Q}^S \Big(\ln S_T \ge \ln K \, \Big| \mathcal{F}_t \Big) - e^{\frac{2(r + \frac{\sigma^2}{2}) (\ln B - \ln S_t )}{\sigma^2} } \mathbb{Q}^S \Big(\ln S_T \ge 2 \ln B - \ln K \, \Big| \mathcal{F}_t \Big)
+<div style="text-align: center;">
+<img alt="No description has been provided for this image" src="./media/reflection_principle.JPG" width="700"/>
+</div>
+<br/>
+</blockquote>
+<br/>
+<blockquote>
+<p><i>lemma 2:</i> <font color="#191970"><strong>(Joint Density of a Brownian Motion and its Maximum)</strong></font></p>
+<p>Let $f_{M_0^T, W_T}$ be the joint density function of $(M_0^T,W_T)$, where $M_0^T = \underset{t \in [0,T]}{\text{Max}} \, W_t.$</p>
+<p>$$
+\boxed{f_{M_0^T, W_T} (a,b) = \sqrt{\frac{2}{\pi}} \, \frac{2a-b}{T^{3/2}} \, e^{-\frac{(2a-b)^2}{2T}} \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}}}
 $$</p>
-<p><font color="red">???</font></p>
+<p><i>Proof:</i></p>
 <p>\begin{align*}
-\mathbb{Q}^S \Big(\ln S_T \ge \ln K \, \Big| \mathcal{F}_t \Big)
-    &amp;= \mathbb{Q}^S \bigg(\ln S_t + \Big(r + \frac{\sigma^2}{2}\Big)(T-t) + \epsilon \, \sigma \sqrt{T-t} \ge \ln K \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q}^S \bigg(\epsilon \ge - \frac{\ln (S_t/K) + (r + \frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}} \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q}^S \Big(\epsilon \ge -d_1 \, \Big| \mathcal{F}_t \Big) \\
-    &amp;= 1 - N(-d_1) \\
-    &amp;= N(d_1) \\
-\\
-\mathbb{Q}^S \Big(\ln S_T \ge 2 \ln B - \ln K \, \Big| \mathcal{F}_t \Big)
-    &amp;= \mathbb{Q}^S \bigg(\ln S_t + \Big(r + \frac{\sigma^2}{2}\Big)(T-t) + \epsilon \, \sigma \sqrt{T-t} \ge 2 \ln B - \ln K \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q}^S \bigg( \epsilon \ge \frac{2 \ln B - \ln K - \ln S_t - (r + \frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}} \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q}^S \bigg( \epsilon \ge - \frac{ \ln \big(\frac{K S_t}{B^2} \big) + (r + \frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}} \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q}^S \Big( \epsilon \ge - d_3 \, \Big| \mathcal{F}_t \Big) \\
-    &amp;= 1- N(-d_3) \\
-    &amp;= N(d_3)
+f_{M_0^T, W_T} (a,b)
+   &amp;= \frac{\partial^2}{\partial a \partial b} \mathbb{P}(M_0^T \le a, W_T \le b) \\
+   &amp;= \frac{\partial^2}{\partial a \partial b} \Big(\mathbb{P}(W_T \le b) - \mathbb{P}(X_0^T &gt; a, W_T \le b) \Big) \quad \qquad \text{law of total probabilities}\\
+   &amp;= - \frac{\partial^2}{\partial a \partial b} \mathbb{P}(X_0^T &gt; a, W_T \le b) \\
+   &amp;= - \frac{\partial^2}{\partial a \partial b} \bigg( \frac{1}{\sqrt{2 \pi T}} \int_{2a-b}^{\infty} e^{-\frac{x^2}{2T}} dx \bigg) \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}} \qquad \;\, \text{from lemma} \; 1\\
+   &amp;= \frac{1}{\sqrt{2 \pi T}} \frac{\partial}{\partial b} \bigg( 2 e^{-\frac{(2a-b)^2}{2T}} \bigg) \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}} \\
+   &amp;= \sqrt{\frac{2}{\pi T}} \bigg( \frac{2a-b}{T} e^{-\frac{(2a-b)^2}{2T}} \bigg) \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}} \\
+   &amp;= \sqrt{\frac{2}{\pi}} \, \frac{2a-b}{T^{3/2}} \, e^{-\frac{(2a-b)^2}{2T}} \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}}\\
 \end{align*}</p>
-<p>Thus:
-\begin{align*}
-E_1 &amp;= S_t\,e^{r(T-t)} \, \mathbb{Q}^S \Big(\ln S_T \ge \ln K, \, \tau_{\ln B} \le T \, \Big| \mathcal{F}_t \Big) \\
-    &amp;= S_t\,e^{r(T-t)} \Big(N(d_1) - e^{\frac{2(r + \frac{\sigma^2}{2}) (\ln B - \ln S_t )}{\sigma^2} } N(d_3) \Big) \\
-    &amp;= S_t\,e^{r(T-t)} \Big(N(d_1) - e^{2 \lambda \ln (\frac{B}{S_t})} N(d_3) \Big) \qquad \qquad \text{where} \; \lambda = \frac{r + \frac{\sigma^2}{2}}{\sigma^2}\\
-    &amp;= S_t\,e^{r(T-t)} \bigg(N(d_1) - \bigg(\frac{B}{S_t}\bigg)^{2 \lambda} N(d_3) \bigg)
-\end{align*}</p>
-<p><i>Computation of $E_2$:</i></p>
-<p>\begin{align*}
-\mathbb{E}_{\mathbb{Q}} \bigg[𝟙_{\{S_T \ge K, \, \tau_B \le T\}} \Big| \mathcal{F}_t \bigg]
-    &amp;= \mathbb{Q} \Big(S_T \ge K, \, \tau_B \le T \, \Big| \mathcal{F}_t \Big) \\
-    &amp;= \mathbb{Q} \Big(\ln S_T \ge \ln K, \, \tau_{\ln B} \le T \, \Big| \mathcal{F}_t \Big) \\
-\end{align*}</p>
-<p>Under $\mathbb{Q}$:
-$$
-\ln S_T - \ln S_t = \bigg(r - \frac{\sigma^2}{2}\bigg)(T-t) + \epsilon \, \sigma \sqrt{T-t} \qquad {where} \qquad \epsilon \sqrt{t} = B^{\mathbb{Q}^S}_t \sim \mathcal{N}(0,t)
+<br/>
+</blockquote>
+<br/>
+<blockquote>
+<p><i>lemma 3:</i> <font color="#191970"><strong>(Joint Density of a Drifted Brownian Motion)</strong></font></p>
+<p>Let:</p>
+<ul>
+<li><p>$\tilde{W}_t = \mu t + W_t$ be a drifted Brownian motion, $\forall \mu \in \mathbb{R}$</p>
+</li>
+<li><p>$\tilde{M}_0^T = \underset{t \in [0,T]}{\text{Max}} \, \tilde{W}_t$</p>
+</li>
+<li><p>$f_{\tilde{M}_0^{T}, \tilde{W}_{T}}$ be the joint density of $(\tilde{M}_0^{T}, \tilde{W}_{T})$</p>
+</li>
+</ul>
+<p>$$
+\boxed{f_{\tilde{M}_0^{T}, \tilde{W}_{T}} (a,b) = \sqrt{\frac{2}{\pi T^3}} (2a-b) \, e^{- \frac{\mu^2 T}{2} + \mu b - \frac{(2a-b)^2}{2T}} \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}}}
 $$</p>
-<p>Using the <strong>reflection principle</strong>, we get:
+<p><i>Proof:</i></p>
+<p>Let $L_t = -\mu W_t$.</p>
+<p>Define the Radon-Nikodym derivative: $\frac{d\mathbb{\tilde{P}}}{d\mathbb{P}} | _{\mathcal{F}_T} = e^{L_T - \frac{1}{2} \langle L,L \rangle _T}= e^{-\mu W_T - \frac{\mu^2}{2} T}$.</p>
+<p>By Girsanov, $\tilde{W}_t = W_t - \langle W, L\rangle _t = W_t + \mu t$ is a Brownian motion under $\mathbb{\tilde{P}}$ and:
 \begin{align*}
-\mathbb{Q} \Big(\ln S_T \ge \ln K, \, \tau_{\ln B} \le T \, \Big| \mathcal{F}_t \Big)
-    &amp;= \mathbb{Q} \Big(\ln S_T \ge \ln K \, \Big| \mathcal{F}_t \Big) - e^{\frac{2(r - \frac{\sigma^2}{2}) (\ln B - \ln S_t )}{\sigma^2} } \mathbb{Q} \Big(\ln S_T \ge 2 \ln B - \ln K \, \Big| \mathcal{F}_t \Big) \\
+\mathbb{P} \Big(\tilde{M}_0^{T} \le a, \tilde{W}_{T} \le b \Big)
+   &amp;= \mathbb{E}_{\mathbb{P}} \Big[\mathbf{1}_{\{\tilde{M}_0^{T} \le a, \, \tilde{W}_{T} \le b\}}\Big] \\
+   &amp;= \mathbb{E}_{\mathbb{\tilde{P}}} \bigg[ \frac{d\mathbb{P}}{d\mathbb{\tilde{P}}} \Big| _{\mathcal{F}_T} \mathbf{1}_{\{\tilde{M}_0^{T} \le a, \, \tilde{W}_{T} \le b\}}\bigg] \\
+   &amp;= \mathbb{E}_{\mathbb{\tilde{P}}} \bigg[ e^{\mu W_T + \frac{\mu^2}{2} T} \mathbf{1}_{\{\tilde{M}_0^{T} \le a, \, \tilde{W}_{T} \le b\}}\bigg] \\
+   &amp;= \mathbb{E}_{\mathbb{\tilde{P}}} \bigg[ e^{\mu \tilde{W}_T - \frac{\mu^2}{2} T} \mathbf{1}_{\{\tilde{M}_0^{T} \le a, \, \tilde{W}_{T} \le b\}}\bigg] \qquad \qquad \text{since} \; \tilde{W}_T = W_T + \mu \, T\\
+   &amp;= \int_{-\infty}^{a} \int_{-\infty}^{b} e^{\mu y - \frac{\mu^2}{2} T} f_{\tilde{M}_0^{T}, \tilde{W}_{T}} (x,y) dx dy\\
 \end{align*}</p>
-<p><font color="red">???</font></p>
+<p>Since under $\mathbb{\tilde{P}}, \, \tilde{W}_t$ is a standard Brownian motion (i.e. martingale), using lemma $2$, we have:
+\begin{align*}
+  \mathbb{P} \Big(\tilde{M}_0^{T} \le a, \tilde{W}_{T} \le b \Big)
+   &amp;= \int_{-\infty}^{a} \int_{-\infty}^{b} e^{\mu y - \frac{\mu^2}{2} T} \sqrt{\frac{2}{\pi T^3}} \, (2x-y) \, e^{-\frac{(2x-y)^2}{2T}} \mathbf{1}_{\{x \, \ge \, \text{Max}{(y,0)} \}} dy dx\\
+   &amp;= \int_{0}^{a} \int_{-\infty}^{b} e^{\mu y - \frac{\mu^2}{2} T} \sqrt{\frac{2}{\pi T^3}} (2x-y) \, e^{- \frac{(2x-y)^2}{2T}} \mathbf{1}_{\{y \, \le \, x \}} dy dx\\
+\end{align*}</p>
+<p>Thus:
+\begin{align*}
+f_{\tilde{M}_0^{T}, \tilde{W}_{T}} (a,b)
+   &amp;= \frac{\partial^2}{\partial a \partial b} \mathbb{P} \Big(\tilde{M}_0^{T} \le a, \tilde{W}_{T} \le b \Big) \\
+\end{align*}</p>
+<p>We find the result by differentiating.</p>
+<br/>
+</blockquote>
+<br/>
+<blockquote>
+<p><i>lemma 4:</i> <font color="#191970"><strong>(Cumulative Distribution Function of the Maximum of a Drifted Brownian Motion)</strong></font></p>
+<p>Let:</p>
+<ul>
+<li><p>$\tilde{W}_t = \mu t + W_t$ be a drifted Brownian motion, $\forall \mu \in \mathbb{R}$</p>
+</li>
+<li><p>$\tilde{M}_0^T = \underset{t \in [0,T]}{\text{Max}} \, \tilde{W}_t$</p>
+</li>
+</ul>
+<p>The cdf of the maximum of a drifted Brownian motion is given $\forall a \ge 0$:
+$$
+\boxed{\mathbb{P}(\tilde{M}_0^T \le a) = N\bigg(\frac{a-\mu T}{\sqrt{T}}\bigg) - e^{2\mu a} N\bigg(\frac{-a-\mu T}{\sqrt{T}}\bigg)}
+$$</p>
+<p><i>Proof:</i></p>
+<p>We use the marginal cdf of lemma 3.</p>
+<p>$\forall a \ge 0:$</p>
 <p>\begin{align*}
-\mathbb{Q} \Big(\ln S_T \ge \ln K \, \Big| \mathcal{F}_t \Big)
-    &amp;= \mathbb{Q} \bigg(\ln S_t + \Big(r - \frac{\sigma^2}{2}\Big)(T-t) + \epsilon \, \sigma \sqrt{T-t} \ge \ln K \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q} \bigg( \epsilon \ge \frac{\ln K - \ln S_t - (r - \frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}} \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q} \bigg( \epsilon \ge - \frac{\ln (S_t/K) + (r - \frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}} \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q} \bigg( \epsilon \ge - d_2 \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= 1 - N(-d_2) \\
-    &amp;= N(d_2) \\
-\\
-\mathbb{Q} \Big(\ln S_T \ge 2 \ln B - \ln K \, \Big| \mathcal{F}_t \Big)
-    &amp;= \mathbb{Q} \bigg(\ln S_t + \Big(r - \frac{\sigma^2}{2}\Big)(T-t) + \epsilon \, \sigma \sqrt{T-t} \ge 2 \ln B - \ln K \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q} \bigg(\epsilon \ge \frac{2 \ln B - \ln K - \ln S_t - (r - \frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}} \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q} \bigg(\epsilon \ge - \frac{\ln(\frac{S_t K}{B^2}) + (r - \frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}} \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= \mathbb{Q} \bigg(\epsilon \ge - d_4 \, \Big| \mathcal{F}_t \bigg) \\
-    &amp;= 1 - N(-d_4) \\
-    &amp;= N(d_4)
+\mathbb{P}(\tilde{M}_0^T \le a) &amp;= \sqrt{\frac{2}{\pi T^3}}  \int_{0}^{a} \int_{-\infty}^{\infty} e^{\mu y - \frac{\mu^2}{2} T} (2x-y) \, e^{- \frac{(2x-y)^2}{2T}} \mathbf{1}_{\{y \, \le \, x \}} dy dx \\
+&amp;= \sqrt{\frac{2}{\pi T^3}}  \int_{0}^{a} \int_{-\infty}^{x} e^{\mu y - \frac{\mu^2}{2} T} (2x-y) \, e^{- \frac{(2x-y)^2}{2T}} dy dx \\
+&amp;= \sqrt{\frac{2}{\pi T^3}} \, e^{- \frac{\mu^2}{2} T} \int_{-\infty}^{a} e^{\mu y} \int_{y \vee 0}^{a} (2x-y) \, e^{- \frac{(2x-y)^2}{2T}}  dx dy \qquad \text{by interverting the integrals}\\
+&amp;= \sqrt{\frac{2}{\pi T^3}} \, e^{- \frac{\mu^2}{2} T} \int_{-\infty}^{a} e^{\mu y} \bigg[- \frac{T}{2} e^{-\frac{(2x-y)^2}{2T}}\bigg]^a_{y \vee 0} dy \\
+&amp;= \frac{1}{\sqrt{2 \pi T}} \, e^{- \frac{\mu^2}{2} T} \int_{-\infty}^{a} e^{\mu y} \bigg(e^{-\frac{(2(y \vee 0)-y)^2}{2T}} - e^{-\frac{(2a-y)^2}{2T}}\bigg) dy \\
+&amp;= \frac{1}{\sqrt{2 \pi T}} \, e^{- \frac{\mu^2}{2} T} \int_{-\infty}^{a} e^{\mu y} \bigg(e^{-\frac{y^2}{2T}} - e^{-\frac{(2a-y)^2}{2T}}\bigg) dy \qquad \qquad \; \text{since} \; \big(2(y \vee 0) - y\big)^2 = y^2\\
+&amp;= \frac{1}{\sqrt{2 \pi T}} \int_{-\infty}^{a} \bigg(e^{-\frac{y^2}{2T} + \mu y - \frac{\mu^2}{2} T} - e^{-\frac{(2a-y)^2}{2T}+ \mu y - \frac{\mu^2}{2} T}\bigg) dy \\
+&amp;= \frac{1}{\sqrt{2 \pi T}} \int_{-\infty}^{a} \bigg(e^{-\frac{1}{2T}\big(y^2 - 2T\mu y + \mu^2 T^2\big)} - e^{-\frac{1}{2T}\big(4a^2 - 4ay + y^2 + 2T\mu y - \mu^2 T^2\big)- 2\mu a + 2 \mu a}\bigg) dy \\
+&amp;= \frac{1}{\sqrt{2 \pi T}} \int_{-\infty}^{a} \bigg(e^{-\frac{1}{2T}(y - \mu T)^2} - e^{-\frac{1}{2T}\big(y - (\mu T + 2a)\big)^2 + 2 \mu a}\bigg) dy \\
+&amp;= \frac{1}{\sqrt{2 \pi T}} \int_{-\infty}^{a} e^{-\frac{1}{2T}(y - \mu T)^2} dy - e^{ 2 \mu a} \frac{1}{\sqrt{2 \pi T}} \int_{-\infty}^{a} e^{-\frac{1}{2T}\big(y - (\mu T + 2a)\big)^2} dy \\
+&amp;= \frac{1}{\sqrt{2 \pi T}} \int_{-\infty}^{a- \mu T} e^{-\frac{1}{2T}y^2} dy - e^{ 2 \mu a} \frac{1}{\sqrt{2 \pi T}} \int_{-\infty}^{-a-\mu T} e^{-\frac{1}{2T}y^2} dy \\
+&amp;= N\bigg(\frac{a-\mu T}{\sqrt{T}}\bigg) - e^{2\mu a} N\bigg(\frac{-a-\mu T}{\sqrt{T}}\bigg)
 \end{align*}</p>
-<p>Thus:
-\begin{align*}
-E_2 &amp;= \mathbb{Q} \Big(\ln S_T \ge \ln K, \, \tau_{\ln B} \le T \, \Big| \mathcal{F}_t \Big) \\
-    &amp;= N(d_2) - e^{\frac{2(r - \frac{\sigma^2}{2}) (\ln B - \ln S_t )}{\sigma^2} } N(d_4)\\
-    &amp;= N(d_2) - e^{\frac{2(r - \frac{\sigma^2}{2} + \sigma^2 - \sigma^2) \ln (B/S_t)}{\sigma^2} } N(d_4)\\
-    &amp;= N(d_2) - e^{\frac{2(r + \frac{\sigma^2}{2} - \sigma^2) \ln (B/S_t)}{\sigma^2} } N(d_4)\\
-    &amp;= N(d_2) - e^{2(\lambda - 1) \ln (\frac{B}{S_t})} N(d_4) \qquad \qquad \text{with the same} \; \lambda \; \text{as for} \; E_1\\
-    &amp;= N(d_2) - \bigg(\frac{B}{S_t}\bigg)^{2\lambda - 2} N(d_4)
-\end{align*}</p>
-<p>Thus:
-\begin{align*}
-C_{UI}(t)  
-    &amp;= e^{-r(T-t)} \underbrace{\mathbb{E}_{\mathbb{Q}} \Big[S_T\, 𝟙_{\{S_T \ge K, \, \tau_B \le T\}} \Big| \mathcal{F}_t \Big]}_{E_1} - K e^{-r(T-t)} \underbrace{\mathbb{E}_{\mathbb{Q}} \Big[𝟙_{\{S_T \ge K, \, \tau_B \le T\}} \Big| \mathcal{F}_t \Big]}_{E_2} \\
-    &amp;= e^{-r(T-t)} \Bigg[S_t\,e^{r(T-t)} \bigg(N(d_1) - \bigg(\frac{B}{S_t}\bigg)^{2 \lambda} N(d_3) \bigg)\Bigg] - K e^{-r(T-t)} \Bigg[N(d_2) - \bigg(\frac{B}{S_t}\bigg)^{2\lambda - 2} N(d_4)\Bigg]\\
-    &amp;= S_t N(d_1) - K e^{-r(T-t)} N(d_2) - S_t \bigg(\frac{B}{S_t}\bigg)^{2 \lambda} N(d_3) + K e^{-r(T-t)}\bigg(\frac{B}{S_t}\bigg)^{2\lambda - 2} N(d_4)\\
-\end{align*}</p>
+<p>where $N$ is the cdf of the normal distribution $\mathcal{N}(0,1)$</p>
+<br/>
+<p>Note:</p>
+<p>We can derive the cdf of the minimum of a drifted Brownian motion using relations between the min and max of variables, and find, $\forall a \le 0 :$
+$$
+\boxed{\mathbb{P}(\tilde{m}_0^T \le a) = N\bigg(\frac{a-\mu T}{\sqrt{T}}\bigg) + e^{2\mu a} N\bigg(\frac{a+\mu T}{\sqrt{T}}\bigg)}
+$$</p>
+<p>where $\tilde{m}_0^T = \underset{t \in [0,T]}{\text{Min}} \, \tilde{W}_t$, and $\tilde{W}_t = \mu t + W_t, \; \forall \mu \in \mathbb{R}$</p>
+<br/>
+</blockquote>
 </div>
 </div>
 </div>
@@ -8932,56 +8937,145 @@ C_{UI}(t)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<blockquote>
-<p>$\textit{lemma 1:}$</p>
-<p>\begin{align*}
-\mathbb{P} \Big(X_0^{T} &gt; a, W_{T} \le b \Big)
-   &amp;= \mathbb{P} \Big(X_0^{T} \ge a, W_{T} &lt; b \Big) \qquad \; \forall a \ge b \ge 0\\
-   &amp;= \mathbb{P} \Big(W_{T} \ge 2a - b \Big) \qquad \qquad \text{principle of reflexion of brownian motion}\\
-   &amp;= \frac{1}{\sqrt{2 \pi T}} \int_{2a-b}^{\infty} e^{-\frac{x^2}{2T}} dx
-\end{align*}</p>
-</blockquote>
-<br/>
-<blockquote>
-<p>$\textit{lemma 2:}$</p>
-<p>\begin{align*}
-\psi_{X_0^T, W_T} (a,b)
-   &amp;= \frac{\partial^2}{\partial a \partial b} \mathbb{P}(X_0^T \le a, W_T \le b) \\
-   &amp;= \frac{\partial^2}{\partial a \partial b} \Big(\mathbb{P}(W_T \le b) - \mathbb{P}(X_0^T &gt; a, W_T \le b) \Big) \quad \qquad \text{law of total probabilities}\\
-   &amp;= - \frac{\partial^2}{\partial a \partial b} \mathbb{P}(X_0^T &gt; a, W_T \le b) \\
-   &amp;= - \frac{\partial^2}{\partial a \partial b} \bigg( \frac{1}{\sqrt{2 \pi T}} \int_{2a-b}^{\infty} e^{-\frac{x^2}{2T}} dx \bigg) \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}} \\
-   &amp;= \frac{1}{\sqrt{2 \pi T}} \frac{\partial}{\partial b} \bigg( 2 e^{-\frac{(2a-b)^2}{2T}} \bigg) \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}} \\
-   &amp;= \sqrt{\frac{2}{\pi T}} \bigg( \frac{2a-b}{T} e^{-\frac{(2a-b)^2}{2T}} \bigg) \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}} \\
-   &amp;= \sqrt{\frac{2}{\pi}} \, \frac{2a-b}{T^{3/2}} \, e^{-\frac{(2a-b)^2}{2T}} \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}}\\
-\end{align*}</p>
-</blockquote>
-<br/>
-<blockquote>
-<p>$\textit{lemma 3:}$ (joint density of a drifted brownian motion)</p>
-<p>Let $L_t = -(\frac{r}{\sigma} - \frac{\sigma}{2}) W_t$.</p>
-<p>Define the Radon-Nikodym derivative: $\frac{d\mathbb{Q}}{d\mathbb{P}} | _{\mathcal{F}_t} = e^{L_t - \frac{1}{2} \langle L,L \rangle _t}= e^{-(\frac{r}{\sigma} - \frac{\sigma}{2}) W_t - \frac{1}{2}(\frac{r}{\sigma} - \frac{\sigma}{2})^2 \, t }$</p>
-<p>By Girsanov, $\tilde{W}_t = W_t + (\frac{r}{\sigma} - \frac{\sigma}{2}) \, t \,$ is a brownian motion under $\mathbb{Q}$ and:
+<ol>
+<li><strong>Up-and-in call:</strong></li>
+</ol>
+<p>If $B \le K$, it's just a simple European call option. So this derivation is for $B \ge K$ and for $t \in [0,T]$.</p>
+<p>Under the measure $\mathbb{Q}$, the underlying asset price follows: $dS_t = r S_t dt + \sigma S_t dW^{\mathbb{Q}}_t$</p>
+<p>By Itô's lemma:
+$$
+d[\ln S]_t = \bigg(r - \frac{\sigma^2}{2}\bigg) dt + \sigma dW^{\mathbb{Q}}_t
+$$</p>
+<p>Define:</p>
+<ul>
+<li><p>$X_u = \frac{1}{\sigma} \ln \big(\frac{S_u}{S_t}\big), \; \forall u \in [t,T]$. $X$ follows a drifted Brownian motion, of drift $\mu = \frac{1}{\sigma} \Big(r - \frac{\sigma^2}{2}\Big)$</p>
+</li>
+<li><p>$M_t^T = \underset{t \le u \le T}{\text{Max}} \, S_u$</p>
+</li>
+<li><p>$\tilde{M}_t^T = \underset{t \le u \le T}{\text{Max}} \, X_u$</p>
+</li>
+<li><p>$k= \frac{1}{\sigma} \ln \big(\frac{K}{S_t}\big)$</p>
+</li>
+<li><p>$b= \frac{1}{\sigma} \ln \big(\frac{B}{S_t}\big)$</p>
+</li>
+</ul>
+<p>The price of the up-and-in call option at time $t$ is:
 \begin{align*}
-\mathbb{P} \Big(\tilde{X}_0^{T} \le a, \tilde{W}_{T} \le b \Big)
-   &amp;= \mathbb{E}_{\mathbb{P}} \Big[\mathbf{1}_{\{\tilde{X}_0^{T} \le a, \, \tilde{W}_{T} \le b\}}\Big] \\
-   &amp;= \int_{\Omega}  \mathbf{1}_{\{\tilde{X}_0^{T} \le a, \, \tilde{W}_{T} \le b\}} d\mathbb{P} \\
-   &amp;= \int_{\Omega}  \frac{d\mathbb{P}}{d\mathbb{Q}} \mathbf{1}_{\{\tilde{X}_0^{T} \le a, \, \tilde{W}_{T} \le b\}} d\mathbb{Q} \\
-   &amp;= \mathbb{E}_{\mathbb{Q}} \bigg[ \frac{d\mathbb{P}}{d\mathbb{Q}} \mathbf{1}_{\{\tilde{X}_0^{T} \le a, \, \tilde{W}_{T} \le b\}}\bigg] \\
-   &amp;= \mathbb{E}_{\mathbb{Q}} \bigg[ e^{(\frac{r}{\sigma} - \frac{\sigma}{2}) W_T + \frac{1}{2}(\frac{r}{\sigma} - \frac{\sigma}{2})^2 \, T } \mathbf{1}_{\{\tilde{X}_0^{T} \le a, \, \tilde{W}_{T} \le b\}}\bigg] \\
-   &amp;= \mathbb{E}_{\mathbb{Q}} \bigg[ e^{(\frac{r}{\sigma} - \frac{\sigma}{2}) \tilde{W}_T - \frac{1}{2}(\frac{r}{\sigma} - \frac{\sigma}{2})^2 \, T } \mathbf{1}_{\{\tilde{X}_0^{T} \le a, \, \tilde{W}_{T} \le b\}}\bigg] \\
-   &amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{(\frac{r}{\sigma} - \frac{\sigma}{2}) y - \frac{1}{2}(\frac{r}{\sigma} - \frac{\sigma}{2})^2 \, T } \text{d}\mathbb{P} \Big(\tilde{X}_0^{T} \le a, \tilde{W}_{T} \le b \Big)  \\
-   &amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{(\frac{r}{\sigma} - \frac{\sigma}{2}) y - \frac{1}{2}(\frac{r}{\sigma} - \frac{\sigma}{2})^2 \, T } \mathbf{1}_{\{x \le a, \, y \le b\}} \psi_{\tilde{X}_0^{T}, \, \tilde{W}_{T}}(x,y)dx dy \\
-   &amp;= \int_{-\infty}^{b} \int_{-\infty}^{a} e^{(\frac{r}{\sigma} - \frac{\sigma}{2}) y - \frac{1}{2}(\frac{r}{\sigma} - \frac{\sigma}{2})^2 \, T }  \sqrt{\frac{2}{\pi}} \, \frac{2x-y}{T^{3/2}} \, e^{-\frac{(2x-y)^2}{2T}} \mathbf{1}_{\{x \, \ge \, \text{Max}{(y,0)} \}} dx dy \\
-   &amp;= \sqrt{\frac{2}{\pi T^3}} \int_{\text{Max} \{y,0\}}^{a} \int_{-\infty}^{b} e^{(\frac{r}{\sigma} - \frac{\sigma}{2}) y - \frac{1}{2}(\frac{r}{\sigma} - \frac{\sigma}{2})^2 \, T } \, (2x-y) \, e^{-\frac{(2x-y)^2}{2T}} dy dx \\
+C_{UI}(t) &amp;= e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[(S_T - K)^+ \, 𝟙_{\{M_t^T \ge B \}} \Big| \mathcal{F}_t \Big] \\
+    &amp;= e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[(S_T - K) \, 𝟙_{\{\tilde{M}_t^T \ge b , \, S_T \ge K \}} \Big| \mathcal{F}_t \Big] \\
+    &amp;= e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[(S_T - K) \, 𝟙_{\{\tilde{M}_t^T \ge b , \, X_T \ge k \}} \Big| \mathcal{F}_t \Big] \\
+    &amp;= e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[S_T \, 𝟙_{\{\tilde{M}_t^T \ge b , \, X_T \ge k \}} \Big| \mathcal{F}_t \Big] - K e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[𝟙_{\{\tilde{M}_t^T \ge b , \, X_T \ge k \}} \Big| \mathcal{F}_t \Big]  \\
+    &amp;= \underbrace{e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[S_T \, 𝟙_{\{\tilde{M}_t^T \ge b , \, X_T \ge k \}} \Big| \mathcal{F}_t \Big]}_{I_1} - \underbrace{K e^{-r(T-t)} \mathbb{Q} \Big[\tilde{M}_t^T \ge b , \, X_T \ge k \Big]}_{I_2}  \\
+\end{align*}</p>
+<p><i>Compute</i> $I_1:$</p>
+<p>We can use Girsanov's theorem to define a new measure $\mathbb{Q}_1$ where the drift of our process changes from $\mu$ to $\mu_1$. The Radon-Nikodym derivative for this change of measure is:</p>
+<p>\begin{align*}
+\frac{d\mathbb{Q}_1}{d\mathbb{Q}} \bigg| _{\mathcal{F}_T} = \frac{S_T}{S_t e^{r(T-t)}} = \exp \Bigg(\sigma (W^{\mathbb{Q}}_T - W^{\mathbb{Q}}_t) - \frac{\sigma^2}{2}(T-t)\Bigg) = \exp \Bigg(L_T - \frac{1}{2} \langle L, L \rangle _T \Bigg)
+\end{align*}</p>
+<p>Thus $W^{\mathbb{Q}_1}$ is a Brownian motion under $\mathbb{Q}_1$ and:
+\begin{align*}
+dW^{\mathbb{Q}_1}_t &amp;= dW^{\mathbb{Q}}_t - d \langle L,W^{\mathbb{Q}} \rangle _t \\
+    &amp;= dW^{\mathbb{Q}}_t - \sigma dt
+\end{align*}</p>
+<p>and:
+\begin{align*}
+dX_t &amp;= \frac{1}{\sigma} \bigg(r - \frac{\sigma^2}{2}\bigg) dt + dW^{\mathbb{Q}}_t \\
+     &amp;= \frac{1}{\sigma} \bigg(r - \frac{\sigma^2}{2}\bigg) dt + \bigg(dW^{\mathbb{Q}_1}_t + \sigma dt\bigg) \\
+     &amp;= \frac{1}{\sigma} \bigg(r + \frac{\sigma^2}{2}\bigg) dt + dW^{\mathbb{Q}_1}_t \\
+\end{align*}</p>
+<p>Thus: $\mu_1 = \frac{1}{\sigma} \Big(r + \frac{\sigma^2}{2}\Big) = \mu + \sigma$</p>
+<p>Under $\mathbb{Q}_1$, the expression simplifies to:</p>
+<p>\begin{align*}
+I_1 &amp;= e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}} \Big[S_T \, 𝟙_{\{\tilde{M}_t^T \ge b , \, X_T \ge k \}} \Big| \mathcal{F}_t \Big] \\
+&amp;= e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}_1} \Bigg[\frac{d\mathbb{Q}}{d\mathbb{Q}_1} \bigg| _{\mathcal{F}_T} S_T \, 𝟙_{\{\tilde{M}_t^T \ge b , \, X_T \ge k \}} \Big| \mathcal{F}_t \Bigg] \\
+&amp;= e^{-r(T-t)} \mathbb{E}_{\mathbb{Q}_1} \Bigg[\frac{S_t e^{r(T-t)}}{S_T} S_T \, 𝟙_{\{\tilde{M}_t^T \ge b , \, X_T \ge k \}} \Big| \mathcal{F}_t \Bigg] \\
+&amp;= S_t \, \mathbb{E}_{\mathbb{Q}_1}\Big[ 𝟙_{\{\tilde{M}_t^T \ge b , \, X_T \ge k \}} \Big| \mathcal{F}_t \Big] \\
+&amp;= S_t \, \mathbb{Q}_1\Big(\tilde{M}_t^T \ge b , \, X_T \ge k \Big) \\
+&amp;= S_t \, \bigg[\mathbb{Q}_1(\tilde{M}_t^T \ge b) - \mathbb{Q}_1(\tilde{M}_t^T \ge b, X_T &lt; k)\bigg] \\
+\end{align*}</p>
+<p>The first probability can be evaluated using lemma $4$ under the measure $\mathbb{Q}_1$ where the drift is $\mu_1$.
+\begin{align*}
+\mathbb{Q}_1(\tilde{M}_t^T \ge b)
+    &amp;= 1 - N\bigg(\frac{b-\mu_1 (T-t)}{\sqrt{T-t}}\bigg) + e^{2\mu_1 b} N\bigg(\frac{-b-\mu_1 (T-t)}{\sqrt{T-t}}\bigg)\\
+    &amp;= 1 - N\bigg(\frac{\frac{1}{\sigma}\ln(B/S_t)-\frac{1}{\sigma}(r + \frac{\sigma^2}{2}) (T-t)}{\sqrt{T-t}}\bigg) + e^{2 \frac{1}{\sigma}(r + \frac{\sigma^2}{2}) \frac{1}{\sigma} \ln(\frac{B}{S_t})} N\bigg(\frac{-\frac{1}{\sigma}\ln(B/S_t)-\frac{1}{\sigma}(r + \frac{\sigma^2}{2}) (T-t)}{\sqrt{T-t}}\bigg)\\
+\end{align*}</p>
+<p>Let:
+$$
+d_5 = \frac{\ln(S_t/B)+(r + \frac{\sigma^2}{2}) (T-t)}{\sigma \sqrt{T-t}}, \qquad d_7 = \frac{\ln(B/S_t)+(r + \frac{\sigma^2}{2}) (T-t)}{\sigma \sqrt{T-t}}, \qquad \lambda = \frac{r + \sigma^2/2}{\sigma^2}
+$$</p>
+<p>Thus:
+\begin{align*}
+\mathbb{Q}_1(\tilde{M}_t^T \ge b)
+    &amp;= 1 - N(-d_5) + \bigg(\frac{B}{S_t}\bigg)^{2 \lambda}  N (-d_7)\\
+    &amp;= N(d_5) + \bigg(\frac{B}{S_t}\bigg)^{2 \lambda}  N (-d_7)\\
+\end{align*}</p>
+<p>The second probability can be evaluated using the reflection principle from lemma $1$:
+\begin{align*}
+\mathbb{Q}_1(\tilde{M}_t^T \ge b, X_T &lt; k) &amp;= \mathbb{Q}_1(X_T \ge 2b - k) \\
+    &amp;= e^{2 \mu_1 b} \mathbb{Q}_1(X_T \le k - 2b) \qquad \qquad \text{by the symmetry property of drifted Brownian motions}\\
+    &amp;= e^{2 \mu_1 b} \mathbb{Q}_1 \bigg(W^{\mathbb{Q}_1}_T \le k - 2b - \mu_1 (T-t)\bigg) \\
+    &amp;= e^{2 \mu_1 b} \mathbb{Q}_1 \Bigg(\epsilon^{\mathbb{Q}_1} \le \frac{k - 2b - \mu_1 (T-t)}{\sqrt{T-t}}\Bigg) \\
+    &amp;= e^{2 \frac{1}{\sigma} (r+\frac{\sigma^2}{2}) \frac{1}{\sigma}\ln(\frac{B}{S_t})} \mathbb{Q}_1 \Bigg(\epsilon^{\mathbb{Q}_1} \le \frac{\frac{1}{\sigma}\ln(\frac{K}{S_t}) - 2 \frac{1}{\sigma}\ln(\frac{B}{S_t}) - \frac{1}{\sigma} (r + \frac{\sigma^2}{2})(T-t)}{\sqrt{T-t}}\Bigg) \\
+    &amp;= \left(\frac{B}{S_t}\right)^{2\lambda} N \Bigg(\frac{\ln(\frac{S_t K}{B^2}) - (r + \frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}}\Bigg)\\
+    &amp;= \left(\frac{B}{S_t}\right)^{2\lambda} N (-d_3)\\
+\end{align*}</p>
+<p>where:
+$$
+d_3 = \frac{\ln(B^2/S_t K) + (r + \frac{1}{2}\sigma^2)(T-t)}{\sigma\sqrt{T-t}}
+$$</p>
+<br/>
+<p><i>Compute</i> $I_2:$
+\begin{align*}
+I_2 &amp;= K e^{-r(T-t)} \mathbb{Q} \Big[\tilde{M}_t^T \ge b , \, X_T \ge k \Big] \\
+    &amp;= K e^{-r(T-t)} \bigg[\mathbb{Q} (\tilde{M}_t^T \ge b) - \mathbb{Q} (\tilde{M}_t^T \ge b , \, X_T &lt; k) \bigg]
+\end{align*}</p>
+<p>The first probability can be evaluated using lemma $4$ under the measure $\mathbb{Q}$ where the drift is $\mu$.
+\begin{align*}
+\mathbb{Q}(\tilde{M}_t^T \ge b)
+    &amp;= 1 - N\bigg(\frac{b-\mu (T-t)}{\sqrt{T-t}}\bigg) + e^{2\mu b} N\bigg(\frac{-b-\mu (T-t)}{\sqrt{T-t}}\bigg)\\
+    &amp;= 1 - N\bigg(\frac{\frac{1}{\sigma} \ln(B/S_t)- \frac{1}{\sigma}(r - \frac{\sigma^2}{2}) (T-t)}{\sqrt{T-t}}\bigg) + e^{2 \frac{1}{\sigma}(r - \frac{\sigma^2}{2}) \frac{1}{\sigma} \ln(\frac{B}{S_t})} N\bigg(\frac{-\frac{1}{\sigma}\ln(B/S_t)-\frac{1}{\sigma}(r - \frac{\sigma^2}{2}) (T-t)}{\sqrt{T-t}}\bigg)\\
+\end{align*}</p>
+<p>Let:
+\begin{align*}
+d_6 &amp;= \frac{\ln(S_t/B) + (r - \frac{\sigma^2}{2})(T-t)}{\sigma\sqrt{T-t}} = d_5 - \sigma \sqrt{T-t} \\
+d_8 &amp;= \frac{\ln(B/S_t) + (r - \frac{\sigma^2}{2})(T-t)}{\sigma\sqrt{T-t}} = d_7 - \sigma \sqrt{T-t} \\ 
 \end{align*}</p>
 <p>Thus:
 \begin{align*}
-\psi_{\tilde{X}_0^{T}, \tilde{W}_{T}} (a,b)
-   &amp;= \frac{\partial^2}{\partial a \partial b} \mathbb{P} \Big(\tilde{X}_0^{T} \le a, \tilde{W}_{T} \le b \Big) \\
-   &amp;= \sqrt{\frac{2}{\pi T^3}} \frac{\partial^2}{\partial a \partial b} \int_{\text{Max} \{y,0\}}^{a} \int_{-\infty}^{b} e^{(\frac{r}{\sigma} - \frac{\sigma}{2}) y - \frac{1}{2}(\frac{r}{\sigma} - \frac{\sigma}{2})^2 \, T } \, (2x-y) \, e^{-\frac{(2x-y)^2}{2T}} dy dx \\
-   &amp;= \sqrt{\frac{2}{\pi T^3}} (2a-b) \, e^{(\frac{r}{\sigma} - \frac{\sigma}{2}) b - \frac{1}{2}(\frac{r}{\sigma} - \frac{\sigma}{2})^2 \, T - \frac{(2a-b)^2}{2T}} \mathbf{1}_{\{a \, \ge \, \text{Max}{(b,0)} \}} \\
+\mathbb{Q}(\tilde{M}_t^T \ge b) &amp;= 1 - N(-d_6) + \bigg(\frac{B}{S_t}\bigg)^{\frac{2(r + \frac{\sigma^2}{2} - \sigma^2)}{\sigma^2}} N(-d_8)\\
+    &amp;= N(d_6) + \bigg(\frac{B}{S_t}\bigg)^{2 \lambda - 2} N(-d_8)\\
 \end{align*}</p>
-</blockquote>
+<p>The second probability can be evaluated using the reflection principle from lemma $1$:
+\begin{align*}
+\mathbb{Q}(\tilde{M}_t^T \ge b, X_T &lt; k) &amp;= \mathbb{Q}(X_T \ge 2b - k) \\
+    &amp;= e^{2\mu b} \mathbb{Q}(X_T \le k - 2b) \qquad \qquad \text{by the symmetry property of drifted Brownian motions}\\
+    &amp;= e^{2 \mu b} \mathbb{Q} \bigg(W^{\mathbb{Q}}_T \le k - 2b - \mu (T-t)\bigg) \\
+    &amp;= e^{2 \mu b} \mathbb{Q} \Bigg(\epsilon^{\mathbb{Q}} \le \frac{k - 2b - \mu (T-t)}{\sqrt{T-t}}\Bigg) \\
+    &amp;= e^{2 \frac{1}{\sigma} (r-\frac{\sigma^2}{2}) \frac{1}{\sigma}\ln(\frac{B}{S_t})} \mathbb{Q} \Bigg(\epsilon^{\mathbb{Q}} \le \frac{\frac{1}{\sigma}\ln(\frac{K}{S_t}) - 2 \frac{1}{\sigma}\ln(\frac{B}{S_t}) - \frac{1}{\sigma} (r - \frac{\sigma^2}{2})(T-t)}{\sqrt{T-t}}\Bigg) \\
+    &amp;= \left(\frac{B}{S_t}\right)^{2\lambda-2} N \Bigg(\frac{\ln(\frac{S_t K}{B^2}) - (r - \frac{\sigma^2}{2})(T-t)}{\sigma \sqrt{T-t}}\Bigg)\\
+    &amp;= \left(\frac{B}{S_t}\right)^{2\lambda-2} N (-d_4)\\
+\end{align*}</p>
+<p>where:
+$$
+d_4 = \frac{\ln(B^2/S_t K) + (r - \frac{1}{2}\sigma^2)(T-t)}{\sigma\sqrt{T-t}} = d_3 - \sigma\sqrt{T-t}
+$$</p>
+<br/>
+<p><i>Aggregating the results:</i>
+\begin{align*}
+C_{UI}(t) &amp;= I_1 - I_2 \\
+    &amp;= S_t \Bigg[N(d_5) + \bigg(\frac{B}{S_t}\bigg)^{2 \lambda}  N (-d_7) - \left(\frac{B}{S_t}\right)^{2\lambda} N(-d_3)\Bigg] - K e^{-r(T-t)} \Bigg[N(d_6) + \bigg(\frac{B}{S_t}\bigg)^{2 \lambda - 2} N(-d_8) - \left(\frac{B}{S_t}\right)^{2\lambda-2} N(-d_4)\Bigg] \\
+\end{align*}</p>
+<p>where:</p>
+<ul>
+<li>$d_3 = \frac{\ln(B^2/S_t K) + (r + \frac{1}{2}\sigma^2)(T-t)}{\sigma\sqrt{T-t}}$</li>
+<li>$d_4 = d_3 - \sigma\sqrt{T-t} = \frac{\ln(B^2/S_t K) + (r - \frac{1}{2}\sigma^2)(T-t)}{\sigma\sqrt{T-t}}$</li>
+<li>$d_5 = \frac{\ln(S_t/B) + (r + \frac{1}{2}\sigma^2)(T-t)}{\sigma\sqrt{T-t}}$</li>
+<li>$d_6 = d_5 - \sigma\sqrt{T-t} = \frac{\ln(S_t/B) + (r - \frac{1}{2}\sigma^2)(T-t)}{\sigma\sqrt{T-t}}$</li>
+<li>$d_7 = \frac{\ln(B/S_t) + (r + \frac{1}{2}\sigma^2)(T-t)}{\sigma\sqrt{T-t}}$</li>
+<li>$d_8 = d_7 - \sigma\sqrt{T-t} = \frac{\ln(B/S_t) + (r - \frac{1}{2}\sigma^2)(T-t)}{\sigma\sqrt{T-t}}$</li>
+</ul>
+<br/>
+<p><i>The other barrier options can be priced the same way, or by using the in-out parity when possible</i></p>
 <br/>
 <hr/>
 </div>
@@ -9279,84 +9373,54 @@ $$</p>
 <p>A lookback option is an exotic option that allows the holder to "look back" over the option's life and select the most favorable underlying price for exercise. Unlike standard options, where the strike price is predetermined, lookback options depend on the maximum or minimum price observed during the option’s lifespan.</p>
 <p>There are two types of lookback options:</p>
 <ul>
-<li><strong>Fixed Strike Lookback Options</strong></li>
 <li><strong>Floating Strike Lookback Options</strong></li>
+<li><strong>Fixed Strike Lookback Options</strong></li>
 </ul>
 <br/>
 <p><strong>Payoff:</strong></p>
-<p><i>Fixed Strike:</i>
-$$
-LC^{\text{fix}}_T = \text{Max} \Big(\underset{0 \le t \le T}{\text{Max}} \, S_t - K \Big) \\
-LP^{\text{fix}}_T = \text{Max} \Big(K - \underset{0 \le t \le T}{\text{Min}} \, S_t \Big)\\
-$$</p>
 <p><i>Floating Strike:</i>
 $$
 LC^{\text{float}}_T = S_T - \underset{0 \le t \le T}{\text{Min}} \, S_t \\
 LP^{\text{float}}_T = \underset{0 \le t \le T}{\text{Max}} \, S_t - S_T \\
 $$</p>
-<p><strong>Price:</strong></p>
 <p><i>Fixed Strike:</i>
 $$
-LC^{\text{fix}}_0 = S_0 N(d_1) - e^{-rT} K N(d_2) + e^{-rT} \frac{S_0 \sigma^2}{2r} \Big[N(-d_1 + \sigma \sqrt{T}) - e^{\frac{2rS_0}{\sigma^2}} N(-d_1 - \sigma \sqrt{T})\Big] \\
-LP^{\text{fix}}_0 = e^{-rT} K N(-d_2) - S_0 N(-d_1) + e^{-rT} \frac{S_0 \sigma^2}{2r} \Big[e^{\frac{2rS_0}{\sigma^2}} N(d_1 + \sigma \sqrt{T}) -  N(d_1 - \sigma \sqrt{T})\Big] \\
+LC^{\text{fix}}_T = \text{Max} \Big(\underset{0 \le t \le T}{\text{Max}} \, S_t - K \Big) \\
+LP^{\text{fix}}_T = \text{Max} \Big(K - \underset{0 \le t \le T}{\text{Min}} \, S_t \Big)\\
 $$</p>
-<p>where:
-$$
-d_1 = \frac{\ln (S_0/K) + (r+\sigma^2/2)T}{\sigma \sqrt{T}} \qquad d_2 = d_1 - \sigma \sqrt{T}
-$$</p>
+<p><strong>Price:</strong></p>
 <p><i>Floating Strike:</i></p>
 <p>Under the Black-Scholes framework, the <i>Goldman, Sosin, and Gatto (1979)</i> closed-form pricing formula gives:
 $$
-LC^{\text{float}}_0 = S_0 N(a_1) - m_0 e^{-rT} N(a_2) + \frac{S_0 \sigma^2}{2r} \bigg(e^{-rT} N(-a_2) - \Big(\frac{m_0}{S_0}\Big)^{2r/\sigma} e^{-rT} N(-a_3)\bigg) \\
-LP^{\text{float}}_0 = M_0 e^{-rT} N(b_1) - S_0 N(b_2) + \frac{S_0 \sigma^2}{2r} \bigg(e^{-rT} N(-b_1) - \Big(\frac{S_0}{M_0}\Big)^{2r/\sigma} e^{-rT} N(-b_3)\bigg) \\
+LC^{\text{float}}_0 = S_0 N(a_1) - m_0 e^{-rT} N(a_2) + S_0 \frac{\sigma^2}{2r} \bigg(e^{-rT} \Big(\frac{m_0}{S_0}\Big)^{2r/\sigma^2}  N(a_4) - N(-a_1) \bigg) \\
+LP^{\text{float}}_0 = M_0 e^{-rT} N(-b_2) + S_0 \bigg(1 + \frac{\sigma^2}{2r}\bigg) N(b_1) - S_0 e^{-rT} \frac{\sigma^2}{2r} \Big(\frac{M_0}{S_0}\Big)^{2r/\sigma^2} N(-b_4) - S_0 \\
 $$</p>
 <p>where:
 \begin{align*}
-a_1 &amp;= \frac{\ln (S_0/m_0) + (r+\sigma^2/2)T}{\sigma \sqrt{T}} \qquad b_1 = \frac{\ln (M_0/S_0) + (r+\sigma^2/2)T}{\sigma \sqrt{T}}\\
+a_1 &amp;= \frac{\ln (S_0/m_0) + (r+\sigma^2/2)T}{\sigma \sqrt{T}} \qquad b_1 = \frac{\ln (S_0/M_0) + (r+\sigma^2/2)T}{\sigma \sqrt{T}}\\
 a_2 &amp;= a_1 - \sigma \sqrt{T} \qquad \qquad \qquad \qquad \; \; \, b_2 = b_1 - \sigma \sqrt{T}\\
-a_3 &amp;= a_1 - \frac{2r \sqrt{T}}{\sigma} \qquad \qquad \qquad \quad \; \; \; \; b_3 = b_1 - \frac{2r \sqrt{T}}{\sigma} \\
+a_3 &amp;= \frac{\ln (m_0/S_0) + (r+\sigma^2/2)T}{\sigma \sqrt{T}}  \qquad b_3 = \frac{\ln (M_0/S_0) + (r+\sigma^2/2)T}{\sigma \sqrt{T}} \\
+a_4 &amp;= a_3 - \sigma \sqrt{T} \qquad \qquad \qquad \qquad \; \; \, b_4 = b_3 - \sigma \sqrt{T} \\
 m_T &amp;= \underset{0 \le t \le T}{\text{Min}} \, S_t \qquad \qquad \qquad \qquad \quad M_T = \underset{0 \le t \le T}{\text{Max}} \, S_t
 \end{align*}</p>
-<p><font color="red">verify formula p634 Hull</font></p>
-<p><strong>Proof:</strong></p>
+<br/>
 <p><i>Fixed Strike:</i></p>
-<p><i>Floating Strike:</i></p>
-<p>The price at time 0 is the discounted expected payoff under the risk-neutral measure:
+<p>We can use the call-put parity for lookback options to find the price of a fixed strike lookback from floating strike lookback options.</p>
+<p><strong>Call-Put Parity:</strong>
 \begin{align*}
-LC^{\text{float}}_0 &amp;= e^{-rT} \mathbb{E}_{\mathbb{Q}} \Big[S_T - \underset{0 \le t \le T}{\text{Min}} \, S_t\Big] \\
-    &amp;= e^{-rT} \mathbb{E}_{\mathbb{Q}} \Big[S_T\Big] - e^{-rT} \mathbb{E}_{\mathbb{Q}} \Big[\underset{0 \le t \le T}{\text{Min}} \, S_t\Big] \\
-    &amp;= S_0 - e^{-rT} \mathbb{E}_{\mathbb{Q}} \Big[\underset{0 \le t \le T}{\text{Min}} \, S_t\Big] \\
-    &amp;= S_0 - e^{-rT} \mathbb{E}_{\mathbb{Q}} \Big[m_T\Big] \\
+LC^{\text{fix}}_0 &amp;= \overline{LP}^{\text{float}}_0 + S_0 - K e^{-rT} \\
+\\
+LP^{\text{fix}}_0 &amp;= \overline{LC}^{\text{float}}_0 + K e^{-rT} - S_0 \\
 \end{align*}</p>
-<p>Using the properties of geometric Brownian motion and reflection principle, we can express the distribution of the minimum in terms of the running minimum of Brownian motion.</p>
-<p>Let $Y_t = \ln \big(\frac{S_t}{S_0}\big)$:
-$$
-dY_t = \bigg(r- \frac{\sigma^2}{2}\bigg) dt + \sigma dW_t
-$$</p>
-<p>Let $m_T^Y = \underset{0 \le t \le T}{\text{Min}} \, Y_t$</p>
-<p>The joint density of $(Y_T, m^Y_T)$ is known from the reflection principle: <font color="red">proof?</font>
-$$
-f_{Y_T, m_T^Y}(y,m) = \frac{2(2y-m)}{\sqrt{2 \pi T^3} \sigma^3} \exp \bigg(- \frac{(2y - m - (r- \frac{\sigma^2}{2})T)^2}{2 \sigma^2 T}\bigg) 𝟙_{\{m \le 0, y \ge m\}}
-$$</p>
-<p>and:
-$$
-m_T = S_0 e^{m_T^Y}
-$$</p>
-<p>Thus:
-\begin{align*}
-\mathbb{E}_{\mathbb{Q}} \Big[m_T\Big] &amp;= \mathbb{E}_{\mathbb{Q}} \Big[S_0 e^{m_T^Y}\Big] \\
-    &amp;= S_0 \, \mathbb{E}_{\mathbb{Q}} \Big[e^{m_T^Y}\Big]
-\end{align*}</p>
-<p>By integrating with respect to the joint density and applying change of variables:
-$$
-\mathbb{E}_{\mathbb{Q}} \Big[e^{m_T^Y}\Big] = N(-d_1) + \bigg(\frac{S_0}{m_0}\bigg)^{2r/\sigma^2} N(d_2)
-$$</p>
-<p>where:</p>
+<p>where the current running maximum and minimum (i.e. at $t=0$ if we start the valuation at this time) in $\overline{LC}^{\text{float}}_0$ and $\overline{LP}^{\text{float}}_0$ are respectively:</p>
 <ul>
-<li>$m_0$ is the current running minimum, or $S_0$ if we start freshly</li>
-<li>$d_1 = \frac{\ln (S_0/m_0)+ (r+\sigma^2/2)T}{\sigma \sqrt{T}}$</li>
-<li>$d_2 = d_1 - \frac{2r \sqrt{T}}{\sigma}$</li>
+<li>$\overline{M}_0 = \text{Max}(M_0, K)$</li>
+<li>$\overline{m}_0 = \text{Min}(m_0, K)$</li>
 </ul>
+<br/>
+<p><strong>Proof:</strong></p>
+<p><i>cf the properties of the maximum and minimum of a drifted Brownian motion in the barrier options section, as the derivation of a lookback option is similar</i></p>
+<br/>
 <hr/>
 </div>
 </div>
@@ -9368,8 +9432,7 @@ $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Asian-Option:"><font color="#191970"><strong>Asian Option:</strong></font><a class="anchor-link" href="#Asian-Option:">¶</a></h4><p><font color="red">Cf Hull p637</font></p>
-<p><strong>Presentation:</strong></p>
+<h4 id="Asian-Option:"><font color="#191970"><strong>Asian Option:</strong></font><a class="anchor-link" href="#Asian-Option:">¶</a></h4><p><strong>Presentation:</strong></p>
 <p>Asian options are a type of exotic option where the payoff depends on the average price of the underlying asset over a specified period rather than the price at expiration. This makes them less sensitive to market volatility and price manipulation.</p>
 <br/>
 <p>Types of Asian options:</p>
@@ -9382,11 +9445,11 @@ $$</p>
 <ul>
 <li>Arithmetic average:
 $$
-S^{moy}_A = \frac{1}{N} \sum_{i=1}^N S_i
+S^{moy}_A = \frac{1}{N} \sum_{i=1}^N S_i \big(t_i - t_{i-1}\big) \qquad \text{or} \qquad S^{moy}_A  = \frac{1}{T} \int_0^T S_t dt
 $$</li>
 <li>Geometric average:
 $$
-S^{moy}_G = \Bigg(\prod_{i=1}^N S_i \Bigg)^{\frac{1}{N}}
+S^{moy}_G = \Bigg(\prod_{i=1}^N S_i \big(t_i - t_{i-1}\big)\Bigg)^{\frac{1}{N}} \qquad \text{or} \qquad S^{moy}_G \approx \exp \bigg(\frac{1}{T} \int_0^T \ln S_t dt\bigg) 
 $$</li>
 </ul>
 <p><strong>Payoff:</strong></p>
@@ -9400,11 +9463,13 @@ $$
 AC^{\text{float}}_T = \text{Max}(S_T - S^{moy}, 0) \\
 AP^{\text{float}}_T = \text{Max}(S^{moy} - S_T, 0) \\
 $$</p>
+<br/>
 <p><strong>Price:</strong></p>
-<p>Unlike European options, Asian options do not have a closed-form Black-Scholes solution due to the averaging process. However, they can be priced using:</p>
+<p>When the option uses a geometric average, a closed-form solution exists because the geometric mean of a lognormal process remains lognormal, allowing for straightforward pricing under the Black-Scholes framework.</p>
+<p>In contrast, arithmetic averaging does not yield a closed-form solution because the sum of lognormal variables (which make up the arithmetic average) does not follow a simple known distribution. However, Asian options can be priced using:</p>
 <ul>
-<li><strong>Analytical Approximations</strong> (for geometric averaging)</li>
-<li><strong>Monte Carlo Simulations</strong> (for arithmetic averaging)</li>
+<li><strong>Moment-Matching Approximations</strong></li>
+<li><strong>Monte Carlo Simulations</strong></li>
 <li><strong>PDE Methods</strong></li>
 </ul>
 <br/>
