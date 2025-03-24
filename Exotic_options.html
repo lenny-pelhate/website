@@ -8639,11 +8639,13 @@ d^{t_c}_1 &amp;= \frac{\ln \big(\frac{S_t}{Ke^{-r(T-t_c)}}\big) +(r+\frac{\sigma
 <li><strong>Up-and-out (UO):</strong> Expires worthless if the underlying rises above the barrier</li>
 <li><strong>Down-and-in (DI):</strong> Activated if the underlying falls below the barrier</li>
 <li><strong>Down-and-out (DO):</strong> Expires worthless if the underlying falls below the barrier</li>
+<br/>
+<p>Note, there are eight types of barrier options since there are four possible types of puts and four possible types of calls</p>
 </ul>
 <br/>
 <p>For an "up" option, the underlying asset $S$ starts below the barrier $B$ (otherwise it's activated and it's a simple call option for an "up-and-in", or it is worthless since inception for an "up-and-out")</p>
 <p>For a "down" option, the underlying asset $S$ starts above the barrier $B$ (otherwise it's activated and it's a simple put option for a "down-and-in", or it is worthless since inception for a "down-and-out")</p>
-<p>We also need to distinguish for each option wether $K \le B$ or $K \ge B$, as it sometimes gives different payoffs.</p>
+<p>We also need to distinguish for each option wether $K \le B$ or $K \ge B$, as it sometimes gives different payoffs. Note that in total, this yields 16 different payoff possibilities</p>
 <br/>
 <p><strong>Payoff:</strong></p>
 <p>Notation:</p>
