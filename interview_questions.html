@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
     <title>Market Finance Interview Questions</title>
 </head>
 <body>
@@ -332,6 +335,52 @@
         <li>Consider a liquid stock. You construct a (self-financing) portfolio as follows: at each infinitesimally small time interval, you flip a fair coin. If heads, you go long the stock; if tails, you go short. You sell a call on this portfolio (which becomes the new underlying). What hedging strategy can be implemented?</li>
         <li>You evaluate the price and Greeks of an American call in a continuous model on a dividend-paying stock. How do vega (and other sensitivities) change when moving to a discrete model?</li>
         <li>How do you replicate an option with payoff f(S_T) using calls? Using both calls and puts?</li>
-    </ul>    
+    </ul>  
+    <ul>
+        <li>Show that \(C(\lambda S, \lambda K, T - t) = \lambda C(S, K, T - t)\).</li>
+        <li>What is a proxy formula for an ATM Call, assuming \( r=0 \)? (Answer in %: \( 0.4\sigma \sqrt{T - t} \)).</li>
+        <li>Retrieve the formula for Delta.</li>
+        <li>Retrieve the formula for Gamma.</li>
+        <li>Is Delta the probability of the option ending up in the money?</li>
+        <li>Where is the Gamma maximum?</li>
+        <li>What is the Delta of an ATM Call?</li>
+    </ul>
+    <ul>
+        <li>Plot the price of the call at different volatility levels and different time to maturity.</li>
+        <li>How does the Delta change with time?</li>
+        <li>How does the Delta change with volatility?</li>
+        <li>How does the Gamma change with time?</li>
+        <li>How does the Gamma change with volatility?</li>
+        <li>Where is the Gamma maximum?</li>
+    </ul>
+    <ul>
+        <li>A trader is long $10 million delta on SPX and does not have any option on SPX. SPX drops 5%, has the trader’s delta changed?</li>
+        <li>You are long 3-month calls with a strike of $150 on Apple. The current spot price is $138, and the delta is $6 million on that option. Apple moves up to $140, what happens to the delta? To the gamma? Vega? Theta?</li>
+        <li>You purchase a 95% strike put with a maturity of 15 days on SPX and pay a 1.15% premium for it on a $5 million notional. Can you estimate your daily theta bill?</li>
+        <li>Some traders use calendar days (one week is 7 days, including 2 non-working days), while others use business days (5 days per week, ignoring the weekend). What are the consequences for the computation of theta?</li>
+        <li>You are long 3-month calls with a strike of $150 on Apple. The current spot price is $138, and the delta is $6 million on that option. Nothing happens. Tomorrow, what will be your delta? Gamma?</li>
+    </ul>
+    <ul>
+        <li>Draw the final payout of a call spread, with strikes at 100% and 120%. Draw the value before maturity, the delta, gamma, vega, and theta as a function of Spot.</li>
+        <li>What is the delta of a call at the money?</li>
+        <li>What do you think of this alternative hedging strategy if you were to hedge one short call option: If the stock is below the strike, you have no hedge; when the stock passes through the strike \( K \), you buy one stock at price \( K \). If later on it goes back down and below \( K \), you sell it at price \( K \). So the strategy has zero cost and matches your liability: in other words, you pocket the premium and do not spend it.</li>
+        <li>Do you prefer to be long gamma or short gamma?</li>
+        <li>What is the relationship between vega and gamma in Black-Scholes?</li>
+        <li>You bought an option and “paid” 19 volatility. You re-hedge it continuously in a Black-Scholes world, and the realized volatility over the life of the option is 21. Will you make or lose money?</li>
+    </ul>
+    <ul>
+        <li>You believe the skew of SPX is too high versus the skew of NDX, can you suggest a trade? What are the main risks?</li>
+        <li>The trade consisting in going short the vol of an Index and going long the vols of the members of that index is called a “dispersion” trade. Can you explain why?</li>
+        <li>You believe that short-term skew on SX5E is too low versus long-term skew, what trade would you suggest? What are the things you may want to pay attention to?</li>
+        <li>The current 1-week implied vol of MSFT is 32. What is the daily move that you need to break even? MSFT is going to publish its results in 3 days, what can you expect?</li>
+    </ul>
+    <ul>
+        <li>You believe the skew of SPX is too high versus the skew of NDX, can you suggest a trade? What are the main risks?</li>
+        <li>The trade consisting in going short the vol of an Index and going long the vols of the members of that index is called a “dispersion” trade. Can you explain why (hint: dispersion means the opposite of correlation)?</li>
+        <li>You believe that short-term skew on SX5E is too low versus long-term skew, what trade would you suggest? What are the things you may want to pay attention to?</li>
+    </ul>
+      
+                  
+    
 </body>
 </html>
