@@ -290,12 +290,48 @@
         <li>What does the "decode" function do?</li>
         <li>How many "outer joins" can a table have?</li>
     </ul>
-    
-    <h2 id="fit-questions">VII. "Fit" Questions</h2>
+
+    <h2 id="more-questions">VII. More Questions</h2>
     <ul>
-        <li>Introduce yourself in 3 minutes.</li>
-        <li>Give me one word that defines you.</li>
-        <li>What are your particular skills?</li>
-    </ul>
+        <li>What is a call, an Asian option, a lookback option, a barrier option (up and out, etc.), a digital option, a Bermudan option, a swap...? What is volatility? Historical volatility? Implied volatility? The Sharpe ratio? What are the "Greeks," and what do they represent?</li>
+        <li>What is the Black-Scholes formula for the price of a call? The delta of a call? A put? Plot the payoff, price, delta, and gamma curves of a call and a put. What happens if we add dividends (continuous or discrete)?</li>
+        <li>What is a forward contract? What is the forward price? What is the difference between a forward contract and a futures contract?</li>
+        <li>How do we value an interest rate swap? If we book an interest rate swap, what is its price today? After one year, what is its price?</li>
+        <li>What is the volatility smile? Why is it not flat? What else? What is the typical shape of a smile on an index? On forex? Why?</li>
+        <li>What is the relationship between the gamma and vega of a call? Of an option in general?</li>
+        <li>What is a CDS? A CDO?</li>
+        <li>We know that there will be a jump in a stock price; what strategy should we adopt?</li>
+        <li>What interest rate models do you know? Stochastic volatility models?</li>
+        <li>What is the Vasicek model? What is the major issue with this model? Its advantages?</li>
+        <li>Ito's formula? Feynman-Kac formula? How do you compute the solution to a PDE?</li>
+        <li>Solve the Black-Scholes SDE, the Ornstein-Uhlenbeck SDE... Are the solutions unique? What is the SDE of the CIR model? What is the condition for the CIR process to be positive almost surely? How do you solve this SDE? What problems arise, and how can they be addressed?</li>
+        <li>What is the advantage of solving using PDEs over Monte Carlo methods?</li>
+        <li>Plot the payoff of a digital option. To simplify, assume interest rates are zero. Plot the price, delta, and gamma (independently of any model). Plot the same curves when close to maturity.</li>
+        <li>Assume expiration is tomorrow and you are short on the digital option, with a strike price of 100. What hedging strategy can be implemented using only the underlying asset? What static strategy could have been set up on the day of selling the option using calls and puts?</li>
+        <li>You are short a single-underlying call and hedge delta using the Black-Scholes model:
+            <ul>
+                <li>In a Black-Scholes world, what is the final P&L?</li>
+                <li>In a Black-Scholes world, how does the final P&L vary if hedging is done in discrete time? What terms contribute to the "dispersion" of the P&L?</li>
+                <li>In a NON-Black-Scholes world (but hedging with BS), what is the final P&L? What about in a multi-underlying case?</li>
+            </ul>
+        </li>
+        <li>In C++, what is a pointer? A reference? A class? A method? A constructor/destructor? The copy constructor? When is it used? What else is needed? What is multiple inheritance? Polymorphism? A "friend" function?</li>
+        <li>In VBA, what does "Option Explicit" mean? "Option Base 1"? How do you simulate a Gaussian variable (in a single line of code)? How do you plot a graph? Print? What is a class module? What is the difference between a procedure (Sub) and a function?</li>
+    
+        <li>Why is the price of an American option different from that of a European option?</li>
+        <li>What is the sign of a call's vega and why? A put's vega and why? What is the shape of a call's vega and why?</li>
+        <li>You are short a European call and delta hedge. You know there will be a jump in the underlying asset. Which jump direction is more favorable for you?</li>
+        <li>What is "vega hedging," and how is it implemented?</li>
+        <li>You are long a put. How do you hedge against Rho risk? (What do you buy or sell?)</li>
+        <li>You are short a call and delta hedge. The spot price drops and volatility rises. What do you do?</li>
+        <li>For an American call paying dividends and deep in the money, how does intrinsic value evolve as the spot price changes?</li>
+        <li>What is the relationship between local volatility and Black-Scholes implied volatility?</li>
+        <li>Why do we use Brownian motion for modeling? What is the issue with this modeling? How can it be addressed? Is it effective? What happens if we remove one or more of its three properties?</li>
+        <li>In a stochastic volatility model for a standard index, how does the skew evolve when the volatility-underlying correlation becomes more negative? Does it steepen, flatten, remain unchanged, or is it unpredictable? What happens when volatility of volatility increases? What about for at-the-money implied volatility?</li>
+        <li>In a local volatility model for an equity index, how does the skew evolve over time?</li>
+        <li>Consider a liquid stock. You construct a (self-financing) portfolio as follows: at each infinitesimally small time interval, you flip a fair coin. If heads, you go long the stock; if tails, you go short. You sell a call on this portfolio (which becomes the new underlying). What hedging strategy can be implemented?</li>
+        <li>You evaluate the price and Greeks of an American call in a continuous model on a dividend-paying stock. How do vega (and other sensitivities) change when moving to a discrete model?</li>
+        <li>How do you replicate an option with payoff f(S_T) using calls? Using both calls and puts?</li>
+    </ul>    
 </body>
 </html>
