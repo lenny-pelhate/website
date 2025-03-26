@@ -8316,10 +8316,10 @@ $$</p>
 <p><font color="#191970"><strong>Gamma P&amp;L Formula:</strong></font></p>
 <p>Over a small time period $dt$, the P&amp;L from gamma exposure is the last term of $d\Pi \approx \Theta dt + \frac{1}{2}\Gamma dS^2$:
 $$
-\frac{1}{2}\Gamma dS^2 = \frac{1}{2}\Gamma S^2 \sigma^2 dt 
+\frac{1}{2}\Gamma dS^2 = \frac{1}{2}\Gamma \sigma^2 S^2 dt 
 $$</p>
 <p>Since we're considering realized price movements, $\sigma$ here is the realized volatility $\sigma_{real}$:​
-$$\boxed{\text{Gamma P\&amp;L} = \frac{1}{2}\Gamma S^2 \sigma_{\text{real}}^2 dt}$$</p>
+$$\boxed{\text{Gamma P&amp;L} = \frac{1}{2}\Gamma S^2 \sigma_{real}^2 dt}$$</p>
 <p><font color="#191970"><strong>Theta P&amp;L Formula:</strong></font></p>
 <p>Black-Scholes PDE gives:
 $$
@@ -8333,8 +8333,8 @@ $$</p>
 $$
 \Theta + \frac{1}{2} \sigma^2 S^2 \Gamma = 0
 $$</p>
-<p>Since we're using the theoretical model, $\sigma$ here is the implied volatility $\sigma_{imp}$:
-$$\boxed{\text{Theta P\&amp;L} = -\frac{1}{2}\Gamma S^2 \sigma_{\text{imp}}^2 dt}$$</p>
+<p>Since we're using the theoretical model, $\sigma$ here is the implied volatility $\sigma_{imp}$ (i.e. the volatility that we find by calibrating the model to the market prices):
+$$\boxed{\text{Theta P&amp;L} = -\frac{1}{2}\Gamma S^2 \sigma_{imp}^2 dt}$$</p>
 <br/>
 <p><strong>Application:</strong></p>
 <p>Consider a delta-neutral portfolio with:</p>
